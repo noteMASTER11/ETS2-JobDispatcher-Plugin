@@ -93,8 +93,11 @@ unsigned Kind(IDirectInputDevice8W* device) {
     caps.dwSize = sizeof(caps);
     if (FAILED(device->GetCapabilities(&caps))) return 0;
     const auto type = caps.dwDevType & 0xff;
-    if (type == DI8DEVTYPE_MOUSE || type == DIDEVTYPE_MOUSE) return 1;
-    if (type == DI8DEVTYPE_KEYBOARD || type == DIDEVTYPE_KEYBOARD) return 2;
+    // Windows SDK hides the old DIDEVTYPE_* names when building for DI8.
+    // Their ABI values still occur in legacy device implementations.
+    constexpr DWORD legacy_mouse = 2, legacy_keyboard = 3;
+    if (type == DI8DEVTYPE_MOUSE || type == legacy_mouse) return 1;
+    if (type == DI8DEVTYPE_KEYBOARD || type == legacy_keyboard) return 2;
     return 0;
 }
 int ScanKey(unsigned scan) {
