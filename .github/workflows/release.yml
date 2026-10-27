@@ -28,7 +28,9 @@ jobs:
           $package='package/JobDispatcherSP'
           New-Item -ItemType Directory "$package/bin" -Force | Out-Null
           Copy-Item build/Release/JobDispatcherSP.dll "$package/bin/"
-          foreach ($name in @('assets','tools','licenses','docs')) { Copy-Item $name $package -Recurse }
+          foreach ($name in @('assets','licenses','docs')) { Copy-Item $name $package -Recurse }
+          New-Item -ItemType Directory "$package/tools" -Force | Out-Null
+          Get-ChildItem tools -File | Copy-Item -Destination "$package/tools"
           Copy-Item README.md,Install.cmd,Uninstall.cmd $package
           New-Item -ItemType Directory dist -Force | Out-Null
           Compress-Archive -Path "$package/*" -DestinationPath dist/JobDispatcherSP-0.1-Windows-x64.zip
