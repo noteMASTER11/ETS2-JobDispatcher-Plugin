@@ -7,8 +7,9 @@ if($Repository -ne $expected) { throw "Unexpected destination repository: $Repos
 $gh=Get-Command $GitHubCli -ErrorAction SilentlyContinue
 if(-not $gh) { throw 'Install GitHub CLI, then run gh auth login.' }
 $ghPath=$gh.Source
-& $ghPath auth status
-if($LASTEXITCODE) { throw 'GitHub CLI is not signed in. Run gh auth login, then repeat this script.' }
+$login=& $ghPath api user --jq .login
+if($LASTEXITCODE) { throw 'GitHub CLI could not verify the account. Run gh auth login or retry after a network error.' }
+if($login -ne 'noteMASTER11') { throw "Unexpected GitHub account: $login" }
 Push-Location $root
 try {
     git diff --exit-code
