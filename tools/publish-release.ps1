@@ -1,13 +1,12 @@
 [CmdletBinding()]
-param([string]$Repository='noteMASTER11/ETS2-JobDispatcher-Plugin')
+param([string]$Repository='noteMASTER11/ETS2-JobDispatcher-Plugin', [string]$GitHubCli='gh')
 $ErrorActionPreference='Stop'
 $root=Split-Path $PSScriptRoot -Parent
 $expected='noteMASTER11/ETS2-JobDispatcher-Plugin'
 if($Repository -ne $expected) { throw "Unexpected destination repository: $Repository" }
-$gh=Get-Command gh.exe -ErrorAction SilentlyContinue
-if(-not $gh -and (Test-Path 'D:\ChatGPT\Tools\GitHubCLI\bin\gh.exe')) { $gh=Get-Item 'D:\ChatGPT\Tools\GitHubCLI\bin\gh.exe' }
+$gh=Get-Command $GitHubCli -ErrorAction SilentlyContinue
 if(-not $gh) { throw 'Install GitHub CLI, then run gh auth login.' }
-$ghPath=if($gh.Source){$gh.Source}else{$gh.FullName}
+$ghPath=$gh.Source
 & $ghPath auth status
 if($LASTEXITCODE) { throw 'GitHub CLI is not signed in. Run gh auth login, then repeat this script.' }
 Push-Location $root

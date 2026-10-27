@@ -35,7 +35,7 @@ jobs:
           git archive --format=zip --prefix=ETS2-JobDispatcher-Plugin-0.1/ -o dist/ETS2-JobDispatcher-Plugin-0.1-source.zip HEAD
           Get-ChildItem dist/*.zip | ForEach-Object { '{0}  {1}' -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(),$_.Name } | Set-Content dist/SHA256SUMS.txt -Encoding utf8
       - name: Publish release 0.1
-        if: github.event_name == 'workflow_dispatch' || startsWith(github.event.head_commit.message, 'release: v0.1')
+        if: github.event_name == 'workflow_dispatch'
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
