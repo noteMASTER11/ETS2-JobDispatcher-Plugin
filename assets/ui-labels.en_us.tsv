@@ -1,0 +1,12 @@
+jd_auto	Auto-compatible
+jd_create	Create job
+jd_detach	Detach the current trailer first.
+jd_immediate	Take job immediately
+jd_incompatible	This cargo does not fit the selected trailer.
+jd_nearby	Nearby company
+jd_offer	Job added. Visit the company and select it at the green marker.
+jd_real_time	Estimated real time
+jd_route_failed	No route is available between these depots.
+jd_stop	Stop the truck and return to driving.
+jd_surprise	Surprise me
+jd_title	Job Dispatcher

@@ -1,0 +1,12 @@
+jd_auto	Automatisch
+jd_create	Auftrag erstellen
+jd_detach	Kupple zuerst den Anhänger ab.
+jd_immediate	Auftrag sofort annehmen
+jd_incompatible	Diese Fracht passt nicht zum gewählten Anhänger.
+jd_nearby	Firma in der Nähe
+jd_offer	Auftrag hinzugefügt. Wähle ihn am grünen Symbol der Firma.
+jd_real_time	Geschätzte Echtzeit
+jd_route_failed	Zwischen diesen Betriebshöfen ist keine Route verfügbar.
+jd_stop	Halte an und kehre ins Fahrerhaus zurück.
+jd_surprise	Überrasch mich
+jd_title	Fracht-Dispatcher

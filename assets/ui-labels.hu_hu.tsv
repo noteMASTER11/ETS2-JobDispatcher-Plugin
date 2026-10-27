@@ -1,0 +1,12 @@
+jd_auto	Automatikus
+jd_create	Fuvar létrehozása
+jd_detach	Először kapcsold le a pótkocsit.
+jd_immediate	Fuvar azonnali elfogadása
+jd_incompatible	A rakomány nem fér a kiválasztott pótkocsira.
+jd_nearby	Közeli vállalat
+jd_offer	A fuvar hozzáadva. Válaszd ki a vállalat zöld jelzésénél.
+jd_real_time	Becsült valós idő
+jd_route_failed	Nincs útvonal a két telephely között.
+jd_stop	Állítsd meg a kamiont, és térj vissza a fülkébe.
+jd_surprise	Lepj meg
+jd_title	Fuvarszervező

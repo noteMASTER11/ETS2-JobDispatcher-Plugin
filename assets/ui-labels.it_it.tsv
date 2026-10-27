@@ -1,0 +1,12 @@
+jd_auto	Automatico
+jd_create	Crea lavoro
+jd_detach	Sgancia prima il rimorchio.
+jd_immediate	Accetta subito il lavoro
+jd_incompatible	Il carico non è adatto al rimorchio scelto.
+jd_nearby	Azienda vicina
+jd_offer	Lavoro aggiunto. Selezionalo presso il simbolo verde dell’azienda.
+jd_real_time	Tempo reale stimato
+jd_route_failed	Nessun percorso disponibile tra queste sedi.
+jd_stop	Ferma il camion e torna in cabina.
+jd_surprise	Sorprendimi
+jd_title	Gestione carichi

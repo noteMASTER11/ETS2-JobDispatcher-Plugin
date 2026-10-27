@@ -1,0 +1,44 @@
+name: Build and release
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch pinned dependencies
+        shell: pwsh
+        run: ./tools/fetch-overlay-deps.ps1
+      - name: Configure and build
+        shell: pwsh
+        run: |
+          cmake -S . -B build -A x64 -DBUILD_TESTING=ON
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          cmake --build build --config Release --parallel
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          ctest --test-dir build -C Release --output-on-failure
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Package version 0.1
+        shell: pwsh
+        run: |
+          $package='package/JobDispatcherSP'
+          New-Item -ItemType Directory "$package/bin" -Force | Out-Null
+          Copy-Item build/Release/JobDispatcherSP.dll "$package/bin/"
+          foreach ($name in @('assets','tools','licenses','docs')) { Copy-Item $name $package -Recurse }
+          Copy-Item README.md,Install.cmd,Uninstall.cmd $package
+          New-Item -ItemType Directory dist -Force | Out-Null
+          Compress-Archive -Path "$package/*" -DestinationPath dist/JobDispatcherSP-0.1-Windows-x64.zip
+          git archive --format=zip --prefix=ETS2-JobDispatcher-Plugin-0.1/ -o dist/ETS2-JobDispatcher-Plugin-0.1-source.zip HEAD
+          Get-ChildItem dist/*.zip | ForEach-Object { '{0}  {1}' -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(),$_.Name } | Set-Content dist/SHA256SUMS.txt -Encoding utf8
+      - name: Publish release 0.1
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.event.head_commit.message, 'release: v0.1')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v0.1 dist/JobDispatcherSP-0.1-Windows-x64.zip dist/ETS2-JobDispatcher-Plugin-0.1-source.zip dist/SHA256SUMS.txt --target "$env:GITHUB_SHA" --title 'Job Dispatcher SP 0.1' --notes 'Первая версия диспетчера грузов для одиночной ETS2 1.61.1.9 (Windows x64, DirectX 11). Установка и описание возможностей — в README. Модели и игровые переводы подготавливаются локально из установленной игры.'
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }

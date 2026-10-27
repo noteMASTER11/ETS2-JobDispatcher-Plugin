@@ -1,0 +1,12 @@
+jd_auto	Automat
+jd_create	Creează cursă
+jd_detach	Decuplează mai întâi remorca.
+jd_immediate	Acceptă cursa imediat
+jd_incompatible	Marfa nu este compatibilă cu remorca selectată.
+jd_nearby	Companie apropiată
+jd_offer	Cursa a fost adăugată. Selecteaz-o la marcajul verde al companiei.
+jd_real_time	Timp real estimat
+jd_route_failed	Nu există o rută între aceste locații.
+jd_stop	Oprește camionul și revino în cabină.
+jd_surprise	Surprinde-mă
+jd_title	Dispecer de mărfuri

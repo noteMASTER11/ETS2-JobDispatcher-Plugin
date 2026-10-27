@@ -1,0 +1,12 @@
+jd_auto	自动选择
+jd_create	创建任务
+jd_detach	请先断开当前挂车。
+jd_immediate	立即接受任务
+jd_incompatible	所选挂车不适合此货物。
+jd_nearby	附近公司
+jd_offer	任务已添加。请前往公司的绿色标记处选择。
+jd_real_time	预计实际时间
+jd_route_failed	这两个场站之间没有可用路线。
+jd_stop	请停车并返回驾驶室。
+jd_surprise	随机推荐
+jd_title	货物调度

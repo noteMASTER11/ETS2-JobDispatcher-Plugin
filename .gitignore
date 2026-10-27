@@ -1,0 +1,10 @@
+/build/
+/bin/
+/data/
+/dist/
+/package/
+__pycache__/
+*.pyc
+/assets/game-labels*.tsv
+/assets/previews/
+/assets/locales-manifest.json

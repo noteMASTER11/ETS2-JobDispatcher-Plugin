@@ -1,0 +1,12 @@
+jd_auto	自動選択
+jd_create	仕事を作成
+jd_detach	先にトレーラーを切り離してください。
+jd_immediate	すぐに仕事を受ける
+jd_incompatible	この貨物は選択したトレーラーに適合しません。
+jd_nearby	近くの会社
+jd_offer	仕事を追加しました。会社の緑色のマーカーで選択してください。
+jd_real_time	実時間の目安
+jd_route_failed	この拠点間のルートが見つかりません。
+jd_stop	トラックを停止して運転席に戻ってください。
+jd_surprise	おまかせ
+jd_title	貨物配車

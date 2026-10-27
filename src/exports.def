@@ -1,0 +1,5 @@
+LIBRARY JobDispatcherSP
+EXPORTS
+    scs_telemetry_init
+    scs_telemetry_shutdown
+    jd_snapshot_json
