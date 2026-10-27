@@ -125,13 +125,14 @@ coverage={}
 for directory in sorted((args.source/'locale').iterdir()):
     if not directory.is_dir():continue
     language=directory.name
-    assert language in rows,language
+    if language not in rows:continue # Mods may retain obsolete language identifiers.
     values={};load(directory/'local.sii',values);load(directory/'local.override.sii',values)
     mod_locales=args.source.parent/'mod-files'
     if mod_locales.is_dir():
         for pack in sorted(mod_locales.iterdir()):
-            for path in sorted((pack/'locale'/language).glob('*')):
-                if path.suffix in ('.sii','.sui'):load(path,values)
+            for alias in ({'fr_ca':['fr_qc']}.get(language,[])+[language]):
+                for path in sorted((pack/'locale'/alias).glob('*')):
+                    if path.suffix in ('.sii','.sui'):load(path,values)
     custom=dict(zip(keys,rows[language].split('|'),strict=True))
     custom.update(zip(('jd_stop','jd_detach','jd_incompatible'),errors[language].split('|'),strict=True))
     custom['jd_real_time']=real_time[language]

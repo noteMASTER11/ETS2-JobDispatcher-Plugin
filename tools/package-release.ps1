@@ -5,14 +5,21 @@ $root=Split-Path $PSScriptRoot -Parent
 $binary=Join-Path $root 'bin\JobDispatcherSP.dll'
 if(-not (Test-Path -LiteralPath $binary)) { throw 'Build the plugin and copy its DLL into bin first.' }
 $package=Join-Path $root ('package\JobDispatcherSP-'+[Guid]::NewGuid().ToString('N'))
+$plugins=Join-Path $package 'bin\win_x64\plugins'
+$bundle=Join-Path $plugins 'JobDispatcherSP'
 $dist=Join-Path $root 'dist'
-New-Item -ItemType Directory -Path (Join-Path $package 'bin'),$dist -Force | Out-Null
-Copy-Item -LiteralPath $binary -Destination (Join-Path $package 'bin') -Force
-foreach($name in @('assets','licenses','docs')) {
-    Copy-Item -LiteralPath (Join-Path $root $name) -Destination $package -Recurse -Force
+New-Item -ItemType Directory -Path $plugins,(Join-Path $bundle 'data'),$dist -Force | Out-Null
+Copy-Item -LiteralPath $binary -Destination $plugins -Force
+[IO.File]::WriteAllText((Join-Path $plugins 'JobDispatcherSP.ini'),"[JobDispatcherSP]`r`nDataDirectory=auto`r`n",[Text.Encoding]::Unicode)
+foreach($name in @('runtime','licenses','docs')) {
+    if(-not (Test-Path -LiteralPath (Join-Path $root $name))){throw "Package component missing: $name"}
+    Copy-Item -LiteralPath (Join-Path $root $name) -Destination $bundle -Recurse -Force
 }
+Get-ChildItem -LiteralPath (Join-Path $root 'assets') -Filter 'ui-labels.*.tsv' -File | Copy-Item -Destination (Join-Path $bundle 'data') -Force
+New-Item -ItemType Directory -Path (Join-Path $bundle 'tools') -Force | Out-Null
+Get-ChildItem -LiteralPath (Join-Path $root 'tools') -Filter '*.py' -File | Copy-Item -Destination (Join-Path $bundle 'tools') -Force
 New-Item -ItemType Directory -Path (Join-Path $package 'tools') -Force | Out-Null
-Get-ChildItem -LiteralPath (Join-Path $root 'tools') -File | Copy-Item -Destination (Join-Path $package 'tools') -Force
+foreach($name in @('install-portable.ps1','uninstall-portable.ps1')){Copy-Item -LiteralPath (Join-Path $root ('tools\'+$name)) -Destination (Join-Path $package 'tools') -Force}
 foreach($name in @('README.md','Install.cmd','Uninstall.cmd')) {
     Copy-Item -LiteralPath (Join-Path $root $name) -Destination $package -Force
 }

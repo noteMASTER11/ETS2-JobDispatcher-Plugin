@@ -100,6 +100,7 @@ bool OwnsForeground() {
     return hwnd && GetForegroundWindow() == hwnd;
 }
 bool CanInteract() {
+    if(!jd::AssetsReady())return false;
     if (!OwnsForeground()) return false;
     const auto world = jd::ReadTelemetry();
     return world.driving && world.placement_valid;
@@ -560,7 +561,7 @@ HRESULT STDMETHODCALLTYPE HookPresent(IDXGISwapChain* chain, UINT interval, UINT
                     DestroyUi();
             }
             const auto world = jd::ReadTelemetry();
-            if (!world.driving || !world.placement_valid) {
+            if (!jd::AssetsReady() || !world.driving || !world.placement_valid) {
                 if (interactive.load()) SetInteractive(false, false);
             } else {
             if (!game_chain) AttachUi(chain);

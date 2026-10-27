@@ -193,6 +193,7 @@ void Render(const Mesh& mesh) {
     dirty=false;
 }
 }
+void ReloadIndex(){std::lock_guard<std::mutex> lock(cache_mutex);index.clear();indexed=false;processed.clear();ready.reset();message="loading";}
 void Pump() {
     if(!shaders_attempted){
         shaders_attempted=true;

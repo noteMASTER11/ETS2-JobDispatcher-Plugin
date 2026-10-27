@@ -72,6 +72,10 @@ void Surprise(float mass_percent, float distance_percent);
 void RequestAudit();
 void RequestRefresh();
 void MarkWorldLoaded(bool loaded);
+bool AssetsReady();
+bool WorldLoaded();
+unsigned AssetsWorldRevision();
+void AssetsPrepared(unsigned revision);
 void Shutdown();
 // Infrastructure provided by the host.
 void Log(const char* format, ...);

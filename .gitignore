@@ -3,6 +3,7 @@
 /data/
 /dist/
 /package/
+/runtime/
 __pycache__/
 *.pyc
 /assets/game-labels*.tsv

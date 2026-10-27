@@ -8,6 +8,7 @@
 #include "game_messages.hpp"
 #include "display_units.hpp"
 #include "job_navigation.hpp"
+#include "offline_assets.hpp"
 #include <algorithm>
 #include <atomic>
 #include <cmath>
@@ -26,6 +27,10 @@ std::mutex state_mutex;
 Snapshot state;
 std::atomic<bool> refresh{true};
 std::atomic<bool> world_loaded{false}, invalidate_world{false};
+std::atomic<bool> assets_ready{true};
+std::atomic<unsigned> assets_world_revision{0};
+std::atomic<unsigned> assets_prepared_revision{0};
+bool automatic_assets=false;
 std::atomic<bool> pending{false};
 Request queued;
 std::optional<Request> routing_request;
@@ -530,6 +535,7 @@ void Catalogue(uintptr_t economy) {
 } // namespace
 
 void Initialize() {
+    automatic_assets=false;assets_ready=true;assets_world_revision=0;assets_prepared_revision=0;world_loaded=false;invalidate_world=true;refresh=true;
     base = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
     labels::Load(std::filesystem::path(DataDirectory()));
     {std::ifstream input(std::filesystem::path(DataDirectory())/L"excluded-countries.tsv");std::string country;
@@ -542,6 +548,7 @@ void Initialize() {
     const auto dos = reinterpret_cast<IMAGE_DOS_HEADER*>(base);
     const auto nt = reinterpret_cast<IMAGE_NT_HEADERS64*>(base + dos->e_lfanew);
     next.supported = !GetModuleHandleW(L"core_ets2mp.dll") && nt->OptionalHeader.SizeOfImage == 60338176 && Code(0x79d8f0, accept, sizeof(accept)) && ExactExecutable();
+    automatic_assets=next.supported&&offline::Available();assets_ready=!automatic_assets;
     next.message = next.supported ? "Дождитесь загрузки игрового мира." : "Эта версия игры пока не поддерживается.";
     Log("Game adapter initialized: base=%p supported=%d image_size=%u", reinterpret_cast<void*>(base), next.supported, nt->OptionalHeader.SizeOfImage);
     (void)factory;
@@ -607,6 +614,9 @@ void Frame() {
         {std::lock_guard<std::mutex> lock(state_mutex);empty.supported=state.supported;empty.version=state.version;empty.generation=state.generation+1;}
         empty.message="Дождитесь загрузки игрового мира.";Publish(std::move(empty));
     }
+    const auto prepared=assets_prepared_revision.load(std::memory_order_acquire);
+    if(automatic_assets&&world_loaded&&prepared&&prepared==assets_world_revision.load())assets_ready=true;
+    if(!assets_ready.load(std::memory_order_acquire))return;
     if((world_loaded.load()||live.driving)&&Readable(economy,0x38)&&Read<uint64_t>(economy+0x30)>0) {
         const bool requested_refresh=refresh.exchange(false);
         if(economy!=last_economy||requested_refresh){
@@ -806,8 +816,23 @@ void Surprise(float mass_percent,float distance_percent){
 void RequestAudit(){audit_requested=true;}
 void RequestRefresh() { refresh = true; }
 void MarkWorldLoaded(bool loaded) {
-    world_loaded=loaded;
+    const bool previous=world_loaded.exchange(loaded);
     if(!loaded){invalidate_world=true;refresh=true;}
+    if(automatic_assets){
+        if(!loaded){assets_ready=false;assets_world_revision.fetch_add(1);}
+        else if(!previous){assets_ready=false;assets_world_revision.fetch_add(1);}
+    }
+}
+bool AssetsReady(){return assets_ready.load(std::memory_order_acquire);}
+bool WorldLoaded(){return world_loaded.load();}
+unsigned AssetsWorldRevision(){return assets_world_revision.load();}
+void AssetsPrepared(unsigned revision){
+    labels::Load(std::filesystem::path(DataDirectory()),labels::Language());
+    excluded_countries.clear();
+    std::ifstream input(std::filesystem::path(DataDirectory())/L"excluded-countries.tsv");std::string country;
+    while(std::getline(input,country)){if(!country.empty()&&country.back()=='\r')country.pop_back();if(!country.empty()&&country.front()!='#')excluded_countries.insert(country);}
+    // The frame thread publishes readiness only if this world is still active.
+    assets_prepared_revision.store(revision,std::memory_order_release);
 }
 void Shutdown() { pending = false; CancelRoute(); routing_request.reset(); routing_economy = 0; Publish({}); }
 } // namespace jd

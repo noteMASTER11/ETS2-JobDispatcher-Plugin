@@ -26,6 +26,15 @@ def main():
         if result.returncode:
             raise RuntimeError(result.stdout[-1000:] + result.stderr[-1000:])
     scripts = pathlib.Path(__file__).parent
+    # Localization databases are additive across active packages. Reading only
+    # the final VFS overlay would lose lower-priority mods' distinct strings.
+    for index, archive in enumerate(args.mod):
+        target=args.work/'mod-files'/f'{index:04d}'
+        result=subprocess.run([str(args.converter),'-b',str(archive),'--extract-directory','/locale','-e',str(target)],
+                              capture_output=True,text=True,encoding='utf8',errors='replace',timeout=300)
+        # Most definition/map packages contain no /locale tree.
+        if result.returncode and (target/'locale').exists():
+            raise RuntimeError(result.stdout[-1000:]+result.stderr[-1000:])
     subprocess.run([sys.executable, str(scripts / 'prepare-locales.py'), '--source', str(extracted),
                     '--output', str(args.output)], check=True)
     excluded = set()

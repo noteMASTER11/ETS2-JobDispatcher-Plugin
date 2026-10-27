@@ -1,6 +1,7 @@
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <windows.h>
+#include <shlobj.h>
 #include <filesystem>
 #include <mutex>
 #include <atomic>
@@ -9,6 +10,7 @@
 #include <fstream>
 #include <sstream>
 #include <cstring>
+#include <cwctype>
 #include <cmath>
 #include <stdexcept>
 #include <io.h>
@@ -21,6 +23,7 @@
 #include "preview.hpp"
 #include "performance.hpp"
 #include "labels.hpp"
+#include "offline_assets.hpp"
 
 namespace {
 std::mutex log_mutex;
@@ -154,10 +157,23 @@ DWORD WINAPI OverlayWorker(void*) {
     ULONGLONG last_dump = 0;
     ULONGLONG last_performance = GetTickCount64();
     bool previews_available=true;
+    unsigned prepared_revision=0;
     while (!stopping.load()) {
         WaitForSingleObject(log_event, 100);
+        const auto revision=jd::AssetsWorldRevision();
+        if(jd::WorldLoaded()&&revision&&revision!=prepared_revision){
+            prepared_revision=revision;
+            try{
+            const bool ready=jd::offline::Run(jd::offline::PackageRoot(),jd::offline::GameDirectory(),
+                std::filesystem::path(jd::DataDirectory()),jd::offline::GameHome(),[&]{return stopping.load()||!jd::WorldLoaded()||jd::AssetsWorldRevision()!=revision;});
+            if(ready&&!stopping&&jd::WorldLoaded()&&jd::AssetsWorldRevision()==revision){
+                jd::preview::ReloadIndex();jd::AssetsPrepared(revision);
+            }
+            }catch(const std::exception& error){jd::Log("Offline preparation error: %s",error.what());}
+            catch(...){jd::Log("Offline preparation error");}
+        }
         jd::labels::PumpLanguage(std::filesystem::path(jd::DataDirectory()));
-        if(previews_available)try{jd::preview::Pump();}catch(const std::exception& error){previews_available=false;jd::Log("Preview worker error: %s",error.what());}
+        if(previews_available&&jd::AssetsReady())try{jd::preview::Pump();}catch(const std::exception& error){previews_available=false;jd::Log("Preview worker error: %s",error.what());}
         FlushLogs();
         const auto now = GetTickCount64();
         if(now-last_performance>30000) {
@@ -324,9 +340,31 @@ std::wstring DataDirectory() {
         wchar_t configured[32768]{};
         GetPrivateProfileStringW(L"JobDispatcherSP",L"DataDirectory",L"",configured,32768,(parent/L"JobDispatcherSP.ini").c_str());
         std::filesystem::path result=(len&&len<32768)?std::filesystem::path(override_path):
-            configured[0]?std::filesystem::path(configured):parent/L"JobDispatcherSP"/L"data";
+            configured[0]&&_wcsicmp(configured,L"auto")?std::filesystem::path(configured):parent/L"JobDispatcherSP"/L"data";
+        if(result.is_relative())result=parent/result;
         std::error_code error;
         std::filesystem::create_directories(result, error);
+        const bool automatic=!(len&&len<32768)&&(!configured[0]||!_wcsicmp(configured,L"auto"));
+        if(automatic){
+            const auto probe=result/(L".write-probe-"+std::to_wstring(GetCurrentProcessId()));
+            HANDLE file=CreateFileW(probe.c_str(),GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE,nullptr,CREATE_ALWAYS,FILE_ATTRIBUTE_TEMPORARY|FILE_FLAG_DELETE_ON_CLOSE,nullptr);
+            if(file!=INVALID_HANDLE_VALUE)CloseHandle(file);
+            else{
+                PWSTR local=nullptr;
+                if(SUCCEEDED(SHGetKnownFolderPath(FOLDERID_LocalAppData,0,nullptr,&local))){
+                    uint64_t identity=14695981039346656037ull;
+                    for(auto c:parent.wstring()){identity^=static_cast<uint64_t>(std::towlower(c));identity*=1099511628211ull;}
+                    result=std::filesystem::path(local)/L"JobDispatcherSP"/std::to_wstring(identity)/L"data";CoTaskMemFree(local);
+                    std::filesystem::create_directories(result,error);
+                    const auto source=parent/L"JobDispatcherSP"/L"data";
+                    if(std::filesystem::is_directory(source,error))for(const auto& entry:std::filesystem::directory_iterator(source,error)){
+                        const auto name=entry.path().filename().wstring();
+                        if(name.rfind(L"ui-labels.",0)==0&&entry.path().extension()==L".tsv")
+                            std::filesystem::copy_file(entry.path(),result/entry.path().filename(),std::filesystem::copy_options::overwrite_existing,error);
+                    }
+                }
+            }
+        }
         return std::filesystem::absolute(result,error).wstring();
     }();
     return path;
