@@ -23,9 +23,46 @@ if(MINGW)
     target_link_options(JobDispatcherSP PRIVATE -static -static-libgcc -static-libstdc++)
 endif()
 include(cmake/Overlay.cmake)
+if(NOT DEFINED JD_DEPENDENCY_ROOT)
+    set(JD_DEPENDENCY_ROOT "${CMAKE_BINARY_DIR}/dependencies")
+endif()
 jd_add_overlay(JobDispatcherSP)
 include(CTest)
 if(BUILD_TESTING)
+    add_executable(jd-offer-transaction-test tests/offer_transaction_test.cpp)
+    target_include_directories(jd-offer-transaction-test PRIVATE src)
+    target_compile_options(jd-offer-transaction-test PRIVATE $<IF:$<CXX_COMPILER_ID:MSVC>,/UNDEBUG,-UNDEBUG>)
+    if(MINGW)
+        target_link_options(jd-offer-transaction-test PRIVATE -static -static-libgcc -static-libstdc++)
+    endif()
+    add_test(NAME offer-publication-transaction COMMAND jd-offer-transaction-test)
+    add_executable(jd-job-policy-test tests/job_policy_test.cpp)
+    target_include_directories(jd-job-policy-test PRIVATE src)
+    target_compile_options(jd-job-policy-test PRIVATE $<IF:$<CXX_COMPILER_ID:MSVC>,/UNDEBUG,-UNDEBUG>)
+    if(MINGW)
+        target_link_options(jd-job-policy-test PRIVATE -static -static-libgcc -static-libstdc++)
+    endif()
+    add_test(NAME job-request-and-parking-policy COMMAND jd-job-policy-test)
+    add_executable(jd-engine-memory-test tests/engine_memory_test.cpp)
+    target_include_directories(jd-engine-memory-test PRIVATE src)
+    target_compile_options(jd-engine-memory-test PRIVATE $<IF:$<CXX_COMPILER_ID:MSVC>,/UNDEBUG,-UNDEBUG>)
+    if(MINGW)
+        target_link_options(jd-engine-memory-test PRIVATE -static -static-libgcc -static-libstdc++)
+    endif()
+    add_test(NAME native-memory-boundary COMMAND jd-engine-memory-test)
+    add_executable(jd-native-preview-test tests/native_preview_test.cpp src/native_preview.cpp
+        "${JD_DEPENDENCY_ROOT}/imgui-1.93.0/imgui.cpp"
+        "${JD_DEPENDENCY_ROOT}/imgui-1.93.0/imgui_draw.cpp"
+        "${JD_DEPENDENCY_ROOT}/imgui-1.93.0/imgui_tables.cpp"
+        "${JD_DEPENDENCY_ROOT}/imgui-1.93.0/imgui_widgets.cpp")
+    target_include_directories(jd-native-preview-test PRIVATE src "${JD_DEPENDENCY_ROOT}/imgui-1.93.0")
+    target_compile_definitions(jd-native-preview-test PRIVATE JD_NATIVE_PREVIEW_TEST WIN32_LEAN_AND_MEAN NOMINMAX)
+    target_compile_options(jd-native-preview-test PRIVATE $<IF:$<CXX_COMPILER_ID:MSVC>,/UNDEBUG,-UNDEBUG>)
+    target_link_libraries(jd-native-preview-test PRIVATE d3d11 dxgi)
+    if(MINGW)
+        target_link_options(jd-native-preview-test PRIVATE -static -static-libgcc -static-libstdc++)
+    endif()
+    add_test(NAME native-preview-frame-and-lifetime COMMAND jd-native-preview-test)
     add_executable(jd-offline-assets-test tests/offline_assets_test.cpp src/offline_assets.cpp)
     target_include_directories(jd-offline-assets-test PRIVATE src)
     target_link_libraries(jd-offline-assets-test PRIVATE shell32 ole32)
@@ -33,6 +70,12 @@ if(BUILD_TESTING)
         target_link_options(jd-offline-assets-test PRIVATE -municode -static -static-libgcc -static-libstdc++)
     endif()
     add_test(NAME offline-process-lifecycle COMMAND jd-offline-assets-test "${CMAKE_CURRENT_BINARY_DIR}/offline-process-fixture")
+    add_test(NAME custom-game-home COMMAND jd-offline-assets-test --home-check
+        "${CMAKE_CURRENT_BINARY_DIR}/home with spaces/Euro Truck Simulator 2"
+        -homedir "${CMAKE_CURRENT_BINARY_DIR}/home with spaces")
+    add_test(NAME installer-preserves-settings COMMAND powershell -NoProfile -ExecutionPolicy Bypass
+        -File "${CMAKE_CURRENT_SOURCE_DIR}/tests/install_settings_test.ps1"
+        -Fixture "${CMAKE_CURRENT_BINARY_DIR}/install-settings-fixture")
     add_executable(jd-job-navigation-test tests/job_navigation_test.cpp)
     target_include_directories(jd-job-navigation-test PRIVATE src)
     target_compile_options(jd-job-navigation-test PRIVATE $<IF:$<CXX_COMPILER_ID:MSVC>,/UNDEBUG,-UNDEBUG>)
@@ -42,12 +85,18 @@ if(BUILD_TESTING)
     add_test(NAME job-navigation-transitions COMMAND jd-job-navigation-test)
     find_package(Python3 QUIET COMPONENTS Interpreter)
     if(Python3_FOUND)
+        add_test(NAME loaded-trailer-preview COMMAND "${Python3_EXECUTABLE}"
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/preview_scene_test.py"
+            "${CMAKE_CURRENT_BINARY_DIR}/preview-scene-fixture")
         add_test(NAME lazy-preview-selection COMMAND "${Python3_EXECUTABLE}"
             "${CMAKE_CURRENT_SOURCE_DIR}/tests/lazy_preview_test.py"
             "${CMAKE_CURRENT_BINARY_DIR}/lazy-preview-fixture")
         add_test(NAME offline-active-profile COMMAND "${Python3_EXECUTABLE}"
             "${CMAKE_CURRENT_SOURCE_DIR}/tests/offline_bootstrap_test.py"
             "${CMAKE_CURRENT_BINARY_DIR}/offline-profile-fixture")
+        add_test(NAME metadata-preparation-and-cache COMMAND "${Python3_EXECUTABLE}"
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/metadata_preparation_test.py"
+            "${CMAKE_CURRENT_BINARY_DIR}/metadata-preparation-fixture")
         add_test(NAME preview-catalogue COMMAND "${Python3_EXECUTABLE}"
             "${CMAKE_CURRENT_SOURCE_DIR}/tests/preview_catalogue_test.py"
             "${CMAKE_CURRENT_BINARY_DIR}/preview-test-fixture")

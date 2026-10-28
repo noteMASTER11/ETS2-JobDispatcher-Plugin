@@ -17,9 +17,11 @@ foreach($name in @('runtime','licenses','docs')) {
 }
 Get-ChildItem -LiteralPath (Join-Path $root 'assets') -Filter 'ui-labels.*.tsv' -File | Copy-Item -Destination (Join-Path $bundle 'data') -Force
 New-Item -ItemType Directory -Path (Join-Path $bundle 'tools') -Force | Out-Null
-Get-ChildItem -LiteralPath (Join-Path $root 'tools') -Filter '*.py' -File | Copy-Item -Destination (Join-Path $bundle 'tools') -Force
+foreach($name in Get-Content -LiteralPath (Join-Path $PSScriptRoot 'runtime-tools.txt')){
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot $name) -Destination (Join-Path $bundle 'tools') -Force
+}
 New-Item -ItemType Directory -Path (Join-Path $package 'tools') -Force | Out-Null
-foreach($name in @('install-portable.ps1','uninstall-portable.ps1')){Copy-Item -LiteralPath (Join-Path $root ('tools\'+$name)) -Destination (Join-Path $package 'tools') -Force}
+foreach($name in @('install-portable.ps1','install-settings.ps1','runtime-tools.txt','uninstall-portable.ps1')){Copy-Item -LiteralPath (Join-Path $root ('tools\'+$name)) -Destination (Join-Path $package 'tools') -Force}
 foreach($name in @('README.md','Install.cmd','Uninstall.cmd')) {
     Copy-Item -LiteralPath (Join-Path $root $name) -Destination $package -Force
 }

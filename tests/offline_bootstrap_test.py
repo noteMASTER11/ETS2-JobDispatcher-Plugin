@@ -22,4 +22,44 @@ assert module.fingerprint(game,mods,root/'tools')==before
 assert module.fingerprint(game,mods,root/'tools')!=before
 with log.open('a',encoding='utf8') as f:f.write('[mods] Active 0 mods (local: 0, workshop: 0)\n')
 assert module.active_mods(log,game,home)==[]
-print('Active profile selection, mod order and cache invalidation passed')
+
+def rejected(content, message):
+    if content is None:
+        log.unlink(missing_ok=True)
+    else:
+        log.write_text(content, encoding='utf8')
+    try:
+        module.active_mods(log, game, home)
+    except (OSError, RuntimeError):
+        return
+    raise AssertionError(message)
+
+rejected(None, 'A missing log must not mean an unmodified profile')
+rejected('[mods] Preparing profile\n', 'An unfinished log must not mean zero mods')
+rejected('[mods] Active 2 mods\n[mods] Active local mod active (name: A)\n',
+         'Do not publish a partially written active-mod list')
+rejected('[mods] Active 1 mods\n[mods] Active local mod missing (name: Missing)\n',
+         'Every active archive must resolve before preparing the cache')
+
+outside=fixture/'outside'/'external.scs'; outside.parent.mkdir(exist_ok=True)
+outside.write_text('external',encoding='utf8')
+workshop=game.parent.parent/'workshop/content/227300/1234'
+workshop.mkdir(parents=True,exist_ok=True)
+for name in ('a.scs','b.zip'):(workshop/name).write_text(name,encoding='utf8')
+log.write_text(f'''[mods] Active 1 mods
+[mods] Active local mod disabled (name: Old profile)
+[mods] Active 3 mods
+[mods] Active workshop mod ID 1234 (name: Workshop)
+[mods] Active local mod external (name: External)
+[mods] Active local mod active (name: A)
+[fs] device {outside} mounted to mod pool.
+''',encoding='utf8')
+assert module.active_mods(log,game,home)==[
+    (workshop/'a.scs').resolve(),(workshop/'b.zip').resolve(),outside.resolve(),
+    (home/'mod/active.scs').resolve()]
+with log.open('a',encoding='utf8') as stream:
+    stream.write(f'[fs] device {outside} mounted to mod pool.\n')
+assert module.active_mods(log,game,home).count(outside.resolve())==1
+rejected('[mods] Active 1 mods\n[mods] Active workshop mod ID 9999 (name: Missing)\n',
+         'A missing Workshop package must not be silently omitted')
+print('Active profile selection, complete discovery, mod order and cache invalidation passed')

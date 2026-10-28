@@ -1,20 +1,17 @@
 """Prepare all locales from the installed game's extracted locale tree."""
 import pathlib, re, json, argparse
-parser=argparse.ArgumentParser()
-parser.add_argument('--source',type=pathlib.Path,required=True)
-parser.add_argument('--output',type=pathlib.Path,required=True)
-args=parser.parse_args()
 pattern=re.compile(r'@include\s+("(?:\\.|[^"\\])*")|\b(key|val)\[\]\s*:\s*("(?:\\.|[^"\\])*")')
 def unquote(value):
     try:return json.loads(value)
     except json.JSONDecodeError:return re.sub(r'\\(x[0-9a-fA-F]{2}|[nrt"\\])',lambda m:chr(int(m[1][1:],16)) if m[1].startswith('x') else {'n':'\n','r':'\r','t':'\t','"':'"','\\':'\\'}[m[1]],value[1:-1])
-def load(path,result,stack=()):
+def load(path,result,source,stack=()):
+    path=path.resolve()
     if not path.is_file():return
     if path in stack:raise ValueError('include cycle')
     key=None
     for match in pattern.finditer(path.read_text(encoding='utf-8-sig')):
         if match[1]:
-            name=unquote(match[1]);load(args.source/name.lstrip('/') if name.startswith('/') else path.parent/name,result,stack+(path,))
+            name=unquote(match[1]);load(source/name.lstrip('/') if name.startswith('/') else path.parent/name,result,source,stack+(path,))
         elif match[2]=='key':key=unquote(match[3])
         elif key is not None:result[key]=unquote(match[3]);key=None
 def write(path,values):
@@ -120,25 +117,44 @@ real_time={
 'sr_sp':'Procenjeno stvarno vreme','sr_sr':'Процењено стварно време','sv_se':'Beräknad verklig tid','tr_tr':'Tahmini gerçek süre',
 'uk_uk':'Оцінка реального часу','vi_vn':'Thời gian thực ước tính','zh_cn':'预计实际时间','zh_tw':'預計實際時間'}
 for alias,base in {'en_us':'en_gb','es_la':'es_es','fr_ca':'fr_fr'}.items():real_time[alias]=real_time[base]
-args.output.mkdir(parents=True,exist_ok=True)
-coverage={}
-for directory in sorted((args.source/'locale').iterdir()):
-    if not directory.is_dir():continue
-    language=directory.name
-    if language not in rows:continue # Mods may retain obsolete language identifiers.
-    values={};load(directory/'local.sii',values);load(directory/'local.override.sii',values)
-    mod_locales=args.source.parent/'mod-files'
+def locale_values(source,directory):
+    values={}
+    load(directory/'local.sii',values,source)
+    load(directory/'local.override.sii',values,source)
+    mod_locales=source.parent/'mod-files'
     if mod_locales.is_dir():
         for pack in sorted(mod_locales.iterdir()):
-            for alias in ({'fr_ca':['fr_qc']}.get(language,[])+[language]):
+            for alias in ({'fr_ca':['fr_qc']}.get(directory.name,[])+[directory.name]):
                 for path in sorted((pack/'locale'/alias).glob('*')):
-                    if path.suffix in ('.sii','.sui'):load(path,values)
+                    if path.suffix in ('.sii','.sui'):load(path,values,source)
+    return values
+
+
+def write_language(source,output,directory):
+    language=directory.name
+    values=locale_values(source,directory)
     custom=dict(zip(keys,rows[language].split('|'),strict=True))
     custom.update(zip(('jd_stop','jd_detach','jd_incompatible'),errors[language].split('|'),strict=True))
     custom['jd_real_time']=real_time[language]
     if language=='ru_ru':custom['cargo_waiting1']='Груз сгенерирован. Можете забирать его в выбранном месте погрузки.'
-    write(args.output/f'game-labels.{language}.tsv',values)
-    write(args.output/f'ui-labels.{language}.tsv',custom)
-    coverage[language]={'native_keys':len(values),'custom_keys':len(custom)}
-(args.output/'locales-manifest.json').write_text(json.dumps(coverage,ensure_ascii=False,indent=2),encoding='utf8')
-print('Prepared',len(coverage),'game locales')
+    write(output/f'game-labels.{language}.tsv',values)
+    write(output/f'ui-labels.{language}.tsv',custom)
+    return {'native_keys':len(values),'custom_keys':len(custom)}
+
+
+def main(argv=None):
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source',type=pathlib.Path,required=True)
+    parser.add_argument('--output',type=pathlib.Path,required=True)
+    args=parser.parse_args(argv)
+    args.output.mkdir(parents=True,exist_ok=True)
+    coverage={}
+    for directory in sorted((args.source/'locale').iterdir()):
+        if directory.is_dir() and directory.name in rows:
+            coverage[directory.name]=write_language(args.source,args.output,directory)
+    (args.output/'locales-manifest.json').write_text(json.dumps(coverage,ensure_ascii=False,indent=2),encoding='utf8')
+    print('Prepared',len(coverage),'game locales')
+
+
+if __name__=='__main__':
+    main()

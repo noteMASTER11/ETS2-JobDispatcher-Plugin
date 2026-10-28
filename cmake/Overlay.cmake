@@ -18,7 +18,7 @@ function(jd_add_overlay target_name)
     target_sources(${target_name} PRIVATE
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../src/overlay.cpp"
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../src/input_capture.cpp"
-        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../src/preview.cpp"
+        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/../src/native_preview.cpp"
         "${_imgui}/imgui.cpp" "${_imgui}/imgui_draw.cpp"
         "${_imgui}/imgui_tables.cpp" "${_imgui}/imgui_widgets.cpp"
         "${_imgui}/backends/imgui_impl_dx11.cpp"

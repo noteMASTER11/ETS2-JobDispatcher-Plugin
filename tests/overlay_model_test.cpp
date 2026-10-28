@@ -1,8 +1,48 @@
 #include "overlay_model.hpp"
+#include "preview_cache.hpp"
 #include <cassert>
 #include <iostream>
 
 int main() {
+    const std::set<std::string> visible={"trailer.flatbed|cargo.excavator","trailer.flatbed|cargo.transformat"};
+    assert(jd::preview::CacheGeometryKey("trailer.van|cargo.cheese|53",visible)==
+           jd::preview::CacheGeometryKey("trailer.van|cargo.butter|31",visible));
+    assert(jd::preview::CacheGeometryKey("trailer.van|cargo.cheese|53",visible)!=
+           jd::preview::CacheGeometryKey("trailer.tank|cargo.cheese|53",visible));
+    assert(jd::preview::CacheGeometryKey("trailer.flatbed|cargo.excavator|1",visible)!=
+           jd::preview::CacheGeometryKey("trailer.flatbed|cargo.transformat|1",visible));
+    assert(jd::preview::CacheGeometryKey("trailer.flatbed|cargo.excavator|1",visible)!=
+           jd::preview::CacheGeometryKey("trailer.flatbed|cargo.excavator|2",visible));
+    assert(jd::preview::CacheGeometryKey("",visible).empty());
+    // Preview identity is always the loaded trailer, including cargo and count.
+    jd::Snapshot previews;
+    previews.cargos = {{1,"Excavator","cargo.excavator",10}, {2,"Transformer","cargo.transformat",10},
+                       {3,"Apples","cargo.apples",10}, {4,"Feldbinder","cargo.feldbinder",20,0,"",true}};
+    previews.trailers = {{10,"Flatbed","trailer_def.flatbed",0,0,"trailer.flatbed"},
+                         {20,"Feldbinder","trailer_def.feldbinder",0,0,"trailer.ffb_tsalm32"}};
+    jd::Request preview_request;
+    preview_request.cargo=1;
+    previews.selection=preview_request;previews.cargo_units=1;
+    assert(jd::overlay::model::PreviewToken(previews,preview_request)=="trailer.flatbed|cargo.excavator|1");
+    preview_request.cargo=2;
+    assert(jd::overlay::model::PreviewToken(previews,preview_request).empty());
+    previews.selection=preview_request;
+    assert(jd::overlay::model::PreviewToken(previews,preview_request)=="trailer.flatbed|cargo.transformat|1");
+    // Dropdown and Surprise replace the same request fields. Both must update
+    // the composite key even when the automatic trailer stays unchanged.
+    preview_request.trailer=20;
+    previews.selection=preview_request;
+    assert(jd::overlay::model::PreviewToken(previews,preview_request)=="trailer.ffb_tsalm32|cargo.transformat|1");
+    preview_request.destination=99;
+    assert(jd::overlay::model::PreviewToken(previews,preview_request)=="trailer.ffb_tsalm32|cargo.transformat|1");
+    preview_request.trailer=0;
+    preview_request.cargo=3;
+    previews.selection=preview_request;previews.cargo_units=20;
+    assert(jd::overlay::model::PreviewToken(previews,preview_request)=="trailer.flatbed|cargo.apples|20");
+    preview_request.cargo=4;
+    previews.selection=preview_request;previews.cargo_units=1;
+    assert(jd::overlay::model::PreviewToken(previews,preview_request)=="trailer.ffb_tsalm32|cargo.feldbinder|1");
+    std::cout << "Loaded trailer preview follows cargo, trailer and quantity\n";
     jd::Snapshot state;
     state.supported = state.world_ready = state.can_generate = true;
     state.cargos = {{11, "Heavy machinery", "heavy_machine"}, {12, "Apples", "apples"}};

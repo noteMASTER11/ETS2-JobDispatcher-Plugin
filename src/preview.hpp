@@ -1,13 +1,12 @@
 #pragma once
-#include <string>
-#include <functional>
+#include "dispatch.hpp"
 struct ID3D11Device;
 struct ID3D11DeviceContext;
 namespace jd::preview {
-void Pump(const std::function<bool()>& cancelled); // Worker: prepare/load the latest selection only.
-void Suspend(); // Render thread: cancel pending work when the overlay is hidden.
-void ReloadIndex(); // Background worker, while the dispatcher is gated for preparation.
-bool HasModel(const std::string& token);
-void Draw(ID3D11Device*, ID3D11DeviceContext*, const std::string& token, float width, float height, bool interactive);
+void Suspend(); // Render thread: queues disposal on the next game callback.
 void ReleaseGpu();
+void Frame(); // SCS frame callback: owns all native UI and vehicle calls.
+void Shutdown(); // Same thread as the SCS shutdown callback.
+void DrawNative(ID3D11Device*, const Request&, float width, float height, bool interactive);
+void QueueOrbit(float horizontal_delta,float vertical_delta,float wheel_steps);
 }

@@ -5,6 +5,19 @@
 #include <string>
 
 namespace jd::overlay::model {
+inline std::string PreviewToken(const Snapshot& snapshot, const Request& request) {
+        if(snapshot.selection.cargo!=request.cargo||snapshot.selection.trailer!=request.trailer)return {};
+        auto trailer_id=request.trailer;
+        std::string cargo_token;
+        for(const auto& cargo:snapshot.cargos)if(cargo.id==request.cargo){
+            cargo_token=cargo.token;
+            if(!trailer_id)trailer_id=cargo.auto_trailer;
+            break;
+        }
+        for(const auto& trailer:snapshot.trailers)if(trailer.id==trailer_id&&!cargo_token.empty())
+            return (trailer.preview_token.empty()?trailer.token:trailer.preview_token)+"|"+cargo_token+"|"+std::to_string(std::max(1u,snapshot.cargo_units));
+        return {};
+}
 inline bool Contains(const std::vector<Choice>& choices, std::uint64_t id) {
     return id != 0 && std::any_of(choices.begin(), choices.end(),
                                [id](const Choice& c) { return c.id == id; });

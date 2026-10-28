@@ -13,13 +13,17 @@ DWORD Pid(const std::filesystem::path& file){DWORD pid=0;std::ifstream(file)>>pi
 bool Exited(DWORD pid){HANDLE process=OpenProcess(SYNCHRONIZE,FALSE,pid);if(!process)return GetLastError()==ERROR_INVALID_PARAMETER;bool result=WaitForSingleObject(process,2000)==WAIT_OBJECT_0;CloseHandle(process);return result;}
 int wmain(int argc,wchar_t** argv){
  try{
+    if(argc>2&&std::wstring(argv[1])==L"--home-check"){
+        Check(jd::offline::GameHome()==std::filesystem::path(argv[2]),
+              "GameHome must resolve the -homedir parent to the game's application directory");
+        return 0;
+    }
     if(argc>2&&std::wstring(argv[1])==L"--grandchild"){
         std::ofstream(std::filesystem::path(argv[2])/L"grandchild.pid")<<GetCurrentProcessId();Sleep(30000);return 0;
     }
     if(argc>2&&std::filesystem::path(argv[1]).filename()==L"offline-bootstrap.py"){
-        std::filesystem::path data;bool cancel=false;std::wstring token;
-        for(int i=2;i+1<argc;++i){if(std::wstring(argv[i])==L"--data")data=argv[i+1];if(std::wstring(argv[i])==L"--game"&&std::wstring(argv[i+1])==L"cancel")cancel=true;if(std::wstring(argv[i])==L"--preview")token=argv[i+1];}
-        if(!token.empty())std::ofstream(data/L"token.txt")<<std::string(token.begin(),token.end());
+        std::filesystem::path data;bool cancel=false;
+        for(int i=2;i+1<argc;++i){if(std::wstring(argv[i])==L"--data")data=argv[i+1];if(std::wstring(argv[i])==L"--game"&&std::wstring(argv[i+1])==L"cancel")cancel=true;}
         std::ofstream(data/L"child.pid")<<GetCurrentProcessId();
         if(cancel){
             wchar_t self[32768]{};GetModuleFileNameW(nullptr,self,32768);
@@ -41,8 +45,6 @@ int wmain(int argc,wchar_t** argv){
     std::filesystem::copy_file(self,root/L"runtime/python/python.exe",std::filesystem::copy_options::overwrite_existing);
     Check(jd::offline::Run(root,L"game",data,L"home with spaces",[]{return false;}),"Offline child did not complete");
     Check(Pid(data/L"child.pid")!=0,"Quoted data directory was not received by child");
-    Check(jd::offline::Run(root,L"game",data,L"home",[]{return false;},"cargo.test"),"Selected preview child did not complete");
-    std::string token;std::ifstream(data/L"token.txt")>>token;Check(token=="cargo.test","Selected preview token was not passed to helper");
     std::filesystem::remove(data/L"child.pid");std::filesystem::remove(data/L"grandchild.pid");
     const auto start=GetTickCount64();
     Check(!jd::offline::Run(root,L"cancel",data,L"home",[&]{return (std::filesystem::exists(data/L"grandchild.pid")&&GetTickCount64()-start>250)||GetTickCount64()-start>5000;}),"Cancelled preparation succeeded");

@@ -38,6 +38,7 @@ struct Snapshot {
     int routing_mode = 0;
     Request selection;
     float distance_m = 0, mass_kg = 0;
+    unsigned cargo_units = 0;
     bool route_pending = false, route_failed = false;
     std::int64_t price_base = 0;
     bool price_valid = false;
@@ -76,6 +77,11 @@ bool AssetsReady();
 bool WorldLoaded();
 unsigned AssetsWorldRevision();
 void AssetsPrepared(unsigned revision);
+// Frame-thread-only preview clone. Never inserts an offer, spawns an actor,
+// accepts a job or changes navigation. Caller releases with DisposePreviewVehicle.
+struct PreviewVehicle { std::uintptr_t unit=0; std::uint64_t paint=0; };
+PreviewVehicle BuildPreviewVehicle(const Request& request);
+void DisposePreviewVehicle(std::uintptr_t unit);
 void Shutdown();
 // Infrastructure provided by the host.
 void Log(const char* format, ...);

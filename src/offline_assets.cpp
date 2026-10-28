@@ -31,7 +31,7 @@ std::filesystem::path GameHome() {
     int count=0;auto arguments=CommandLineToArgvW(GetCommandLineW(),&count);
     std::filesystem::path result;
     if(arguments){for(int i=1;i+1<count;++i)if(std::wstring(arguments[i])==L"-homedir"){result=arguments[i+1];break;}LocalFree(arguments);}
-    if(!result.empty())return result;
+    if(!result.empty())return result/L"Euro Truck Simulator 2";
     PWSTR documents=nullptr;
     if(SUCCEEDED(SHGetKnownFolderPath(FOLDERID_Documents,0,nullptr,&documents))){result=documents;CoTaskMemFree(documents);}
     return result/L"Euro Truck Simulator 2";
@@ -47,12 +47,11 @@ std::wstring Quote(const std::wstring& value) {
 }
 bool Run(const std::filesystem::path& package,const std::filesystem::path& game,
          const std::filesystem::path& data,const std::filesystem::path& home,
-         const std::function<bool()>& cancelled, const std::string& preview_token) {
+         const std::function<bool()>& cancelled) {
     const auto python=package/L"runtime/python/python.exe";
     std::wstring command=Quote(python.wstring())+L" "+Quote((package/L"tools/offline-bootstrap.py").wstring())+
         L" --game "+Quote(game.wstring())+L" --data "+Quote(data.wstring())+
         L" --game-home "+Quote(home.wstring())+L" --converter "+Quote((package/L"runtime/converter_pix.exe").wstring());
-    if(!preview_token.empty())command+=L" --preview "+Quote(std::wstring(preview_token.begin(),preview_token.end()));
     if(cancelled())return false;
     HANDLE job=CreateJobObjectW(nullptr,nullptr);
     if(!job)return false;

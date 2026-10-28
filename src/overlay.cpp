@@ -61,6 +61,7 @@ ID3D11DeviceContext* context = nullptr;
 ID3D11RenderTargetView* target_view = nullptr;
 ImGuiContext* imgui_context = nullptr;
 bool panel_open = false;
+std::atomic<int> test_panel{-1};
 bool right_button_consumed = false;
 bool clip_saved = false;
 bool win32_initialized = false;
@@ -100,7 +101,6 @@ bool OwnsForeground() {
     return hwnd && GetForegroundWindow() == hwnd;
 }
 bool CanInteract() {
-    if(!jd::AssetsReady())return false;
     if (!OwnsForeground()) return false;
     const auto world = jd::ReadTelemetry();
     return world.driving && world.placement_valid;
@@ -425,24 +425,8 @@ void DrawPanel() {
         if(ImGui::Button(T("jd_surprise").c_str(),ImVec2(-1,0))){jd::Surprise(random_mass,random_distance);next_snapshot={};}
         ImGui::EndDisabled();
         ImGui::TableNextColumn();
-        static bool cargo_preview = false;
-        const bool combined_preview=trailer_delivery||!chosen_cargo||!jd::preview::HasModel(chosen_cargo->token);
-        if(combined_preview)cargo_preview=false;
-        if(!combined_preview&&ImGui::BeginTabBar("preview-kind")) {
-            if(ImGui::BeginTabItem((T("cb_trailer")+" 3D").c_str())){cargo_preview=false;ImGui::EndTabItem();}
-            if(ImGui::BeginTabItem((T("cb_cargo")+" 3D").c_str())){cargo_preview=true;ImGui::EndTabItem();}
-            ImGui::EndTabBar();
-        }
-        uint64_t trailer_id = request.trailer;
-        std::string preview_token;
-        for (const auto& cargo : snapshot.cargos) if (cargo.id == request.cargo) {
-            if (cargo_preview) preview_token = cargo.token;
-            if (!trailer_id) trailer_id = cargo.auto_trailer;
-            break;
-        }
-        if(!cargo_preview)for(const auto& trailer:snapshot.trailers)if(trailer.id==trailer_id){preview_token=trailer.preview_token.empty()?trailer.token:trailer.preview_token;break;}
         const auto preview_width = ImGui::GetContentRegionAvail().x;
-        jd::preview::Draw(device, context, preview_token, preview_width, preview_width*.625f, interactive.load());
+        jd::preview::DrawNative(device, request, preview_width, preview_width*.625f, interactive.load());
         const bool matching_cargo=snapshot.selection.cargo==request.cargo&&snapshot.selection.trailer==request.trailer;
         const bool matching_route=snapshot.selection.source==request.source&&snapshot.selection.destination==request.destination;
         const bool comma=units::DecimalComma(snapshot.language);
@@ -522,6 +506,8 @@ void Render() {
     ImGui::SetCurrentContext(imgui_context);
     if (!OwnsForeground() && interactive.load()) SetInteractive(false, false);
     const auto now = std::chrono::steady_clock::now();
+    const auto test_open=test_panel.exchange(-1);
+    if(test_open>=0){panel_open=test_open!=0;next_snapshot={};SetInteractive(panel_open&&OwnsForeground());}
     if (panel_open && now >= next_snapshot) {
         const auto previous_random=snapshot.random_revision;
         jd::UpdateSnapshot(snapshot);
@@ -561,7 +547,7 @@ HRESULT STDMETHODCALLTYPE HookPresent(IDXGISwapChain* chain, UINT interval, UINT
                     DestroyUi();
             }
             const auto world = jd::ReadTelemetry();
-            if (!jd::AssetsReady() || !world.driving || !world.placement_valid) {
+            if (!world.driving || !world.placement_valid) {
                 jd::preview::Suspend();
                 if (interactive.load()) SetInteractive(false, false);
             } else {
@@ -703,6 +689,9 @@ void Stop() {
 }
 Diagnostics Inspect() {
     std::lock_guard<std::recursive_mutex> lock(ui_mutex);
-    return {running.load(), imgui_context != nullptr && game_chain != nullptr, interactive.load()};
+    const bool attached=imgui_context!=nullptr&&game_chain!=nullptr;
+    const auto world=jd::ReadTelemetry();
+    return {running.load(),attached,interactive.load(),panel_open,attached&&world.driving&&world.placement_valid};
 }
+void QueueTestPanel(bool open){test_panel.store(open?1:0);}
 } // namespace jd::overlay

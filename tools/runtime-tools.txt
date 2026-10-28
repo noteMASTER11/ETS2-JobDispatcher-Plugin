@@ -1,0 +1,3 @@
+offline-bootstrap.py
+prepare-game-assets.py
+prepare-locales.py

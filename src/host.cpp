@@ -75,7 +75,10 @@ std::string SnapshotJson() {
         << ",\"route_failed\":" << (s.route_failed?"true":"false") << ",\"random_revision\":" << s.random_revision << '}';
     out << ",\"overlay\":{\"running\":" << (overlay.running ? "true" : "false")
         << ",\"attached\":" << (overlay.attached ? "true" : "false")
-        << ",\"interactive\":" << (overlay.interactive ? "true" : "false") << '}';
+        << ",\"interactive\":" << (overlay.interactive ? "true" : "false")
+        << ",\"panel\":" << (overlay.panel?"true":"false")
+        << ",\"icon\":" << (overlay.icon?"true":"false")
+        << ",\"translations_ready\":" << (jd::AssetsReady()?"true":"false") << '}';
     out << ",\"telemetry\":{\"driving\":" << (t.driving ? "true" : "false")
         << ",\"placement_valid\":" << (t.placement_valid ? "true" : "false")
         << ",\"speed_valid\":" << (t.speed_valid ? "true" : "false")
@@ -123,6 +126,8 @@ void ReadTestCommand() {
         float mass=50,distance=50;if(input>>mass>>distance)jd::Surprise(mass,distance);
     } else if(command=="audit") {
         jd::RequestAudit();
+    } else if(command=="open"||command=="close") {
+        jd::overlay::QueueTestPanel(command=="open");
     } else if (command == "refresh") {
         jd::RequestRefresh();
     } else {
@@ -156,24 +161,23 @@ DWORD WINAPI OverlayWorker(void*) {
                              GetEnvironmentVariableW(L"JD_SP_TEST_CONTROL", nullptr, 0);
     ULONGLONG last_dump = 0;
     ULONGLONG last_performance = GetTickCount64();
-    bool previews_available=true;
     unsigned prepared_revision=0;
+    ULONGLONG next_preparation=0;
     while (!stopping.load()) {
         WaitForSingleObject(log_event, 100);
         const auto revision=jd::AssetsWorldRevision();
-        if(jd::WorldLoaded()&&revision&&revision!=prepared_revision){
-            prepared_revision=revision;
+        if(jd::WorldLoaded()&&revision&&revision!=prepared_revision&&GetTickCount64()>=next_preparation){
+            next_preparation=GetTickCount64()+5000;
             try{
             const bool ready=jd::offline::Run(jd::offline::PackageRoot(),jd::offline::GameDirectory(),
                 std::filesystem::path(jd::DataDirectory()),jd::offline::GameHome(),[&]{return stopping.load()||!jd::WorldLoaded()||jd::AssetsWorldRevision()!=revision;});
             if(ready&&!stopping&&jd::WorldLoaded()&&jd::AssetsWorldRevision()==revision){
-                jd::preview::ReloadIndex();jd::AssetsPrepared(revision);
+                jd::AssetsPrepared(revision);prepared_revision=revision;
             }
             }catch(const std::exception& error){jd::Log("Offline preparation error: %s",error.what());}
             catch(...){jd::Log("Offline preparation error");}
         }
         jd::labels::PumpLanguage(std::filesystem::path(jd::DataDirectory()));
-        if(previews_available&&jd::AssetsReady())try{jd::preview::Pump([]{return stopping.load();});}catch(const std::exception& error){previews_available=false;jd::Log("Preview worker error: %s",error.what());}
         FlushLogs();
         const auto now = GetTickCount64();
         if(now-last_performance>30000) {
@@ -212,6 +216,7 @@ void SCSAPIFUNC OnFrame(scs_event_t, const void*, scs_context_t) {
         jd::perf::Scope frame_performance(jd::perf::adapter);
         ReadTestCommand();
         jd::Frame();
+        jd::preview::Frame();
     } catch (const std::exception& e) { jd::Log("Frame exception: %s", e.what()); }
     catch (...) { jd::Log("Frame exception"); }
 }
@@ -223,6 +228,9 @@ void SCSAPIFUNC OnState(scs_event_t event, const void*, scs_context_t) {
         if (!telemetry.driving) telemetry.placement_valid = false;
     }
     jd::Log("Telemetry %s", event == SCS_TELEMETRY_EVENT_started ? "started" : "paused");
+    // Pause precedes world unloading. Release the preview's world-bound scene
+    // while that world and its renderer are still alive.
+    if(event==SCS_TELEMETRY_EVENT_paused&&frame_thread==GetCurrentThreadId())jd::preview::Shutdown();
 }
 
 void SCSAPIFUNC OnPosition(scs_string_t, scs_u32_t, const scs_value_t* value, scs_context_t) {
@@ -454,6 +462,7 @@ extern "C" SCSAPI_VOID scs_telemetry_shutdown() {
         worker = nullptr;
     }
     jd::overlay::Stop();
+    jd::preview::Shutdown();
     jd::Shutdown();
     jd::Log("Plugin shutdown");
     FlushLogs();

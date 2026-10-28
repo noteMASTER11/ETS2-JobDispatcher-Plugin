@@ -49,7 +49,8 @@ def texture_file(root,value,output):
     return name
 
 def make_part(job):
-    pim_path,variant,root_path,output_path,part_path=job
+    pim_path,variant,root_path,output_path,part_path=job[:5]
+    look_name=job[5] if len(job)>5 else 'default'
     pim,root,output,part=map(pathlib.Path,(pim_path,root_path,output_path,part_path))
     if part.is_file():return str(part)
     text=pim.read_text(encoding='utf-8');pit=pim.with_suffix('.pit').read_text(encoding='utf-8')
@@ -64,7 +65,8 @@ def make_part(job):
             if source.field(item,'Name') in visible:
                 match=re.search(r'Pieces:\s*([\d\s]+)',item)
                 if match:allowed.update(map(int,match.group(1).split()))
-    look=next(source.blocks(pit,'Look'),'')
+    looks=list(source.blocks(pit,'Look'))
+    look=next((item for item in looks if source.field(item,'Name')==look_name),looks[0] if looks else '')
     definitions={source.field(m,'Alias'):m for m in source.blocks(look,'Material')}
     material_info=[];textures=[]
     for material in source.blocks(text,'Material'):
@@ -160,32 +162,54 @@ def collect(defs):
     return records
 
 def assemble(job):
-    token,components,parts,converted,output_path,wheel_key=job
+    token,components,parts,converted,output_path,wheel_key=job[:6]
+    instances=job[6] if len(job)>6 else None
+    poses=job[7] if len(job)>7 else {}
+    attachment_points=job[8] if len(job)>8 else None
+    if instances is not None:
+        spec=importlib.util.spec_from_file_location('preview_scene',pathlib.Path(__file__).with_name('preview-scene.py'))
+        scene=importlib.util.module_from_spec(spec);spec.loader.exec_module(scene)
     output=pathlib.Path(output_path);textures=[];groups=[];vertices=array.array('f')
-    def append(component,position=None,mirror=False):
+    def append(component,position=None,mirror=False,pose=None):
         local_textures,batches,data=read_part(pathlib.Path(parts[component]))
         remap=[]
         for name in local_textures:
             if name not in textures:textures.append(name)
             remap.append(textures.index(name))
         first=len(vertices)//11
+        if len(vertices)//11+len(data)//11>600000:raise ValueError('assembled preview exceeds 200000 triangles')
+        if pose is not None and pose!=scene.IDENTITY:
+            scene.transform_mesh(data,pose)
         if position is not None:
             sign=-1 if mirror else 1
             for i in range(0,len(data),11):
                 data[i]=data[i]*sign+position[0];data[i+1]+=position[1];data[i+2]+=position[2];data[i+3]*=sign
         vertices.extend(data)
         groups.extend((first+a,b,remap[c]) for a,b,c in batches)
-    for component in components:append(component)
+    if instances is None:
+        for component in components:append(component)
+    else:
+        for component,pose in instances:append(component,pose=pose)
     # Add native wheel geometry at the model's own wheel locators.
     if token.startswith(('trailer_def.','trailer.')) and wheel_key in parts:
         for component in components:
+            if attachment_points is not None:
+                added=False
+                for locator,pose in attachment_points[component].items():
+                    if not re.fullmatch(r'wheel_[rl]_\d+',locator):continue
+                    position=scene.transform(poses.get(component,scene.IDENTITY),pose[0])
+                    append(wheel_key,position,position[0]>0);added=True
+                if added:break
+                continue
             pim=pathlib.Path(converted[component[0]])
             added=False
             for loc in source.blocks(pim.read_text(encoding='utf-8'),'Locator'):
                 if not re.fullmatch(r'wheel_[rl]_\d+',source.field(loc,'Name')):continue
                 match=re.search(r'Position:\s*\(([^)]+)',loc)
                 if match:
-                    position=tuple(map(source.number,match.group(1).split()));append(wheel_key,position,position[0]>0);added=True
+                    position=tuple(map(source.number,match.group(1).split()))
+                    if component in poses:position=scene.transform(poses[component],position)
+                    append(wheel_key,position,position[0]>0);added=True
             if added:break
     count=len(vertices)//11
     if not count:raise ValueError('model has no visible geometry')
@@ -195,7 +219,7 @@ def assemble(job):
         encoded=texture.encode();payload.extend(struct.pack('<H',len(encoded))+encoded)
     for group in groups:payload.extend(struct.pack('<III',*group))
     payload.extend(vertices.tobytes())
-    name=hashlib.sha256(('textured-v2'+json.dumps(components)+str(token.startswith(('trailer_def.','trailer.')))).encode()).hexdigest()[:24]+'.jdm'
+    name=hashlib.sha256(('textured-v3'+json.dumps(instances if instances is not None else components)+str(token.startswith(('trailer_def.','trailer.')))).encode()).hexdigest()[:24]+'.jdm'
     (output/name).write_bytes(native_pack(bytes(payload)))
     return token,name,'; '.join(c[0] for c in components)
 
