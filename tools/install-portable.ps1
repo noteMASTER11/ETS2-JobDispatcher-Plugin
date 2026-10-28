@@ -2,7 +2,9 @@
 param([string]$GameDirectory,[string]$DataDirectory,[int]$Workers=4,[string[]]$ModArchive=@())
 $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'install-settings.ps1')
+. (Join-Path $PSScriptRoot 'release-version.ps1')
 $packageRoot=Split-Path $PSScriptRoot -Parent
+$releaseVersion=Get-DispatcherReleaseVersion $packageRoot
 $dropRoot=Join-Path $packageRoot 'bin\win_x64\plugins'
 $bundle=if(Test-Path (Join-Path $dropRoot 'JobDispatcherSP\runtime')){Join-Path $dropRoot 'JobDispatcherSP'}else{$packageRoot}
 $sourceDll=if($bundle -eq $packageRoot){Join-Path $packageRoot 'bin\JobDispatcherSP.dll'}else{Join-Path $dropRoot 'JobDispatcherSP.dll'}
@@ -55,6 +57,6 @@ if([IO.Path]::GetFullPath($sourceDll) -ne [IO.Path]::GetFullPath($targetDll)){
 }
 [IO.File]::WriteAllText((Join-Path $plugins 'JobDispatcherSP.ini'),"[JobDispatcherSP]`r`nDataDirectory=$DataDirectory`r`n",[Text.Encoding]::Unicode)
 Save-DispatcherSettings $DataDirectory $PSBoundParameters
-@{version='0.1';game=$GameDirectory;dll=$targetDll;data=$DataDirectory;sha256=(Get-FileHash -LiteralPath $targetDll).Hash}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $DataDirectory 'installation.json') -Encoding utf8
+@{version=$releaseVersion;game=$GameDirectory;dll=$targetDll;data=$DataDirectory;sha256=(Get-FileHash -LiteralPath $targetDll).Hash}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $DataDirectory 'installation.json') -Encoding utf8
 Write-Host "Installed: $targetDll"
 Write-Host 'No Internet connection is needed. Profile loading prepares translations. Previews use the native game renderer.'

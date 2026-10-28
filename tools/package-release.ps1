@@ -2,6 +2,8 @@
 param()
 $ErrorActionPreference='Stop'
 $root=Split-Path $PSScriptRoot -Parent
+. (Join-Path $PSScriptRoot 'release-version.ps1')
+$releaseVersion=Get-DispatcherReleaseVersion $root
 $binary=Join-Path $root 'bin\JobDispatcherSP.dll'
 if(-not (Test-Path -LiteralPath $binary)) { throw 'Build the plugin and copy its DLL into bin first.' }
 $package=Join-Path $root ('package\JobDispatcherSP-'+[Guid]::NewGuid().ToString('N'))
@@ -21,14 +23,16 @@ foreach($name in Get-Content -LiteralPath (Join-Path $PSScriptRoot 'runtime-tool
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot $name) -Destination (Join-Path $bundle 'tools') -Force
 }
 New-Item -ItemType Directory -Path (Join-Path $package 'tools') -Force | Out-Null
-foreach($name in @('install-portable.ps1','install-settings.ps1','runtime-tools.txt','uninstall-portable.ps1')){Copy-Item -LiteralPath (Join-Path $root ('tools\'+$name)) -Destination (Join-Path $package 'tools') -Force}
-foreach($name in @('README.md','Install.cmd','Uninstall.cmd')) {
+foreach($name in @('install-portable.ps1','install-settings.ps1','release-version.ps1','runtime-tools.txt','uninstall-portable.ps1')){Copy-Item -LiteralPath (Join-Path $root ('tools\'+$name)) -Destination (Join-Path $package 'tools') -Force}
+foreach($name in @('README.md','CHANGELOG.md','VERSION','Install.cmd','Uninstall.cmd')) {
     Copy-Item -LiteralPath (Join-Path $root $name) -Destination $package -Force
 }
-Compress-Archive -Path (Join-Path $package '*') -DestinationPath (Join-Path $dist 'JobDispatcherSP-0.1-Windows-x64.zip') -CompressionLevel Optimal -Force
-git -C $root archive --format=zip --prefix=ETS2-JobDispatcher-Plugin-0.1/ -o (Join-Path $dist 'ETS2-JobDispatcher-Plugin-0.1-source.zip') HEAD
+$pluginArchive=Join-Path $dist "JobDispatcherSP-$releaseVersion-Windows-x64.zip"
+$sourceArchive=Join-Path $dist "ETS2-JobDispatcher-Plugin-$releaseVersion-source.zip"
+Compress-Archive -Path (Join-Path $package '*') -DestinationPath $pluginArchive -CompressionLevel Optimal -Force
+git -C $root archive --format=zip "--prefix=ETS2-JobDispatcher-Plugin-$releaseVersion/" -o $sourceArchive HEAD
 if($LASTEXITCODE) { throw 'Source snapshot creation failed.' }
-Get-ChildItem -LiteralPath $dist -Filter '*.zip' -File | ForEach-Object {
+Get-Item -LiteralPath $pluginArchive,$sourceArchive | ForEach-Object {
     '{0}  {1}' -f (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLower(),$_.Name
 } | Set-Content -LiteralPath (Join-Path $dist 'SHA256SUMS.txt') -Encoding utf8
 Get-ChildItem -LiteralPath $dist -File | Select-Object Name,Length
