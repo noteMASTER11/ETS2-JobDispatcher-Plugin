@@ -17,8 +17,9 @@ int wmain(int argc,wchar_t** argv){
         std::ofstream(std::filesystem::path(argv[2])/L"grandchild.pid")<<GetCurrentProcessId();Sleep(30000);return 0;
     }
     if(argc>2&&std::filesystem::path(argv[1]).filename()==L"offline-bootstrap.py"){
-        std::filesystem::path data;bool cancel=false;
-        for(int i=2;i+1<argc;++i){if(std::wstring(argv[i])==L"--data")data=argv[i+1];if(std::wstring(argv[i])==L"--game"&&std::wstring(argv[i+1])==L"cancel")cancel=true;}
+        std::filesystem::path data;bool cancel=false;std::wstring token;
+        for(int i=2;i+1<argc;++i){if(std::wstring(argv[i])==L"--data")data=argv[i+1];if(std::wstring(argv[i])==L"--game"&&std::wstring(argv[i+1])==L"cancel")cancel=true;if(std::wstring(argv[i])==L"--preview")token=argv[i+1];}
+        if(!token.empty())std::ofstream(data/L"token.txt")<<std::string(token.begin(),token.end());
         std::ofstream(data/L"child.pid")<<GetCurrentProcessId();
         if(cancel){
             wchar_t self[32768]{};GetModuleFileNameW(nullptr,self,32768);
@@ -40,6 +41,8 @@ int wmain(int argc,wchar_t** argv){
     std::filesystem::copy_file(self,root/L"runtime/python/python.exe",std::filesystem::copy_options::overwrite_existing);
     Check(jd::offline::Run(root,L"game",data,L"home with spaces",[]{return false;}),"Offline child did not complete");
     Check(Pid(data/L"child.pid")!=0,"Quoted data directory was not received by child");
+    Check(jd::offline::Run(root,L"game",data,L"home",[]{return false;},"cargo.test"),"Selected preview child did not complete");
+    std::string token;std::ifstream(data/L"token.txt")>>token;Check(token=="cargo.test","Selected preview token was not passed to helper");
     std::filesystem::remove(data/L"child.pid");std::filesystem::remove(data/L"grandchild.pid");
     const auto start=GetTickCount64();
     Check(!jd::offline::Run(root,L"cancel",data,L"home",[&]{return (std::filesystem::exists(data/L"grandchild.pid")&&GetTickCount64()-start>250)||GetTickCount64()-start>5000;}),"Cancelled preparation succeeded");

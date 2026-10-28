@@ -195,7 +195,7 @@ def assemble(job):
         encoded=texture.encode();payload.extend(struct.pack('<H',len(encoded))+encoded)
     for group in groups:payload.extend(struct.pack('<III',*group))
     payload.extend(vertices.tobytes())
-    name=hashlib.sha256(('textured-v1'+json.dumps(components)).encode()).hexdigest()[:24]+'.jdm'
+    name=hashlib.sha256(('textured-v2'+json.dumps(components)+str(token.startswith(('trailer_def.','trailer.')))).encode()).hexdigest()[:24]+'.jdm'
     (output/name).write_bytes(native_pack(bytes(payload)))
     return token,name,'; '.join(c[0] for c in components)
 

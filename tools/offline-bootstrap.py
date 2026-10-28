@@ -1,5 +1,11 @@
 """Prepare the installed profile locally. No network access or package manager."""
-import argparse, contextlib, hashlib, json, os, pathlib, re, shutil, subprocess, sys, traceback
+import argparse, contextlib, hashlib, importlib.util, json, os, pathlib, re, shutil, subprocess, sys, traceback
+
+
+def lazy_builder():
+    spec = importlib.util.spec_from_file_location('lazy_preview', pathlib.Path(__file__).with_name('lazy-preview.py'))
+    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+    return module
 
 
 def active_mods(log, game, home):
@@ -40,7 +46,7 @@ def fingerprint(game, mods, scripts):
                 stat = item.stat(); rows.append((str(item.resolve()), stat.st_size, stat.st_mtime_ns))
     for path in sorted(scripts.glob('*.py')):
         rows.append((path.name, hashlib.sha256(path.read_bytes()).hexdigest()))
-    return hashlib.sha256(json.dumps(['offline-assets-v1', rows], ensure_ascii=True).encode()).hexdigest()
+    return hashlib.sha256(json.dumps(['offline-assets-v2-lazy', rows], ensure_ascii=True).encode()).hexdigest()
 
 
 def prepare(game, data, home, converter, workers, extra_mods=()):
@@ -51,7 +57,7 @@ def prepare(game, data, home, converter, workers, extra_mods=()):
     marker = data / 'prepared-assets.json'
     try: previous = json.loads(marker.read_text(encoding='utf8'))
     except (OSError, ValueError): previous = {}
-    if previous.get('fingerprint') == identity and (data / 'previews/index.tsv').is_file() and (data / 'game-labels.en_gb.tsv').is_file():
+    if previous.get('fingerprint') == identity and (data / 'previews-lazy/catalogue.json').is_file() and (data / 'game-labels.en_gb.tsv').is_file():
         print('Prepared cache is current; no extraction needed.', flush=True)
         return
     if hashlib.sha256(converter.read_bytes()).hexdigest() != '60310ee8e01563145b71a8fb62f63d7a8b03906334e84e1463918f615f192ed2':
@@ -65,6 +71,9 @@ def prepare(game, data, home, converter, workers, extra_mods=()):
     command += [value for mod in mods for value in ('--mod', str(mod))]
     print('Preparing installed game and', len(mods), 'active mod archives.', flush=True)
     subprocess.run(command, check=True, stdout=sys.stdout, stderr=sys.stderr)
+    lazy = lazy_builder()
+    lazy.reset(data / 'previews-lazy', identity)
+    lazy.retire_legacy(data)
     temporary = marker.with_suffix('.tmp')
     temporary.write_text(json.dumps({'fingerprint': identity, 'mods': list(map(str, mods))}, ensure_ascii=False, indent=2), encoding='utf8')
     temporary.replace(marker)
@@ -81,6 +90,7 @@ def main():
     parser.add_argument('--converter', type=pathlib.Path, required=True)
     parser.add_argument('--workers', type=int, default=4)
     parser.add_argument('--mod', type=pathlib.Path, action='append', default=[])
+    parser.add_argument('--preview', help='Prepare only this selected preview token; metadata must already be ready')
     args = parser.parse_args()
     args.data.mkdir(parents=True, exist_ok=True)
     try:
@@ -93,7 +103,14 @@ def main():
     sys.dont_write_bytecode = True
     with (args.data / 'preparation.log').open('a', encoding='utf8', buffering=1) as log:
         with contextlib.redirect_stdout(log), contextlib.redirect_stderr(log):
-            try: prepare(args.game, args.data, args.game_home, args.converter, args.workers, args.mod)
+            try:
+                if args.preview:
+                    if hashlib.sha256(args.converter.read_bytes()).hexdigest() != '60310ee8e01563145b71a8fb62f63d7a8b03906334e84e1463918f615f192ed2':
+                        raise RuntimeError('Bundled converter checksum differs')
+                    state = json.loads((args.data / 'prepared-assets.json').read_text(encoding='utf8'))
+                    lazy_builder().prepare(args.game, args.data, args.converter,
+                                           [pathlib.Path(p) for p in state['mods']], args.preview)
+                else: prepare(args.game, args.data, args.game_home, args.converter, args.workers, args.mod)
             except Exception:
                 traceback.print_exc(); return 1
     return 0

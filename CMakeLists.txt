@@ -42,6 +42,9 @@ if(BUILD_TESTING)
     add_test(NAME job-navigation-transitions COMMAND jd-job-navigation-test)
     find_package(Python3 QUIET COMPONENTS Interpreter)
     if(Python3_FOUND)
+        add_test(NAME lazy-preview-selection COMMAND "${Python3_EXECUTABLE}"
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/lazy_preview_test.py"
+            "${CMAKE_CURRENT_BINARY_DIR}/lazy-preview-fixture")
         add_test(NAME offline-active-profile COMMAND "${Python3_EXECUTABLE}"
             "${CMAKE_CURRENT_SOURCE_DIR}/tests/offline_bootstrap_test.py"
             "${CMAKE_CURRENT_BINARY_DIR}/offline-profile-fixture")

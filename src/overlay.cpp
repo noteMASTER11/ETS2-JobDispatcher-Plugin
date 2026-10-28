@@ -562,8 +562,10 @@ HRESULT STDMETHODCALLTYPE HookPresent(IDXGISwapChain* chain, UINT interval, UINT
             }
             const auto world = jd::ReadTelemetry();
             if (!jd::AssetsReady() || !world.driving || !world.placement_valid) {
+                jd::preview::Suspend();
                 if (interactive.load()) SetInteractive(false, false);
             } else {
+            if(!panel_open)jd::preview::Suspend();
             if (!game_chain) AttachUi(chain);
             if (chain == game_chain) {
                 if (!target_view) CreateTarget(chain);

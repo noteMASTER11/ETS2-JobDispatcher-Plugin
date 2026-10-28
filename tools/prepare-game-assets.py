@@ -1,5 +1,5 @@
 """Create local preview and label caches from the user's installed ETS2 files."""
-import argparse, os, pathlib, re, subprocess, sys
+import argparse, importlib.util, json, os, pathlib, re, subprocess, sys
 
 
 def main():
@@ -16,7 +16,7 @@ def main():
     archives = [args.game / name for name in ('base.scs', 'base_share.scs', 'base_vehicle.scs', 'def.scs', 'locale.scs')]
     archives += sorted(args.game.glob('dlc_*.scs'))
     archives += args.mod
-    mounts = [part for archive in archives if archive.is_file() for part in ('-b', str(archive))]
+    mounts = [part for archive in archives if archive.exists() for part in ('-b', str(archive))]
     extracted = args.work / 'defs'
     for directory in ('/def/vehicle/trailer', '/def/vehicle/trailer_defs', '/def/vehicle/trailer_owned',
                       '/def/vehicle/cargo', '/def/vehicle/t_wheel', '/def/country', '/locale'):
@@ -45,10 +45,15 @@ def main():
             match = re.search(r'\bcountry_data\s*:\s*([\w.]+)', text)
             excluded.add(match[1].split('.')[-1] if match else file.stem)
     (args.output / 'excluded-countries.tsv').write_text('# Non-career areas\n' + '\n'.join(sorted(excluded)) + '\n', encoding='utf8')
-    subprocess.run([sys.executable, str(scripts / 'prepare-textured-previews.py'), '--game', str(args.game),
-                    '--converter', str(args.converter), '--work', str(args.work), '--output', str(args.output / 'previews'),
-                    '--workers', str(max(1, args.workers)),
-                    *[part for archive in args.mod for part in ('--mod', str(archive))]], check=True)
+    # Only definitions are indexed here. No geometry, materials or textures are
+    # converted until the user actually selects a preview in the overlay.
+    spec = importlib.util.spec_from_file_location('preview_builder', scripts / 'prepare-textured-previews.py')
+    builder = importlib.util.module_from_spec(spec); spec.loader.exec_module(builder)
+    records = builder.collect(extracted)
+    previews = args.output / 'previews-lazy'; previews.mkdir(exist_ok=True)
+    (previews / 'catalogue.json').write_text(json.dumps(records), encoding='utf8')
+    (previews / 'catalogue.tsv').write_text(''.join(token + '\n' for token in sorted(records)), encoding='utf8')
+    print('Indexed', len(records), 'preview definitions; converted 0 models.', flush=True)
 
 
 if __name__ == '__main__':

@@ -47,11 +47,13 @@ std::wstring Quote(const std::wstring& value) {
 }
 bool Run(const std::filesystem::path& package,const std::filesystem::path& game,
          const std::filesystem::path& data,const std::filesystem::path& home,
-         const std::function<bool()>& cancelled) {
+         const std::function<bool()>& cancelled, const std::string& preview_token) {
     const auto python=package/L"runtime/python/python.exe";
     std::wstring command=Quote(python.wstring())+L" "+Quote((package/L"tools/offline-bootstrap.py").wstring())+
         L" --game "+Quote(game.wstring())+L" --data "+Quote(data.wstring())+
         L" --game-home "+Quote(home.wstring())+L" --converter "+Quote((package/L"runtime/converter_pix.exe").wstring());
+    if(!preview_token.empty())command+=L" --preview "+Quote(std::wstring(preview_token.begin(),preview_token.end()));
+    if(cancelled())return false;
     HANDLE job=CreateJobObjectW(nullptr,nullptr);
     if(!job)return false;
     JOBOBJECT_EXTENDED_LIMIT_INFORMATION limits{};

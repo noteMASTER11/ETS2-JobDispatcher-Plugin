@@ -173,7 +173,7 @@ DWORD WINAPI OverlayWorker(void*) {
             catch(...){jd::Log("Offline preparation error");}
         }
         jd::labels::PumpLanguage(std::filesystem::path(jd::DataDirectory()));
-        if(previews_available&&jd::AssetsReady())try{jd::preview::Pump();}catch(const std::exception& error){previews_available=false;jd::Log("Preview worker error: %s",error.what());}
+        if(previews_available&&jd::AssetsReady())try{jd::preview::Pump([]{return stopping.load();});}catch(const std::exception& error){previews_available=false;jd::Log("Preview worker error: %s",error.what());}
         FlushLogs();
         const auto now = GetTickCount64();
         if(now-last_performance>30000) {

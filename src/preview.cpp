@@ -10,6 +10,7 @@
 #include "preview.hpp"
 #include "dispatch.hpp"
 #include "labels.hpp"
+#include "offline_assets.hpp"
 #include <atomic>
 #include <algorithm>
 #include <cmath>
@@ -33,6 +34,7 @@ struct Mesh {
 };
 std::mutex cache_mutex;
 std::string requested, processed, message = "loading";
+ULONGLONG requested_at=0;
 std::vector<unsigned char> vertex_bytecode,pixel_bytecode;
 std::atomic<bool> shaders_ready{false};
 bool shaders_attempted=false;
@@ -193,8 +195,12 @@ void Render(const Mesh& mesh) {
     dirty=false;
 }
 }
-void ReloadIndex(){std::lock_guard<std::mutex> lock(cache_mutex);index.clear();indexed=false;processed.clear();ready.reset();message="loading";}
-void Pump() {
+void ReloadIndex(){std::lock_guard<std::mutex> lock(cache_mutex);index.clear();indexed=false;requested.clear();processed.clear();ready.reset();message="loading";}
+void Suspend(){
+    {std::lock_guard<std::mutex> lock(cache_mutex);requested.clear();processed.clear();ready.reset();}
+    if(uploaded)ReleaseGpu();
+}
+void Pump(const std::function<bool()>& cancelled) {
     if(!shaders_attempted){
         shaders_attempted=true;
         ID3DBlob *code=nullptr,*errors=nullptr;
@@ -210,27 +216,62 @@ void Pump() {
     }
     if (!indexed) {
         std::map<std::string,std::string> loaded_index;
-        std::ifstream file(std::filesystem::path(DataDirectory())/L"previews/index.tsv");
+        std::ifstream file(std::filesystem::path(DataDirectory())/L"previews-lazy/catalogue.tsv");
         std::string line;
         while (std::getline(file,line)) {
-            const auto first=line.find('\t'),second=line.find('\t',first+1);
-            if(first==std::string::npos)continue;
-            const auto name=line.substr(first+1,second-first-1);
-            if(name.find_first_not_of("0123456789abcdef.jdm")!=std::string::npos||name.find("..")!=std::string::npos)continue;
-            loaded_index.emplace(line.substr(0,first),name);
+            if(!line.empty()&&line.back()=='\r')line.pop_back();
+            if(!line.empty())loaded_index.emplace(line,"");
         }
         {std::lock_guard<std::mutex> lock(cache_mutex);index.swap(loaded_index);}
         indexed=true;
         Log("Preview index loaded models=%llu directory=%ls",static_cast<unsigned long long>(index.size()),DataDirectory().c_str());
     }
     std::string token;
-    { std::lock_guard<std::mutex> lock(cache_mutex);if(requested==processed)return;token=requested;processed=token;ready.reset(); }
+    { std::lock_guard<std::mutex> lock(cache_mutex);
+        if(requested.empty()){processed.clear();return;}
+        if(requested==processed||GetTickCount64()-requested_at<250)return;
+        token=requested;processed=token;ready.reset(); }
     std::shared_ptr<Mesh> mesh;
     std::string status="garageman_unavailable";
     const auto found=index.find(token);
     Log("Preview requested token=%s indexed=%d",token.c_str(),found!=index.end());
     if(found!=index.end()) {
-        std::ifstream file(std::filesystem::path(DataDirectory())/L"previews"/found->second,std::ios::binary);
+        const auto revision=AssetsWorldRevision();
+        const auto obsolete=[&]{
+            if(cancelled()||!WorldLoaded()||AssetsWorldRevision()!=revision)return true;
+            std::lock_guard<std::mutex> lock(cache_mutex);return requested!=token;
+        };
+        const auto cache=std::filesystem::path(DataDirectory())/L"previews-lazy";
+        const auto find_cached=[&]{
+            std::ifstream entries(cache/L"index.tsv");std::string row,name;
+            while(std::getline(entries,row)){
+                const auto separator=row.find('\t');
+                if(separator!=std::string::npos&&row.substr(0,separator)==token){name=row.substr(separator+1);break;}
+            }
+            if(!name.empty()&&name.back()=='\r')name.pop_back();
+            if(name.empty()||name.find_first_not_of("0123456789abcdef.jdm")!=std::string::npos||name.find("..")!=std::string::npos)return std::string{};
+            std::error_code error;
+            return std::filesystem::is_regular_file(cache/name,error)?name:std::string{};
+        };
+        auto name=find_cached();
+        if(name.empty()&&!offline::Run(offline::PackageRoot(),offline::GameDirectory(),DataDirectory(),offline::GameHome(),obsolete,token)){
+            // Run has already joined/killed its process tree. Only this worker
+            // owns this generated request directory, so it cannot race a writer.
+            std::error_code cleanup_error;
+            const auto scratch=cache/L"request";
+            if(!std::filesystem::is_symlink(scratch,cleanup_error))std::filesystem::remove_all(scratch,cleanup_error);
+            std::lock_guard<std::mutex> lock(cache_mutex);
+            if(requested==token)message="garageman_unavailable";
+            return;
+        }
+        if(obsolete())return;
+        if(name.empty())name=find_cached();
+        if(name.empty()){
+            std::lock_guard<std::mutex> lock(cache_mutex);if(requested==token)message="garageman_unavailable";return;
+        }
+        std::error_code touched_error;
+        std::filesystem::last_write_time(cache/name,std::filesystem::file_time_type::clock::now(),touched_error);
+        std::ifstream file(std::filesystem::path(DataDirectory())/L"previews-lazy"/name,std::ios::binary);
         char magic[4]{};uint32_t expanded=0;file.read(magic,4);file.read(reinterpret_cast<char*>(&expanded),4);
         if(file&&std::string(magic,4)=="JDC2"&&expanded>=16&&expanded<=64*1024*1024) {
             std::vector<unsigned char> decoded(expanded);
@@ -265,7 +306,7 @@ void Pump() {
                 for(const auto& name:textures) {
                     std::vector<unsigned char> bytes;
                     if(!name.empty()) {
-                        std::ifstream input(std::filesystem::path(DataDirectory())/L"previews"/name,std::ios::binary|std::ios::ate);
+                        std::ifstream input(std::filesystem::path(DataDirectory())/L"previews-lazy"/name,std::ios::binary|std::ios::ate);
                         const auto length=input.tellg();
                         if(length>0&&length<16*1024*1024&&texture_bytes+static_cast<size_t>(length)<64*1024*1024) {
                             bytes.resize(static_cast<size_t>(length));input.seekg(0);input.read(reinterpret_cast<char*>(bytes.data()),bytes.size());
@@ -299,7 +340,7 @@ void ReleaseGpu() {
 bool HasModel(const std::string& token){std::lock_guard<std::mutex> lock(cache_mutex);return index.find(token)!=index.end();}
 void Draw(ID3D11Device* device,ID3D11DeviceContext* context,const std::string& token,float width,float height,bool interactive) {
     std::shared_ptr<const Mesh> mesh;std::string status;
-    {std::lock_guard<std::mutex> lock(cache_mutex);if(requested!=token){requested=token;ready.reset();message="loading";}
+    {std::lock_guard<std::mutex> lock(cache_mutex);if(requested!=token){requested=token;requested_at=GetTickCount64();ready.reset();message="loading";}
         mesh=ready;status=message;}
     const bool compiled=shaders_ready.load(std::memory_order_acquire);
     if(mesh&&!gpu_failed&&compiled) {

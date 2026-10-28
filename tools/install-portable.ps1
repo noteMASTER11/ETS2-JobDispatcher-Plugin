@@ -52,4 +52,4 @@ if([IO.Path]::GetFullPath($sourceDll) -ne [IO.Path]::GetFullPath($targetDll)){
 @{workers=[Math]::Max(1,$Workers);extra_mods=@($ModArchive|ForEach-Object{[IO.Path]::GetFullPath($_)})}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $DataDirectory 'offline-settings.json') -Encoding utf8
 @{version='0.1';game=$GameDirectory;dll=$targetDll;data=$DataDirectory;sha256=(Get-FileHash -LiteralPath $targetDll).Hash}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $DataDirectory 'installation.json') -Encoding utf8
 Write-Host "Installed: $targetDll"
-Write-Host 'No Internet connection is needed. Load a profile; models and translations will be prepared locally once.'
+Write-Host 'No Internet connection is needed. Profile loading prepares translations and a small index; previews are prepared only when selected.'
