@@ -153,6 +153,12 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
     if (detach_message && message == detach_message && wparam == subclass_id)
         return RemoveWindowSubclass(hwnd, WindowProc, subclass_id) ? 1 : 0;
     std::lock_guard<std::recursive_mutex> lock(ui_mutex);
+    if(hwnd==game_window&&message==WM_CLOSE){
+        SetInteractive(false,false);panel_open=false;
+        // The game destroys input objects before its SDK shutdown callback.
+        // Stock preview cameras retain those objects until their scene dies.
+        jd::preview::PrepareWindowClose();
+    }
     if (!stopping.load() && hwnd == game_window) {
         // Menus and the world map own all their mouse input, even before the
         // next Present has had a chance to release an active overlay capture.

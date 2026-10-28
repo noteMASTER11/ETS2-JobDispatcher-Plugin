@@ -179,6 +179,9 @@ int main(){
     for(auto* view:fixture::views){assert(view->AddRef()==2);view->Release();}
     ++fixture::revision;fixture::Prepare(request);assert(fixture::windows==2&&fixture::builds==4);
     fixture::driving=false;jd::preview::Frame();assert(fixture::disposed==2);
+    fixture::driving=true;fixture::Prepare(request);assert(fixture::windows==3);
+    jd::preview::PrepareWindowClose();assert(fixture::disposed==3);
+    fixture::Prepare(request);assert(fixture::windows==3); // Closing cannot recreate the scene.
     jd::preview::Shutdown();ImGui::DestroyContext();
     for(auto* view:fixture::views)view->Release();fixture::rtv->Release();fixture::texture->Release();fixture::context->Release();fixture::gpu->Release();
     std::cout<<"Native preview selection, debounce, paint, reuse, world reset and COM lifetime passed\n";

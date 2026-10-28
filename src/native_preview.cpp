@@ -14,6 +14,7 @@
 #include "native_string.hpp"
 #include "labels.hpp"
 #include <algorithm>
+#include <atomic>
 #include <cmath>
 #include <cstring>
 #include <mutex>
@@ -37,6 +38,7 @@ struct PreviewMailbox {
     float yaw=0,pitch=0,zoom=1;
 } mailbox;
 struct NativePreviewSession {
+    std::atomic<DWORD> owner{0};
     uintptr_t root=0,widget=0,camera_config=0;
     NativePreviewPolicy policy;
     unsigned native_world=0,native_device_epoch=0,observed_world=0,camera_rendered=0;
@@ -46,6 +48,7 @@ struct NativePreviewSession {
     uintptr_t current_resource=0;
     float original_positions[2][3]{};
 } session;
+std::atomic<bool> window_closing{false};
 
 template<class T> void Release(T*& object){if(object){object->Release();object=nullptr;}}
 using engine::Read;
@@ -196,6 +199,18 @@ void ReleaseGpu(){
     mailbox.visible=false;Release(mailbox.published);Release(mailbox.displayed);Release(mailbox.device);mailbox.failed=false;++mailbox.device_epoch;
 }
 void Shutdown(){DestroyNative();ReleaseGpu();}
+void PrepareWindowClose(){
+    window_closing=true;
+    const auto owner=session.owner.load();
+    if(!owner||owner==GetCurrentThreadId()){
+        Shutdown();
+        Log("Native preview released before game-window close, owner=%lu",owner);
+    }else{
+        // Never invoke world-owned objects from an unrelated window thread.
+        Suspend();
+        Log("Game-window close arrived outside preview owner, owner=%lu caller=%lu",owner,GetCurrentThreadId());
+    }
+}
 void QueueOrbit(float horizontal,float vertical,float wheel){
     std::lock_guard<std::mutex> lock(mailbox.mutex);
     mailbox.yaw+=horizontal;mailbox.pitch=std::clamp(mailbox.pitch+vertical,-1.1f,1.1f);
@@ -301,6 +316,8 @@ void PublishTexture(uintptr_t base,const FrameCommand& command,unsigned revision
 }
 }
 void Frame(){
+    DWORD unbound=0;session.owner.compare_exchange_strong(unbound,GetCurrentThreadId());
+    if(window_closing||session.owner.load()!=GetCurrentThreadId())return;
     auto command=ReadCommand();
     struct DeviceRef{ID3D11Device* p;~DeviceRef(){if(p)p->Release();}} device_ref{command.expected};
     const auto revision=AssetsWorldRevision();
@@ -312,6 +329,7 @@ void Frame(){
 }
 
 void DrawNative(ID3D11Device* draw_device,const Request& selection,float width,float height,bool interactive){
+    if(window_closing)return;
     ID3D11ShaderResourceView* view=nullptr;bool unavailable=false;
     {std::lock_guard<std::mutex> lock(mailbox.mutex);
         if(mailbox.device!=draw_device){Release(mailbox.published);Release(mailbox.device);mailbox.device=draw_device;if(mailbox.device)mailbox.device->AddRef();mailbox.failed=false;++mailbox.device_epoch;}

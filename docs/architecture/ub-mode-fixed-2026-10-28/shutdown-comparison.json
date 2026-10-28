@@ -1,0 +1,21 @@
+{
+  "target": "ETS2 1.61.1.9",
+  "profile_type": "PC_local",
+  "active_mods": 18,
+  "tested_dll_sha256": "e9671bbfe0884653fcd6c5247e5b675d28d235bb43bdbeb5b97f6bb618820128",
+  "comparison": {
+    "no_plugin_main_menu": "process manager shutdown; crash log unchanged",
+    "plugin_main_menu_without_preview": "plugin shutdown; process manager shutdown; crash log unchanged",
+    "plugin_preview_before_fix": "C0000025; input_object_t destructor; external reference remains",
+    "plugin_preview_after_fix": {
+      "process_exit_code": 0,
+      "preview_total_ms": 344,
+      "preview_owner_thread": 10216,
+      "early_release_logged": true,
+      "plugin_shutdown_logged": true,
+      "process_manager_shutdown_logged": true,
+      "crash_log_unchanged": true
+    }
+  },
+  "build_recheck": "All PE sections of rebuilt and game-tested DLLs match except the generated .buildid; the game-tested DLL is installed."
+}

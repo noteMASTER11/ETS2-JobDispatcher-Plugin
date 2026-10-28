@@ -1159,203 +1159,210 @@
     "name": "jd::preview::Release( T * & object)",
     "cc": 2,
     "lines": 1,
-    "start": 50
+    "start": 53
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::Base()",
     "cc": 1,
     "lines": 1,
-    "start": 55
+    "start": 58
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::Base()",
     "cc": 1,
     "lines": 1,
-    "start": 57
+    "start": 60
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::AbiMatches( uintptr_t base)",
     "cc": 5,
     "lines": 9,
-    "start": 59
+    "start": 62
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::NativeContext( uintptr_t base)",
     "cc": 4,
     "lines": 5,
-    "start": 71
+    "start": 74
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::ClearPublished()",
     "cc": 1,
     "lines": 1,
-    "start": 76
+    "start": 79
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::DisposeUnit( uintptr_t unit)",
     "cc": 3,
     "lines": 7,
-    "start": 77
+    "start": 80
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::DestroyNative()",
     "cc": 2,
     "lines": 9,
-    "start": 84
+    "start": 87
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::CreateNative( uintptr_t base , unsigned revision)",
     "cc": 10,
     "lines": 24,
-    "start": 95
+    "start": 98
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::CameraAspect()",
     "cc": 2,
     "lines": 5,
-    "start": 122
+    "start": 125
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::ApplyOrbit( uintptr_t base , float horizontal , float vertical , float distance)",
     "cc": 8,
     "lines": 29,
-    "start": 127
+    "start": 130
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::TextureView( uintptr_t base , ID3D11Device * expected , uint16_t & image_id , uintptr_t & resource)",
     "cc": 19,
     "lines": 27,
-    "start": 158
+    "start": 161
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::Fail( const char * reason , const Request & selection)",
     "cc": 3,
     "lines": 5,
-    "start": 186
+    "start": 189
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::Suspend()",
     "cc": 1,
     "lines": 1,
-    "start": 193
+    "start": 196
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::ReleaseGpu()",
     "cc": 1,
     "lines": 4,
-    "start": 194
+    "start": 197
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::Shutdown()",
     "cc": 1,
     "lines": 1,
-    "start": 198
+    "start": 201
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::PrepareWindowClose()",
+    "cc": 3,
+    "lines": 11,
+    "start": 202
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::QueueOrbit( float horizontal , float vertical , float wheel)",
     "cc": 1,
     "lines": 5,
-    "start": 199
+    "start": 214
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::ReadCommand()",
     "cc": 2,
     "lines": 7,
-    "start": 214
+    "start": 229
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::DrivingView( const FrameCommand & command)",
     "cc": 5,
     "lines": 4,
-    "start": 221
+    "start": 236
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::PrepareSession( FrameCommand & command , unsigned revision)",
     "cc": 7,
     "lines": 9,
-    "start": 225
+    "start": 240
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::SelectionReady( const FrameCommand & command)",
     "cc": 4,
     "lines": 3,
-    "start": 234
+    "start": 249
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::EnsureContext( uintptr_t base , const Request & selection)",
     "cc": 5,
     "lines": 13,
-    "start": 237
+    "start": 252
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::EnsureWidget( uintptr_t base , const FrameCommand & command , unsigned revision)",
     "cc": 3,
     "lines": 5,
-    "start": 251
+    "start": 266
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::AssignVehicle( uintptr_t base , const FrameCommand & command , unsigned revision , bool & assigned)",
     "cc": 3,
     "lines": 14,
-    "start": 256
+    "start": 271
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::ApplyCamera( uintptr_t base , const FrameCommand & command)",
     "cc": 5,
     "lines": 5,
-    "start": 270
+    "start": 285
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::AdvanceVehicle( uintptr_t base , const FrameCommand & command , bool assigned)",
     "cc": 7,
     "lines": 12,
-    "start": 275
+    "start": 290
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::PublishTexture( uintptr_t base , const FrameCommand & command , unsigned revision)",
     "cc": 7,
     "lines": 13,
-    "start": 289
+    "start": 304
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::Frame()",
-    "cc": 8,
-    "lines": 10,
-    "start": 303
+    "cc": 10,
+    "lines": 12,
+    "start": 318
   },
   {
     "file": "src/native_preview.cpp",
     "name": "jd::preview::DrawNative( ID3D11Device * draw_device , const Request & selection , float width , float height , bool interactive)",
-    "cc": 16,
-    "lines": 25,
-    "start": 314
+    "cc": 17,
+    "lines": 26,
+    "start": 331
   },
   {
     "file": "src/native_preview_policy.hpp",
@@ -1528,8 +1535,8 @@
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::WindowProc( HWND hwnd , UINT message , WPARAM wparam , LPARAM lparam , UINT_PTR , DWORD_PTR)",
-    "cc": 28,
-    "lines": 53,
+    "cc": 30,
+    "lines": 57,
     "start": 149
   },
   {
@@ -1537,161 +1544,161 @@
     "name": "jd::overlay::HookClip( const RECT * rect)",
     "cc": 4,
     "lines": 5,
-    "start": 206
+    "start": 212
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::HookWarp( int x , int y)",
     "cc": 4,
     "lines": 5,
-    "start": 211
+    "start": 217
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::HookCursor( HCURSOR cursor)",
     "cc": 4,
     "lines": 5,
-    "start": 216
+    "start": 222
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::Utf8( const std :: wstring & value)",
     "cc": 2,
     "lines": 9,
-    "start": 221
+    "start": 227
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::ConfigureStyle()",
     "cc": 1,
     "lines": 17,
-    "start": 230
+    "start": 236
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::CreateTarget( IDXGISwapChain * chain)",
     "cc": 2,
     "lines": 8,
-    "start": 247
+    "start": 253
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::PinSelfForResidualSubclass()",
     "cc": 1,
     "lines": 6,
-    "start": 255
+    "start": 261
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::RemoveSubclass( HWND hwnd)",
     "cc": 9,
     "lines": 12,
-    "start": 261
+    "start": 267
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::DestroyUi()",
     "cc": 4,
     "lines": 21,
-    "start": 274
+    "start": 280
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::AttachUi( IDXGISwapChain * chain)",
     "cc": 16,
     "lines": 54,
-    "start": 295
+    "start": 301
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::SelectedLabel( const std :: vector<Choice> & choices , std :: uint64_t id , const char * auto_label)",
     "cc": 5,
     "lines": 5,
-    "start": 349
+    "start": 355
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::ChoiceCombo( const char * id , const char * label , const std :: vector<Choice> & choices , std :: uint64_t & selected , char * search , std :: size_t search_size , const char * auto_label = nullptr)",
     "cc": 9,
     "lines": 32,
-    "start": 354
+    "start": 360
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::DrawPanel()",
     "cc": 45,
     "lines": 85,
-    "start": 386
+    "start": 392
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::DrawIcon()",
     "cc": 6,
     "lines": 32,
-    "start": 471
+    "start": 477
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::Render()",
     "cc": 13,
     "lines": 33,
-    "start": 503
+    "start": 509
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::HookPresent( IDXGISwapChain * chain , UINT interval , UINT flags)",
     "cc": 19,
     "lines": 33,
-    "start": 537
+    "start": 543
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::HookResize( IDXGISwapChain * chain , UINT count , UINT width , UINT height , DXGI_FORMAT format , UINT flags)",
     "cc": 7,
     "lines": 15,
-    "start": 570
+    "start": 576
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::AddHook( * target , * callback , ** original)",
     "cc": 2,
     "lines": 6,
-    "start": 585
+    "start": 591
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::RemoveHooks()",
     "cc": 2,
     "lines": 4,
-    "start": 591
+    "start": 597
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::Start()",
     "cc": 17,
     "lines": 71,
-    "start": 597
+    "start": 603
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::Stop()",
     "cc": 4,
     "lines": 20,
-    "start": 668
+    "start": 674
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::Inspect()",
     "cc": 4,
     "lines": 6,
-    "start": 690
+    "start": 696
   },
   {
     "file": "src/overlay.cpp",
     "name": "jd::overlay::QueueTestPanel( bool open)",
     "cc": 2,
     "lines": 1,
-    "start": 696
+    "start": 702
   },
   {
     "file": "src/overlay_model.hpp",
