@@ -1,0 +1,10 @@
+coverage==7.17.0
+-e git+https://github.com/unclebob/crapper.git@6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d#egg=crapper
+-e git+https://github.com/unclebob/dryer.git@66ff6d21a42c04afcad89c78a80066176d1294b0#egg=dryer
+lizard==1.24.3
+-e git+https://github.com/unclebob/mutator.git@a5a0cb803b66e0cdb8bf471b3b08af701d424a41#egg=mutator
+pathspec==1.1.1
+Pygments==2.21.0
+tree-sitter==0.26.0
+tree-sitter-cpp==0.23.4
+tree-sitter-language-pack==1.22.1

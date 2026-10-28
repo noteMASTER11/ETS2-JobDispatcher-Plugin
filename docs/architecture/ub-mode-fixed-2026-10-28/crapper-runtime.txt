@@ -1,0 +1,30 @@
+CRAP Report
+===========
+Languages: python
+
+Function                       Namespace                             CC    Cov%     CRAP
+----------------------------------------------------------------------------------------
+load                           tools.prepare-locales                  8 100.0%      8.0
+excluded_countries             tools.prepare-game-assets              7  83.3%      7.2
+fingerprint                    tools.offline-bootstrap                7  90.0%      7.0
+active_records                 tools.offline-bootstrap                7 100.0%      7.0
+mod_candidates                 tools.offline-bootstrap                6 100.0%      6.0
+locale_values                  tools.prepare-locales                  6 100.0%      6.0
+active_mods                    tools.offline-bootstrap                5 100.0%      5.0
+cache_current                  tools.offline-bootstrap                5 100.0%      5.0
+clean_work                     tools.offline-bootstrap                5 100.0%      5.0
+main                           tools.prepare-locales                  4  75.0%      4.2
+prepare                        tools.offline-bootstrap                4 100.0%      4.0
+extract                        tools.prepare-game-assets              4 100.0%      4.0
+main                           tools.offline-bootstrap                3 100.0%      3.0
+mounted_devices                tools.offline-bootstrap                3 100.0%      3.0
+unquote                        tools.prepare-locales                  3 100.0%      3.0
+archive_mounts                 tools.prepare-game-assets              2 100.0%      2.0
+extract_mod_locales            tools.prepare-game-assets              2 100.0%      2.0
+main                           tools.prepare-game-assets              2 100.0%      2.0
+parse_args                     tools.prepare-game-assets              2 100.0%      2.0
+write_language                 tools.prepare-locales                  2 100.0%      2.0
+preparation_command            tools.offline-bootstrap                1 100.0%      1.0
+write_marker                   tools.offline-bootstrap                1 100.0%      1.0
+write                          tools.prepare-locales                  1 100.0%      1.0
+Wrote D:\ChatGPT\Temp\ets2-ub-mode-fixed-20261028\.metrics\crap.edn

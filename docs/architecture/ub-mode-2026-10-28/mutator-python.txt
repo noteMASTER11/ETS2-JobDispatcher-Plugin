@@ -1,0 +1,77 @@
+Wrote D:/ChatGPT/Temp/ets2-ub-mode-20261028/.metrics/mutate/tools.offline-bootstrap.edn
+KILLED    tools/offline-bootstrap.py:11 1 -> 0
+SURVIVED  tools/offline-bootstrap.py:13 1 -> 0
+SURVIVED  tools/offline-bootstrap.py:16 1 -> 0
+KILLED    tools/offline-bootstrap.py:20 == -> !=
+SURVIVED  tools/offline-bootstrap.py:20 == -> !=
+SURVIVED  tools/offline-bootstrap.py:21 delete not
+SURVIVED  tools/offline-bootstrap.py:21 and -> or
+SURVIVED  tools/offline-bootstrap.py:21 == -> !=
+SURVIVED  tools/offline-bootstrap.py:22 / -> *
+SURVIVED  tools/offline-bootstrap.py:22 / -> *
+SURVIVED  tools/offline-bootstrap.py:22 + -> -
+SURVIVED  tools/offline-bootstrap.py:23 delete not
+SURVIVED  tools/offline-bootstrap.py:23 and -> or
+SURVIVED  tools/offline-bootstrap.py:23 == -> !=
+SURVIVED  tools/offline-bootstrap.py:24 / -> *
+SURVIVED  tools/offline-bootstrap.py:24 / -> *
+UNCOVERED tools/offline-bootstrap.py:25 + -> -
+SURVIVED  tools/offline-bootstrap.py:27 and -> or
+KILLED    tools/offline-bootstrap.py:32 / -> *
+KILLED    tools/offline-bootstrap.py:33 + -> -
+KILLED    tools/offline-bootstrap.py:43 / -> *
+SURVIVED  tools/offline-bootstrap.py:45 True -> False
+UNCOVERED tools/offline-bootstrap.py:50 / -> *
+UNCOVERED tools/offline-bootstrap.py:53 / -> *
+UNCOVERED tools/offline-bootstrap.py:56 == -> !=
+UNCOVERED tools/offline-bootstrap.py:56 and -> or
+UNCOVERED tools/offline-bootstrap.py:56 == -> !=
+UNCOVERED tools/offline-bootstrap.py:56 and -> or
+UNCOVERED tools/offline-bootstrap.py:56 / -> *
+UNCOVERED tools/offline-bootstrap.py:56 and -> or
+UNCOVERED tools/offline-bootstrap.py:56 / -> *
+UNCOVERED tools/offline-bootstrap.py:57 True -> False
+UNCOVERED tools/offline-bootstrap.py:59 != -> ==
+UNCOVERED tools/offline-bootstrap.py:61 / -> *
+UNCOVERED tools/offline-bootstrap.py:61 / -> *
+UNCOVERED tools/offline-bootstrap.py:62 / -> *
+UNCOVERED tools/offline-bootstrap.py:63 and -> or
+UNCOVERED tools/offline-bootstrap.py:63 delete not
+UNCOVERED tools/offline-bootstrap.py:63 and -> or
+UNCOVERED tools/offline-bootstrap.py:63 == -> !=
+UNCOVERED tools/offline-bootstrap.py:63 and -> or
+UNCOVERED tools/offline-bootstrap.py:63 == -> !=
+UNCOVERED tools/offline-bootstrap.py:65 / -> *
+UNCOVERED tools/offline-bootstrap.py:66 1 -> 0
+UNCOVERED tools/offline-bootstrap.py:68 True -> False
+UNCOVERED tools/offline-bootstrap.py:69 True -> False
+UNCOVERED tools/offline-bootstrap.py:71 False -> True
+UNCOVERED tools/offline-bootstrap.py:74 and -> or
+UNCOVERED tools/offline-bootstrap.py:74 delete not
+UNCOVERED tools/offline-bootstrap.py:74 and -> or
+UNCOVERED tools/offline-bootstrap.py:74 == -> !=
+UNCOVERED tools/offline-bootstrap.py:74 and -> or
+UNCOVERED tools/offline-bootstrap.py:74 == -> !=
+UNCOVERED tools/offline-bootstrap.py:80 True -> False
+UNCOVERED tools/offline-bootstrap.py:81 True -> False
+UNCOVERED tools/offline-bootstrap.py:82 True -> False
+UNCOVERED tools/offline-bootstrap.py:83 True -> False
+UNCOVERED tools/offline-bootstrap.py:87 True -> False
+UNCOVERED tools/offline-bootstrap.py:87 True -> False
+UNCOVERED tools/offline-bootstrap.py:89 / -> *
+UNCOVERED tools/offline-bootstrap.py:91 1 -> 0
+UNCOVERED tools/offline-bootstrap.py:93 / -> *
+UNCOVERED tools/offline-bootstrap.py:93 True -> False
+UNCOVERED tools/offline-bootstrap.py:95 True -> False
+UNCOVERED tools/offline-bootstrap.py:96 / -> *
+UNCOVERED tools/offline-bootstrap.py:96 1 -> 0
+UNCOVERED tools/offline-bootstrap.py:101 1 -> 0
+UNCOVERED tools/offline-bootstrap.py:102 0 -> 1
+Function    Namespace                Killed  Survived  Uncovered  Sites   Score
+-------------------------------------------------------------------------------
+main        tools.offline-bootstrap       0         0         15     15    n/a
+prepare     tools.offline-bootstrap       0         0         31     31    n/a
+active_mods tools.offline-bootstrap       2        15          1     18  11.8%
+fingerprint tools.offline-bootstrap       3         1          0      4  75.0%
+-------------------------------------------------------------------------------
+Total                                     5        16         47     68   23.8%

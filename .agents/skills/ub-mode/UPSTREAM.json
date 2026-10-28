@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/unclebob/ub-mode",
+  "ref": "57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f",
+  "branch_at_installation": "master",
+  "installed_on": "2026-10-28",
+  "scope": "project",
+  "skill_sha256": "4120873db2e3681ea9b7de4d7105fc9d3406657c9ada91ce77b9b3c4962f3202",
+  "companion_tools": {
+    "crapper": "6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d",
+    "dryer": "66ff6d21a42c04afcad89c78a80066176d1294b0",
+    "mutator": "a5a0cb803b66e0cdb8bf471b3b08af701d424a41"
+  },
+  "limitations": "These companion revisions support Python but do not analyze C++ sources."
+}

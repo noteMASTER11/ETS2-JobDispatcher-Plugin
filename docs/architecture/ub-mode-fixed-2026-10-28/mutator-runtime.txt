@@ -1,0 +1,77 @@
+Wrote D:/ChatGPT/Temp/ets2-ub-mode-fixed-20261028/.metrics/mutate/tools.offline-bootstrap.edn
+KILLED    tools/offline-bootstrap.py:11 1 -> 0
+KILLED    tools/offline-bootstrap.py:13 1 -> 0
+KILLED    tools/offline-bootstrap.py:15 1 -> 0
+KILLED    tools/offline-bootstrap.py:16 or -> and
+KILLED    tools/offline-bootstrap.py:16 != -> ==
+KILLED    tools/offline-bootstrap.py:24 1 -> 0
+KILLED    tools/offline-bootstrap.py:30 == -> !=
+KILLED    tools/offline-bootstrap.py:31 == -> !=
+KILLED    tools/offline-bootstrap.py:32 or -> and
+KILLED    tools/offline-bootstrap.py:32 / -> *
+KILLED    tools/offline-bootstrap.py:32 / -> *
+KILLED    tools/offline-bootstrap.py:32 + -> -
+KILLED    tools/offline-bootstrap.py:34 / -> *
+KILLED    tools/offline-bootstrap.py:34 / -> *
+KILLED    tools/offline-bootstrap.py:35 or -> and
+KILLED    tools/offline-bootstrap.py:35 + -> -
+KILLED    tools/offline-bootstrap.py:44 delete not
+KILLED    tools/offline-bootstrap.py:51 / -> *
+KILLED    tools/offline-bootstrap.py:52 + -> -
+KILLED    tools/offline-bootstrap.py:62 / -> *
+KILLED    tools/offline-bootstrap.py:69 False -> True
+KILLED    tools/offline-bootstrap.py:70 == -> !=
+KILLED    tools/offline-bootstrap.py:70 and -> or
+KILLED    tools/offline-bootstrap.py:70 == -> !=
+KILLED    tools/offline-bootstrap.py:71 and -> or
+KILLED    tools/offline-bootstrap.py:71 / -> *
+KILLED    tools/offline-bootstrap.py:71 and -> or
+KILLED    tools/offline-bootstrap.py:71 / -> *
+KILLED    tools/offline-bootstrap.py:75 and -> or
+KILLED    tools/offline-bootstrap.py:75 delete not
+KILLED    tools/offline-bootstrap.py:75 and -> or
+KILLED    tools/offline-bootstrap.py:75 == -> !=
+KILLED    tools/offline-bootstrap.py:75 and -> or
+KILLED    tools/offline-bootstrap.py:75 == -> !=
+KILLED    tools/offline-bootstrap.py:80 1 -> 0
+KILLED    tools/offline-bootstrap.py:81 / -> *
+KILLED    tools/offline-bootstrap.py:83 + -> -
+SURVIVED  tools/offline-bootstrap.py:88 False -> True
+KILLED    tools/offline-bootstrap.py:94 / -> *
+KILLED    tools/offline-bootstrap.py:97 / -> *
+SURVIVED  tools/offline-bootstrap.py:99 True -> False
+KILLED    tools/offline-bootstrap.py:101 != -> ==
+KILLED    tools/offline-bootstrap.py:103 / -> *
+KILLED    tools/offline-bootstrap.py:103 / -> *
+KILLED    tools/offline-bootstrap.py:104 / -> *
+SURVIVED  tools/offline-bootstrap.py:106 True -> False
+KILLED    tools/offline-bootstrap.py:108 True -> False
+KILLED    tools/offline-bootstrap.py:115 True -> False
+KILLED    tools/offline-bootstrap.py:116 True -> False
+KILLED    tools/offline-bootstrap.py:117 True -> False
+KILLED    tools/offline-bootstrap.py:118 True -> False
+KILLED    tools/offline-bootstrap.py:122 True -> False
+KILLED    tools/offline-bootstrap.py:122 True -> False
+KILLED    tools/offline-bootstrap.py:124 / -> *
+KILLED    tools/offline-bootstrap.py:128 / -> *
+KILLED    tools/offline-bootstrap.py:128 True -> False
+KILLED    tools/offline-bootstrap.py:130 True -> False
+KILLED    tools/offline-bootstrap.py:131 / -> *
+KILLED    tools/offline-bootstrap.py:131 1 -> 0
+KILLED    tools/offline-bootstrap.py:136 1 -> 0
+KILLED    tools/offline-bootstrap.py:137 0 -> 1
+Function            Namespace                Killed  Survived  Uncovered  Sites   Score
+---------------------------------------------------------------------------------------
+write_marker        tools.offline-bootstrap       0         1          0      1   0.0%
+prepare             tools.offline-bootstrap       7         2          0      9  77.8%
+active_mods         tools.offline-bootstrap       1         0          0      1 100.0%
+active_records      tools.offline-bootstrap       5         0          0      5 100.0%
+cache_current       tools.offline-bootstrap       8         0          0      8 100.0%
+clean_work          tools.offline-bootstrap       6         0          0      6 100.0%
+fingerprint         tools.offline-bootstrap       3         0          0      3 100.0%
+main                tools.offline-bootstrap      14         0          0     14 100.0%
+mod_candidates      tools.offline-bootstrap      10         0          0     10 100.0%
+mounted_devices     tools.offline-bootstrap       1         0          0      1 100.0%
+preparation_command tools.offline-bootstrap       3         0          0      3 100.0%
+---------------------------------------------------------------------------------------
+Total                                            58         3          0     61   95.1%

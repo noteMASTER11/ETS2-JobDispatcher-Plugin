@@ -1,0 +1,52 @@
+CRAP Report
+Wrote D:\ChatGPT\Temp\ets2-ub-mode-20261028\.metrics\crap.edn
+===========
+Languages: python
+
+Function                       Namespace                             CC    Cov%     CRAP
+----------------------------------------------------------------------------------------
+main                           tools.prepare-previews                47   0.0%   2256.0
+make_part                      tools.prepare-textured-previews       35   0.0%   1260.0
+geometry                       tools.prepare-previews                28   0.0%    812.0
+assemble                       tools.prepare-textured-previews       33  30.0%    406.5
+check                          tools.check-native-preview-abi        17   0.0%    306.0
+collect                        tools.preview-scene                   17   0.0%    306.0
+prepare                        tools.offline-bootstrap               16   0.0%    272.0
+main                           tools.prepare-textured-previews       16   0.0%    272.0
+texture_file                   tools.prepare-textured-previews       15   0.0%    240.0
+main                           tools.prepare-game-assets             14   0.0%    210.0
+collect                        tools.prepare-textured-previews       24  46.2%    113.9
+load                           tools.prepare-locales                  8   0.0%     72.0
+prepare                        tools.lazy-preview                    37  84.6%     42.0
+cargo_instances                tools.preview-scene                   16  66.7%     25.5
+active_mods                    tools.offline-bootstrap               19  83.3%     20.7
+publish                        tools.lazy-preview                    16  91.7%     16.1
+locators                       tools.preview-scene                   11  78.6%     12.2
+unquote                        tools.prepare-locales                  3   0.0%     12.0
+make_part                      tools.prepare-previews                 3   0.0%     12.0
+native_pack                    tools.prepare-textured-previews        3   0.0%     12.0
+blocks                         tools.prepare-previews                11 100.0%     11.0
+main                           tools.offline-bootstrap                3   4.0%     11.0
+retire_legacy                  tools.lazy-preview                    10  83.3%     10.5
+sii_units                      tools.prepare-textured-previews       10  87.5%     10.2
+choose_load                    tools.preview-scene                    7  70.0%      8.3
+fingerprint                    tools.offline-bootstrap                7  90.0%      7.0
+rows                           tools.prepare-previews                 2   0.0%      6.0
+trailer_poses                  tools.preview-scene                    6 100.0%      6.0
+reset                          tools.lazy-preview                     3  50.0%      4.1
+transform_mesh                 tools.preview-scene                    3  75.0%      3.1
+field                          tools.prepare-previews                 3 100.0%      3.0
+model_def                      tools.prepare-previews                 3 100.0%      3.0
+read_sii                       tools.prepare-previews                 2  50.0%      2.5
+rotate                         tools.preview-scene                    2  50.0%      2.5
+read_components                tools.lazy-preview                     2  66.7%      2.1
+read_entries                   tools.lazy-preview                     2  66.7%      2.1
+write                          tools.prepare-locales                  1   0.0%      2.0
+number                         tools.prepare-previews                 2 100.0%      2.0
+euler                          tools.preview-scene                    2 100.0%      2.0
+transform                      tools.preview-scene                    2 100.0%      2.0
+vector                         tools.preview-scene                    2 100.0%      2.0
+atomic_json                    tools.lazy-preview                     1 100.0%      1.0
+read_part                      tools.prepare-textured-previews        1 100.0%      1.0
+compose                        tools.preview-scene                    1 100.0%      1.0
+multiply                       tools.preview-scene                    1 100.0%      1.0

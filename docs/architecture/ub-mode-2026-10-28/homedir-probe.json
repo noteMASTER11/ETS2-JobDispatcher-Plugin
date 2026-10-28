@@ -1,0 +1,8 @@
+{
+  "source": "src/offline_assets.cpp:GameHome and tools/offline-bootstrap.py:active_mods",
+  "homedir_argument_is_parent": true,
+  "log_at_returned_path_exists": false,
+  "log_at_actual_home_exists": true,
+  "mods_found_with_current_GameHome_contract": 0,
+  "mods_found_with_game_reported_home": 18
+}

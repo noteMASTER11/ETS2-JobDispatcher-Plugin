@@ -1,0 +1,24 @@
+Active profile selection, mod order and cache invalidation passed
+Loaded trailer body attachment, custom offset/rotation, area placement and closed-body cases passed
+Separate trailer units, accessory references and definition aliases passed
+Prepared selected preview: cargo.chosen models: 1
+Selected preview cache hit: cargo.chosen
+Prepared selected preview: trailer.chosen models: 1
+Prepared selected preview: trailer.lowbed|cargo.chosen|1 models: 2
+Selected preview cache hit: trailer.lowbed|cargo.chosen|1
+Prepared selected preview: trailer.lowbed|cargo.hidden|53 models: 0
+Selected preview cache hit: trailer.lowbed|cargo.other_hidden|20
+Selected-only conversion, wheel dependencies, cache hit, failure cleanup and bounded eviction passed
+Name                                 Stmts   Miss Branch BrPart  Cover
+----------------------------------------------------------------------
+tools\check-native-preview-abi.py       48     48     28      0     0%
+tools\lazy-preview.py                  136      4     46      7    94%
+tools\offline-bootstrap.py              91     53     32      4    47%
+tools\prepare-game-assets.py            41     41     16      0     0%
+tools\prepare-locales.py                49     49     24      0     0%
+tools\prepare-previews.py              197    165    104      1    14%
+tools\prepare-textured-previews.py     257    174    140     13    29%
+tools\preview-scene.py                 148     33     82     14    68%
+tools\verify-previews.py                51     51     16      0     0%
+----------------------------------------------------------------------
+TOTAL                                 1018    618    488     39    36%

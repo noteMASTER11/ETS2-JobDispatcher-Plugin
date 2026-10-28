@@ -1,0 +1,1773 @@
+[
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::LoadExcludedCountries()",
+    "cc": 7,
+    "lines": 7,
+    "start": 67
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Setting( uintptr_t rva)",
+    "cc": 7,
+    "lines": 14,
+    "start": 83
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::SameRoute( const Request & a , const Request & b)",
+    "cc": 2,
+    "lines": 1,
+    "start": 97
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::SameSelection( const Request & a , const Request & b)",
+    "cc": 3,
+    "lines": 3,
+    "start": 98
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::String( uintptr_t s)",
+    "cc": 3,
+    "lines": 6,
+    "start": 101
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::PointerLabel( const char * kind , uintptr_t p)",
+    "cc": 1,
+    "lines": 5,
+    "start": 107
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::DecodeToken( uint64_t token)",
+    "cc": 4,
+    "lines": 12,
+    "start": 112
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::UnitPath( uintptr_t unit)",
+    "cc": 8,
+    "lines": 17,
+    "start": 124
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ExactExecutable()",
+    "cc": 11,
+    "lines": 24,
+    "start": 141
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CargoLabel( uintptr_t cargo)",
+    "cc": 2,
+    "lines": 4,
+    "start": 165
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Code( uintptr_t rva , const unsigned char * bytes , size_t size)",
+    "cc": 2,
+    "lines": 3,
+    "start": 169
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::HasCargoBody( uintptr_t cargo , uintptr_t definition)",
+    "cc": 7,
+    "lines": 8,
+    "start": 172
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::TrailerDelivery( uintptr_t cargo , uintptr_t definition)",
+    "cc": 4,
+    "lines": 5,
+    "start": 181
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CargoCapacity( uintptr_t economy , uintptr_t cargo , uintptr_t definition)",
+    "cc": 10,
+    "lines": 15,
+    "start": 189
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Quote( uintptr_t economy , const Request & request , uint32_t units , const RouteResult & route)",
+    "cc": 9,
+    "lines": 15,
+    "start": 205
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::FindLivePrototype( uintptr_t economy , uintptr_t requested_definition , uintptr_t cargo)",
+    "cc": 22,
+    "lines": 25,
+    "start": 222
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Retain( uintptr_t unit)",
+    "cc": 2,
+    "lines": 1,
+    "start": 247
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Release( uintptr_t unit)",
+    "cc": 3,
+    "lines": 5,
+    "start": 248
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::DisposeOwned( uintptr_t unit)",
+    "cc": 2,
+    "lines": 6,
+    "start": 253
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ValidateRequest( const Request & request , uintptr_t economy)",
+    "cc": 26,
+    "lines": 26,
+    "start": 259
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ParkingSlots( uintptr_t parking , uintptr_t offers , size_t count , size_t limit)",
+    "cc": 5,
+    "lines": 9,
+    "start": 285
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::NativeOfferStore::ReadSlot( size_t slot)",
+    "cc": 1,
+    "lines": 1,
+    "start": 296
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::NativeOfferStore::WriteSlot( size_t slot , uintptr_t value)",
+    "cc": 1,
+    "lines": 1,
+    "start": 297
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::NativeOfferStore::Count()",
+    "cc": 1,
+    "lines": 1,
+    "start": 298
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::NativeOfferStore::SetCount( uint64_t value)",
+    "cc": 1,
+    "lines": 1,
+    "start": 299
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::NativeOfferStore::Retain( uintptr_t unit)",
+    "cc": 1,
+    "lines": 1,
+    "start": 300
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::NativeOfferStore::Release( uintptr_t unit)",
+    "cc": 1,
+    "lines": 1,
+    "start": 301
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::NativeOfferStore::Dispose( uintptr_t unit)",
+    "cc": 1,
+    "lines": 1,
+    "start": 302
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::NativeOfferStore::Refresh()",
+    "cc": 1,
+    "lines": 4,
+    "start": 303
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ResolveOfferVehicle( const domain :: ValidatedJob & request , uintptr_t economy , OfferPlan & plan)",
+    "cc": 10,
+    "lines": 20,
+    "start": 315
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::PrepareOfferParking( const domain :: ValidatedJob & request , uintptr_t economy , OfferPlan & plan)",
+    "cc": 13,
+    "lines": 22,
+    "start": 337
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ConstructOffer( const domain :: ValidatedJob & request , uintptr_t economy , const RouteResult & route , const OfferPlan & plan , uintptr_t & job)",
+    "cc": 5,
+    "lines": 26,
+    "start": 361
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::GenerateValidated( const domain :: ValidatedJob & request , uintptr_t economy , const RouteResult & route)",
+    "cc": 7,
+    "lines": 31,
+    "start": 390
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Generate( const Request & request , uintptr_t economy , const RouteResult & route)",
+    "cc": 2,
+    "lines": 4,
+    "start": 421
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Publish( Snapshot next)",
+    "cc": 1,
+    "lines": 1,
+    "start": 425
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CollectRegisteredVariants( uintptr_t world , CatalogueScan & scan)",
+    "cc": 6,
+    "lines": 7,
+    "start": 434
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CollectTrailerDefinitions( uintptr_t world , CatalogueScan & scan)",
+    "cc": 11,
+    "lines": 11,
+    "start": 441
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CompanyChoice( uintptr_t company , uintptr_t permanent)",
+    "cc": 5,
+    "lines": 12,
+    "start": 452
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CollectCompanyCargo( uintptr_t permanent , CatalogueScan & scan)",
+    "cc": 6,
+    "lines": 11,
+    "start": 464
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CollectCompanyPoint( uintptr_t company , uintptr_t map_item , Snapshot & next , CatalogueScan & scan)",
+    "cc": 3,
+    "lines": 12,
+    "start": 475
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CollectCompanyOffers( uintptr_t company , CatalogueScan & scan)",
+    "cc": 8,
+    "lines": 18,
+    "start": 487
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::CollectCompany( uintptr_t company , Snapshot & next , CatalogueScan & scan)",
+    "cc": 7,
+    "lines": 13,
+    "start": 505
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::BuildVehicleChoices( uintptr_t economy , Snapshot & next , const CatalogueScan & scan)",
+    "cc": 25,
+    "lines": 36,
+    "start": 519
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Catalogue( uintptr_t economy)",
+    "cc": 9,
+    "lines": 30,
+    "start": 555
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Initialize()",
+    "cc": 6,
+    "lines": 19,
+    "start": 587
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::FinishRequest( std :: string message)",
+    "cc": 1,
+    "lines": 11,
+    "start": 607
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ApplyPreparedAssets()",
+    "cc": 7,
+    "lines": 8,
+    "start": 618
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::UpdateSettings( uintptr_t economy)",
+    "cc": 14,
+    "lines": 35,
+    "start": 626
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::InvalidateCatalogue()",
+    "cc": 2,
+    "lines": 12,
+    "start": 661
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::RefreshCatalogue( uintptr_t economy , const TelemetrySample & live)",
+    "cc": 8,
+    "lines": 9,
+    "start": 673
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::UpdateJobNavigation( uintptr_t economy , const TelemetrySample & live)",
+    "cc": 7,
+    "lines": 11,
+    "start": 682
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ApplySurprise( const TelemetrySample & live)",
+    "cc": 15,
+    "lines": 33,
+    "start": 693
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ApplySelection( uintptr_t economy)",
+    "cc": 22,
+    "lines": 30,
+    "start": 726
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ProcessSubmission( uintptr_t economy)",
+    "cc": 10,
+    "lines": 20,
+    "start": 756
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::AdvanceRoute( uintptr_t economy)",
+    "cc": 11,
+    "lines": 24,
+    "start": 776
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::UpdateNearestCompany( const TelemetrySample & live)",
+    "cc": 8,
+    "lines": 19,
+    "start": 800
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::UpdatePrice( uintptr_t economy)",
+    "cc": 12,
+    "lines": 16,
+    "start": 819
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::AdvanceCatalogueAudit( uintptr_t economy)",
+    "cc": 8,
+    "lines": 14,
+    "start": 835
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Frame()",
+    "cc": 10,
+    "lines": 24,
+    "start": 850
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::ReadSnapshot()",
+    "cc": 1,
+    "lines": 1,
+    "start": 875
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::UpdateSnapshot( Snapshot & target)",
+    "cc": 3,
+    "lines": 15,
+    "start": 876
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Submit( const Request & request)",
+    "cc": 4,
+    "lines": 5,
+    "start": 891
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Select( const Request & request)",
+    "cc": 2,
+    "lines": 4,
+    "start": 896
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Surprise( float mass_percent , float distance_percent)",
+    "cc": 3,
+    "lines": 5,
+    "start": 900
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::RequestAudit()",
+    "cc": 1,
+    "lines": 1,
+    "start": 905
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::RequestRefresh()",
+    "cc": 1,
+    "lines": 1,
+    "start": 906
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::BuildPreviewVehicle( const Request & request)",
+    "cc": 25,
+    "lines": 36,
+    "start": 907
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::DisposePreviewVehicle( uintptr_t unit)",
+    "cc": 1,
+    "lines": 1,
+    "start": 943
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::MarkWorldLoaded( bool loaded)",
+    "cc": 5,
+    "lines": 8,
+    "start": 944
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::AssetsReady()",
+    "cc": 1,
+    "lines": 1,
+    "start": 952
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::WorldLoaded()",
+    "cc": 1,
+    "lines": 1,
+    "start": 953
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::AssetsWorldRevision()",
+    "cc": 1,
+    "lines": 1,
+    "start": 954
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::AssetsPrepared( unsigned revision)",
+    "cc": 1,
+    "lines": 4,
+    "start": 955
+  },
+  {
+    "file": "src/dispatch.cpp",
+    "name": "jd::Shutdown()",
+    "cc": 1,
+    "lines": 1,
+    "start": 960
+  },
+  {
+    "file": "src/display_units.hpp",
+    "name": "jd::units::Distance( double metres , bool miles)",
+    "cc": 2,
+    "lines": 1,
+    "start": 7
+  },
+  {
+    "file": "src/display_units.hpp",
+    "name": "jd::units::Mass( double kg , const std :: string & unit)",
+    "cc": 8,
+    "lines": 7,
+    "start": 8
+  },
+  {
+    "file": "src/display_units.hpp",
+    "name": "jd::units::Number( double value , bool decimal_comma , int precision = 0)",
+    "cc": 2,
+    "lines": 4,
+    "start": 15
+  },
+  {
+    "file": "src/display_units.hpp",
+    "name": "jd::units::DecimalComma( const std :: string & language)",
+    "cc": 5,
+    "lines": 4,
+    "start": 19
+  },
+  {
+    "file": "src/display_units.hpp",
+    "name": "jd::units::RealMinutes( double road_metres , double scale)",
+    "cc": 6,
+    "lines": 4,
+    "start": 23
+  },
+  {
+    "file": "src/engine_memory.hpp",
+    "name": "jd::engine::Region( uintptr_t address , size_t bytes , MEMORY_BASIC_INFORMATION & info)",
+    "cc": 7,
+    "lines": 6,
+    "start": 16
+  },
+  {
+    "file": "src/engine_memory.hpp",
+    "name": "jd::engine::Readable( uintptr_t address , size_t bytes)",
+    "cc": 1,
+    "lines": 3,
+    "start": 22
+  },
+  {
+    "file": "src/engine_memory.hpp",
+    "name": "jd::engine::Read( uintptr_t address , T fallback = { })",
+    "cc": 2,
+    "lines": 5,
+    "start": 25
+  },
+  {
+    "file": "src/engine_memory.hpp",
+    "name": "jd::engine::Write( uintptr_t address , const T & value)",
+    "cc": 3,
+    "lines": 7,
+    "start": 30
+  },
+  {
+    "file": "src/engine_route.cpp",
+    "name": "jd::Native( std :: uintptr_t rva)",
+    "cc": 1,
+    "lines": 3,
+    "start": 20
+  },
+  {
+    "file": "src/engine_route.cpp",
+    "name": "jd::Object()",
+    "cc": 1,
+    "lines": 1,
+    "start": 23
+  },
+  {
+    "file": "src/engine_route.cpp",
+    "name": "jd::CancelRoute()",
+    "cc": 2,
+    "lines": 8,
+    "start": 26
+  },
+  {
+    "file": "src/engine_route.cpp",
+    "name": "jd::BeginRoute( std :: uintptr_t executable_base , std :: uintptr_t source_company , std :: uintptr_t destination_company , std :: string & error)",
+    "cc": 8,
+    "lines": 29,
+    "start": 36
+  },
+  {
+    "file": "src/engine_route.cpp",
+    "name": "jd::PollRoute( RouteResult & result , std :: string & error)",
+    "cc": 13,
+    "lines": 48,
+    "start": 69
+  },
+  {
+    "file": "src/engine_route.cpp",
+    "name": "jd::NavigateToPickup( std :: uintptr_t executable_base , std :: uintptr_t source_company , bool accepted)",
+    "cc": 5,
+    "lines": 18,
+    "start": 119
+  },
+  {
+    "file": "src/engine_route.cpp",
+    "name": "jd::NavigateAcceptedDelivery( std :: uintptr_t executable_base , std :: uintptr_t player)",
+    "cc": 1,
+    "lines": 5,
+    "start": 142
+  },
+  {
+    "file": "src/game_messages.hpp",
+    "name": "jd::GameMessage( const std :: string & detail)",
+    "cc": 19,
+    "lines": 13,
+    "start": 4
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "Escape( const std :: string & value)",
+    "cc": 8,
+    "lines": 11,
+    "start": 41
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "SnapshotJson()",
+    "cc": 23,
+    "lines": 55,
+    "start": 53
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "ReadTestCommand()",
+    "cc": 14,
+    "lines": 29,
+    "start": 111
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "FlushLogs()",
+    "cc": 4,
+    "lines": 10,
+    "start": 141
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OverlayWorker( *)",
+    "cc": 24,
+    "lines": 52,
+    "start": 152
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnFrame( scs_event_t , const * , scs_context_t)",
+    "cc": 7,
+    "lines": 18,
+    "start": 205
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnState( scs_event_t event , const * , scs_context_t)",
+    "cc": 5,
+    "lines": 9,
+    "start": 224
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnPosition( scs_string_t , scs_u32_t , const scs_value_t * value , scs_context_t)",
+    "cc": 6,
+    "lines": 12,
+    "start": 236
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnSpeed( scs_string_t , scs_u32_t , const scs_value_t * value , scs_context_t)",
+    "cc": 4,
+    "lines": 5,
+    "start": 249
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnNavigationDistance( scs_string_t , scs_u32_t , const scs_value_t * value , scs_context_t)",
+    "cc": 6,
+    "lines": 12,
+    "start": 255
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnTrailerConnected( scs_string_t , scs_u32_t , const scs_value_t * value , scs_context_t)",
+    "cc": 6,
+    "lines": 12,
+    "start": 268
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnTrailerPosition( scs_string_t , scs_u32_t , const scs_value_t * value , scs_context_t)",
+    "cc": 6,
+    "lines": 12,
+    "start": 281
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "LogAttributes( const scs_named_value_t * attributes)",
+    "cc": 10,
+    "lines": 19,
+    "start": 294
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnConfiguration( scs_event_t , const * info , scs_context_t)",
+    "cc": 6,
+    "lines": 11,
+    "start": 314
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "OnGameplay( scs_event_t , const * info , scs_context_t)",
+    "cc": 3,
+    "lines": 6,
+    "start": 326
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "jd::ReadTelemetry()",
+    "cc": 1,
+    "lines": 4,
+    "start": 335
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "jd::DataDirectory()",
+    "cc": 17,
+    "lines": 41,
+    "start": 339
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "jd::Log( const char * format , ...)",
+    "cc": 4,
+    "lines": 21,
+    "start": 381
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "scs_telemetry_init( const scs_u32_t version , const scs_telemetry_init_params_t * const parameters)",
+    "cc": 14,
+    "lines": 48,
+    "start": 404
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "scs_telemetry_shutdown()",
+    "cc": 5,
+    "lines": 18,
+    "start": 453
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "jd_snapshot_json()",
+    "cc": 1,
+    "lines": 5,
+    "start": 475
+  },
+  {
+    "file": "src/host.cpp",
+    "name": "DllMain( HINSTANCE instance , DWORD reason , LPVOID)",
+    "cc": 2,
+    "lines": 4,
+    "start": 481
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::Call::Call()",
+    "cc": 2,
+    "lines": 1,
+    "start": 42
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::Call::~Call()",
+    "cc": 2,
+    "lines": 1,
+    "start": 43
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::GameForeground()",
+    "cc": 2,
+    "lines": 1,
+    "start": 45
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::Capture()",
+    "cc": 3,
+    "lines": 1,
+    "start": 46
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::Suppressed( int key)",
+    "cc": 8,
+    "lines": 7,
+    "start": 47
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::DrainOnce( * device , unsigned channel)",
+    "cc": 4,
+    "lines": 10,
+    "start": 54
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::HookAsync( int key)",
+    "cc": 3,
+    "lines": 5,
+    "start": 64
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::HookKey( int key)",
+    "cc": 3,
+    "lines": 5,
+    "start": 69
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::HookKeyboard( PBYTE keys)",
+    "cc": 8,
+    "lines": 9,
+    "start": 74
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::HookPosition( LPPOINT point)",
+    "cc": 4,
+    "lines": 8,
+    "start": 83
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::Kind( IDirectInputDevice8W * device)",
+    "cc": 6,
+    "lines": 10,
+    "start": 91
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::ScanKey( unsigned scan)",
+    "cc": 2,
+    "lines": 4,
+    "start": 103
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::HookState( IDirectInputDevice8W * device , DWORD size , LPVOID data)",
+    "cc": 21,
+    "lines": 24,
+    "start": 107
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::HookData( IDirectInputDevice8W * device , DWORD stride , LPDIDEVICEOBJECTDATA data , LPDWORD count , DWORD flags)",
+    "cc": 29,
+    "lines": 33,
+    "start": 131
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::AddDevice( AddHook add , * device)",
+    "cc": 10,
+    "lines": 23,
+    "start": 167
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::UiScope::UiScope()",
+    "cc": 1,
+    "lines": 1,
+    "start": 191
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::UiScope::~UiScope()",
+    "cc": 1,
+    "lines": 1,
+    "start": 192
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::SetEnabled( bool value)",
+    "cc": 5,
+    "lines": 21,
+    "start": 193
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::ConsumeMessage( unsigned message , std :: uintptr_t wparam)",
+    "cc": 8,
+    "lines": 11,
+    "start": 214
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::Prepare( AddHook add , bool(*foreground)() ,(*enter)() ,(*leave)())",
+    "cc": 18,
+    "lines": 37,
+    "start": 225
+  },
+  {
+    "file": "src/input_capture.cpp",
+    "name": "jd::overlay::input::Reset()",
+    "cc": 2,
+    "lines": 9,
+    "start": 263
+  },
+  {
+    "file": "src/job_navigation.hpp",
+    "name": "jd::JobNavigation::Reset()",
+    "cc": 1,
+    "lines": 1,
+    "start": 10
+  },
+  {
+    "file": "src/job_navigation.hpp",
+    "name": "jd::JobNavigation::WaitingForPickup( std :: uintptr_t accepted_job)",
+    "cc": 1,
+    "lines": 3,
+    "start": 11
+  },
+  {
+    "file": "src/job_navigation.hpp",
+    "name": "jd::JobNavigation::Observe( std :: uintptr_t current_job , bool trailer_connected)",
+    "cc": 7,
+    "lines": 6,
+    "start": 14
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::UnitId::UnitId( uint64_t value)",
+    "cc": 1,
+    "lines": 1,
+    "start": 11
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::UnitId::Value() const",
+    "cc": 1,
+    "lines": 1,
+    "start": 14
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::ValidatedJob::ValidatedJob( const Request & draft)",
+    "cc": 1,
+    "lines": 3,
+    "start": 31
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::ValidatedJob::Cargo() const",
+    "cc": 1,
+    "lines": 1,
+    "start": 36
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::ValidatedJob::Source() const",
+    "cc": 1,
+    "lines": 1,
+    "start": 37
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::ValidatedJob::Destination() const",
+    "cc": 1,
+    "lines": 1,
+    "start": 38
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::ValidatedJob::Trailer() const",
+    "cc": 1,
+    "lines": 1,
+    "start": 39
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::ValidatedJob::Placement() const",
+    "cc": 1,
+    "lines": 1,
+    "start": 40
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::ParseJob( const Request & draft)",
+    "cc": 6,
+    "lines": 6,
+    "start": 42
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::ExistingParking( const std :: vector<ParkingSlot> & slots , size_t count , size_t reserved , bool empty_only)",
+    "cc": 6,
+    "lines": 5,
+    "start": 50
+  },
+  {
+    "file": "src/job_policy.hpp",
+    "name": "jd::domain::SelectParking( const std :: vector<ParkingSlot> & slots , size_t count , size_t reserved)",
+    "cc": 6,
+    "lines": 6,
+    "start": 55
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::ReadFile( const std :: filesystem :: path & path , Dictionary & target)",
+    "cc": 8,
+    "lines": 13,
+    "start": 17
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Get( const Dictionary & words , const std :: string & key)",
+    "cc": 2,
+    "lines": 4,
+    "start": 30
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::ResolveWith( const Dictionary & words , const std :: string & original)",
+    "cc": 10,
+    "lines": 24,
+    "start": 34
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Split( const std :: string & text)",
+    "cc": 4,
+    "lines": 11,
+    "start": 58
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::CityWith( const Dictionary & words , const std :: string & input)",
+    "cc": 4,
+    "lines": 7,
+    "start": 69
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Technical( const std :: string & text)",
+    "cc": 4,
+    "lines": 4,
+    "start": 76
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::BodyKey( const std :: string & token)",
+    "cc": 2,
+    "lines": 19,
+    "start": 80
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Load( const std :: filesystem :: path & directory , const std :: string & language)",
+    "cc": 5,
+    "lines": 12,
+    "start": 103
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::RequestLanguage( const std :: string & language)",
+    "cc": 4,
+    "lines": 4,
+    "start": 115
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::PumpLanguage( const std :: filesystem :: path & directory)",
+    "cc": 2,
+    "lines": 5,
+    "start": 119
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Language()",
+    "cc": 1,
+    "lines": 1,
+    "start": 124
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Ui( const std :: string & key)",
+    "cc": 1,
+    "lines": 1,
+    "start": 125
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Count()",
+    "cc": 1,
+    "lines": 1,
+    "start": 126
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Resolve( const std :: string & text)",
+    "cc": 1,
+    "lines": 4,
+    "start": 127
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::City( const std :: string & input)",
+    "cc": 1,
+    "lines": 4,
+    "start": 131
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Company( const std :: string & nativeName , const std :: string & nativeCity)",
+    "cc": 3,
+    "lines": 8,
+    "start": 135
+  },
+  {
+    "file": "src/labels.cpp",
+    "name": "jd::labels::Trailer( const std :: string & path , const std :: string & nativeName , const std :: string & bodyToken)",
+    "cc": 35,
+    "lines": 42,
+    "start": 143
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::Release( T * & object)",
+    "cc": 2,
+    "lines": 1,
+    "start": 50
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::Base()",
+    "cc": 1,
+    "lines": 1,
+    "start": 55
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::Base()",
+    "cc": 1,
+    "lines": 1,
+    "start": 57
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::AbiMatches( uintptr_t base)",
+    "cc": 5,
+    "lines": 9,
+    "start": 59
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::NativeContext( uintptr_t base)",
+    "cc": 4,
+    "lines": 5,
+    "start": 71
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::ClearPublished()",
+    "cc": 1,
+    "lines": 1,
+    "start": 76
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::DisposeUnit( uintptr_t unit)",
+    "cc": 3,
+    "lines": 7,
+    "start": 77
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::DestroyNative()",
+    "cc": 2,
+    "lines": 9,
+    "start": 84
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::CreateNative( uintptr_t base , unsigned revision)",
+    "cc": 10,
+    "lines": 24,
+    "start": 95
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::CameraAspect()",
+    "cc": 2,
+    "lines": 5,
+    "start": 122
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::ApplyOrbit( uintptr_t base , float horizontal , float vertical , float distance)",
+    "cc": 8,
+    "lines": 29,
+    "start": 127
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::TextureView( uintptr_t base , ID3D11Device * expected , uint16_t & image_id , uintptr_t & resource)",
+    "cc": 19,
+    "lines": 27,
+    "start": 158
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::Fail( const char * reason , const Request & selection)",
+    "cc": 3,
+    "lines": 5,
+    "start": 186
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::Suspend()",
+    "cc": 1,
+    "lines": 1,
+    "start": 193
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::ReleaseGpu()",
+    "cc": 1,
+    "lines": 4,
+    "start": 194
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::Shutdown()",
+    "cc": 1,
+    "lines": 1,
+    "start": 198
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::QueueOrbit( float horizontal , float vertical , float wheel)",
+    "cc": 1,
+    "lines": 5,
+    "start": 199
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::ReadCommand()",
+    "cc": 2,
+    "lines": 7,
+    "start": 214
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::DrivingView( const FrameCommand & command)",
+    "cc": 5,
+    "lines": 4,
+    "start": 221
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::PrepareSession( FrameCommand & command , unsigned revision)",
+    "cc": 7,
+    "lines": 9,
+    "start": 225
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::SelectionReady( const FrameCommand & command)",
+    "cc": 4,
+    "lines": 3,
+    "start": 234
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::EnsureContext( uintptr_t base , const Request & selection)",
+    "cc": 5,
+    "lines": 13,
+    "start": 237
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::EnsureWidget( uintptr_t base , const FrameCommand & command , unsigned revision)",
+    "cc": 3,
+    "lines": 5,
+    "start": 251
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::AssignVehicle( uintptr_t base , const FrameCommand & command , unsigned revision , bool & assigned)",
+    "cc": 3,
+    "lines": 14,
+    "start": 256
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::ApplyCamera( uintptr_t base , const FrameCommand & command)",
+    "cc": 5,
+    "lines": 5,
+    "start": 270
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::AdvanceVehicle( uintptr_t base , const FrameCommand & command , bool assigned)",
+    "cc": 7,
+    "lines": 12,
+    "start": 275
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::PublishTexture( uintptr_t base , const FrameCommand & command , unsigned revision)",
+    "cc": 7,
+    "lines": 13,
+    "start": 289
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::Frame()",
+    "cc": 8,
+    "lines": 10,
+    "start": 303
+  },
+  {
+    "file": "src/native_preview.cpp",
+    "name": "jd::preview::DrawNative( ID3D11Device * draw_device , const Request & selection , float width , float height , bool interactive)",
+    "cc": 16,
+    "lines": 25,
+    "start": 314
+  },
+  {
+    "file": "src/native_preview_policy.hpp",
+    "name": "jd::preview::SameNativePreview( const Request & a , const Request & b)",
+    "cc": 3,
+    "lines": 3,
+    "start": 4
+  },
+  {
+    "file": "src/native_preview_policy.hpp",
+    "name": "jd::preview::NativePreviewPolicy::NeedsVehicle( const Request & selection , unsigned revision) const",
+    "cc": 3,
+    "lines": 3,
+    "start": 12
+  },
+  {
+    "file": "src/native_preview_policy.hpp",
+    "name": "jd::preview::NativePreviewPolicy::Accept( const Request & selection , unsigned revision)",
+    "cc": 1,
+    "lines": 1,
+    "start": 15
+  },
+  {
+    "file": "src/native_preview_policy.hpp",
+    "name": "jd::preview::NativePreviewPolicy::Reset()",
+    "cc": 1,
+    "lines": 1,
+    "start": 16
+  },
+  {
+    "file": "src/native_string.hpp",
+    "name": "jd::engine::AssignString( uintptr_t object , const char * value , NativeStringAbi abi)",
+    "cc": 11,
+    "lines": 12,
+    "start": 6
+  },
+  {
+    "file": "src/offer_transaction.hpp",
+    "name": "jd::domain::OfferTransaction::OfferTransaction( Store & store , size_t slot , uintptr_t job)",
+    "cc": 2,
+    "lines": 7,
+    "start": 15
+  },
+  {
+    "file": "src/offer_transaction.hpp",
+    "name": "jd::domain::OfferTransaction::~OfferTransaction()",
+    "cc": 1,
+    "lines": 1,
+    "start": 24
+  },
+  {
+    "file": "src/offer_transaction.hpp",
+    "name": "jd::domain::OfferTransaction::Commit()",
+    "cc": 3,
+    "lines": 5,
+    "start": 25
+  },
+  {
+    "file": "src/offer_transaction.hpp",
+    "name": "jd::domain::OfferTransaction::Rollback()",
+    "cc": 7,
+    "lines": 10,
+    "start": 30
+  },
+  {
+    "file": "src/offline_assets.cpp",
+    "name": "jd::offline::PackageRoot()",
+    "cc": 1,
+    "lines": 8,
+    "start": 11
+  },
+  {
+    "file": "src/offline_assets.cpp",
+    "name": "jd::offline::Available()",
+    "cc": 3,
+    "lines": 7,
+    "start": 19
+  },
+  {
+    "file": "src/offline_assets.cpp",
+    "name": "jd::offline::GameDirectory()",
+    "cc": 1,
+    "lines": 4,
+    "start": 26
+  },
+  {
+    "file": "src/offline_assets.cpp",
+    "name": "jd::offline::GameHome()",
+    "cc": 6,
+    "lines": 9,
+    "start": 30
+  },
+  {
+    "file": "src/offline_assets.cpp",
+    "name": "jd::offline::Quote( const std :: wstring & value)",
+    "cc": 4,
+    "lines": 9,
+    "start": 39
+  },
+  {
+    "file": "src/offline_assets.cpp",
+    "name": "jd::offline::Run( const std :: filesystem :: path & package , const std :: filesystem :: path & game , const std :: filesystem :: path & data , const std :: filesystem :: path & home , const std :: function<bool()> & cancelled)",
+    "cc": 10,
+    "lines": 32,
+    "start": 48
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::T( const char * key)",
+    "cc": 1,
+    "lines": 1,
+    "start": 75
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::LocaleFonts()",
+    "cc": 10,
+    "lines": 14,
+    "start": 76
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::ActiveCall::ActiveCall()",
+    "cc": 1,
+    "lines": 1,
+    "start": 93
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::ActiveCall::~ActiveCall()",
+    "cc": 1,
+    "lines": 1,
+    "start": 94
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::Release( T * & object)",
+    "cc": 2,
+    "lines": 3,
+    "start": 96
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::OwnsForeground()",
+    "cc": 2,
+    "lines": 4,
+    "start": 99
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::CanInteract()",
+    "cc": 3,
+    "lines": 5,
+    "start": 103
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::SetInteractive( bool enabled , bool restore_clip = true)",
+    "cc": 12,
+    "lines": 26,
+    "start": 108
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::IsCapturedMessage( UINT message)",
+    "cc": 26,
+    "lines": 14,
+    "start": 135
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::WindowProc( HWND hwnd , UINT message , WPARAM wparam , LPARAM lparam , UINT_PTR , DWORD_PTR)",
+    "cc": 28,
+    "lines": 53,
+    "start": 149
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::HookClip( const RECT * rect)",
+    "cc": 4,
+    "lines": 5,
+    "start": 206
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::HookWarp( int x , int y)",
+    "cc": 4,
+    "lines": 5,
+    "start": 211
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::HookCursor( HCURSOR cursor)",
+    "cc": 4,
+    "lines": 5,
+    "start": 216
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::Utf8( const std :: wstring & value)",
+    "cc": 2,
+    "lines": 9,
+    "start": 221
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::ConfigureStyle()",
+    "cc": 1,
+    "lines": 17,
+    "start": 230
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::CreateTarget( IDXGISwapChain * chain)",
+    "cc": 2,
+    "lines": 8,
+    "start": 247
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::PinSelfForResidualSubclass()",
+    "cc": 1,
+    "lines": 6,
+    "start": 255
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::RemoveSubclass( HWND hwnd)",
+    "cc": 9,
+    "lines": 12,
+    "start": 261
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::DestroyUi()",
+    "cc": 4,
+    "lines": 21,
+    "start": 274
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::AttachUi( IDXGISwapChain * chain)",
+    "cc": 16,
+    "lines": 54,
+    "start": 295
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::SelectedLabel( const std :: vector<Choice> & choices , std :: uint64_t id , const char * auto_label)",
+    "cc": 5,
+    "lines": 5,
+    "start": 349
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::ChoiceCombo( const char * id , const char * label , const std :: vector<Choice> & choices , std :: uint64_t & selected , char * search , std :: size_t search_size , const char * auto_label = nullptr)",
+    "cc": 9,
+    "lines": 32,
+    "start": 354
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::DrawPanel()",
+    "cc": 45,
+    "lines": 85,
+    "start": 386
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::DrawIcon()",
+    "cc": 6,
+    "lines": 32,
+    "start": 471
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::Render()",
+    "cc": 13,
+    "lines": 33,
+    "start": 503
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::HookPresent( IDXGISwapChain * chain , UINT interval , UINT flags)",
+    "cc": 19,
+    "lines": 33,
+    "start": 537
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::HookResize( IDXGISwapChain * chain , UINT count , UINT width , UINT height , DXGI_FORMAT format , UINT flags)",
+    "cc": 7,
+    "lines": 15,
+    "start": 570
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::AddHook( * target , * callback , ** original)",
+    "cc": 2,
+    "lines": 6,
+    "start": 585
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::RemoveHooks()",
+    "cc": 2,
+    "lines": 4,
+    "start": 591
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::Start()",
+    "cc": 17,
+    "lines": 71,
+    "start": 597
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::Stop()",
+    "cc": 4,
+    "lines": 20,
+    "start": 668
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::Inspect()",
+    "cc": 4,
+    "lines": 6,
+    "start": 690
+  },
+  {
+    "file": "src/overlay.cpp",
+    "name": "jd::overlay::QueueTestPanel( bool open)",
+    "cc": 2,
+    "lines": 1,
+    "start": 696
+  },
+  {
+    "file": "src/overlay_model.hpp",
+    "name": "jd::overlay::model::PreviewToken( const Snapshot & snapshot , const Request & request)",
+    "cc": 10,
+    "lines": 13,
+    "start": 8
+  },
+  {
+    "file": "src/overlay_model.hpp",
+    "name": "jd::overlay::model::Contains( const std :: vector<Choice> & choices , std :: uint64_t id)",
+    "cc": 2,
+    "lines": 4,
+    "start": 21
+  },
+  {
+    "file": "src/overlay_model.hpp",
+    "name": "jd::overlay::model::FirstExcept( const std :: vector<Choice> & choices , std :: uint64_t excluded)",
+    "cc": 4,
+    "lines": 5,
+    "start": 25
+  },
+  {
+    "file": "src/overlay_model.hpp",
+    "name": "jd::overlay::model::Normalize( const Snapshot & snapshot , Request & request)",
+    "cc": 9,
+    "lines": 14,
+    "start": 30
+  },
+  {
+    "file": "src/overlay_model.hpp",
+    "name": "jd::overlay::model::CanSubmit( const Snapshot & snapshot , const Request & request)",
+    "cc": 11,
+    "lines": 8,
+    "start": 47
+  },
+  {
+    "file": "src/overlay_model.hpp",
+    "name": "jd::overlay::model::FoldSearch( const std :: string & input)",
+    "cc": 16,
+    "lines": 21,
+    "start": 55
+  },
+  {
+    "file": "src/overlay_model.hpp",
+    "name": "jd::overlay::model::Matches( const Choice & choice , const char * filter)",
+    "cc": 2,
+    "lines": 5,
+    "start": 78
+  },
+  {
+    "file": "src/performance.hpp",
+    "name": "jd::perf::Counter::Add( std :: uint64_t value)",
+    "cc": 3,
+    "lines": 5,
+    "start": 8
+  },
+  {
+    "file": "src/performance.hpp",
+    "name": "jd::perf::Scope::Scope( Counter & value)",
+    "cc": 1,
+    "lines": 1,
+    "start": 18
+  },
+  {
+    "file": "src/performance.hpp",
+    "name": "jd::perf::Scope::~Scope()",
+    "cc": 1,
+    "lines": 1,
+    "start": 19
+  },
+  {
+    "file": "src/preview_cache.hpp",
+    "name": "jd::preview::CacheGeometryKey( const std :: string & selection , const std :: set<std::string> & visible_loads)",
+    "cc": 4,
+    "lines": 5,
+    "start": 5
+  }
+]

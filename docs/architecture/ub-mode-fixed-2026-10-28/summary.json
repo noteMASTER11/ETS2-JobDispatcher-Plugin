@@ -1,0 +1,237 @@
+{
+  "scope": [
+    "tools/offline-bootstrap.py",
+    "tools/prepare-game-assets.py",
+    "tools/prepare-locales.py"
+  ],
+  "runtime_python_functions": [
+    {
+      "name": "load",
+      "namespace": "tools.prepare-locales",
+      "cc": 8,
+      "coverage": 100.0,
+      "crap": 8.0
+    },
+    {
+      "name": "excluded_countries",
+      "namespace": "tools.prepare-game-assets",
+      "cc": 7,
+      "coverage": 83.3333,
+      "crap": 7.2269
+    },
+    {
+      "name": "fingerprint",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 7,
+      "coverage": 90.0,
+      "crap": 7.049
+    },
+    {
+      "name": "active_records",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 7,
+      "coverage": 100.0,
+      "crap": 7.0
+    },
+    {
+      "name": "mod_candidates",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 6,
+      "coverage": 100.0,
+      "crap": 6.0
+    },
+    {
+      "name": "locale_values",
+      "namespace": "tools.prepare-locales",
+      "cc": 6,
+      "coverage": 100.0,
+      "crap": 6.0
+    },
+    {
+      "name": "active_mods",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 5,
+      "coverage": 100.0,
+      "crap": 5.0
+    },
+    {
+      "name": "cache_current",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 5,
+      "coverage": 100.0,
+      "crap": 5.0
+    },
+    {
+      "name": "clean_work",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 5,
+      "coverage": 100.0,
+      "crap": 5.0
+    },
+    {
+      "name": "main",
+      "namespace": "tools.prepare-locales",
+      "cc": 4,
+      "coverage": 75.0,
+      "crap": 4.25
+    },
+    {
+      "name": "prepare",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 4,
+      "coverage": 100.0,
+      "crap": 4.0
+    },
+    {
+      "name": "extract",
+      "namespace": "tools.prepare-game-assets",
+      "cc": 4,
+      "coverage": 100.0,
+      "crap": 4.0
+    },
+    {
+      "name": "main",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 3,
+      "coverage": 100.0,
+      "crap": 3.0
+    },
+    {
+      "name": "mounted_devices",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 3,
+      "coverage": 100.0,
+      "crap": 3.0
+    },
+    {
+      "name": "unquote",
+      "namespace": "tools.prepare-locales",
+      "cc": 3,
+      "coverage": 100.0,
+      "crap": 3.0
+    },
+    {
+      "name": "archive_mounts",
+      "namespace": "tools.prepare-game-assets",
+      "cc": 2,
+      "coverage": 100.0,
+      "crap": 2.0
+    },
+    {
+      "name": "extract_mod_locales",
+      "namespace": "tools.prepare-game-assets",
+      "cc": 2,
+      "coverage": 100.0,
+      "crap": 2.0
+    },
+    {
+      "name": "main",
+      "namespace": "tools.prepare-game-assets",
+      "cc": 2,
+      "coverage": 100.0,
+      "crap": 2.0
+    },
+    {
+      "name": "parse_args",
+      "namespace": "tools.prepare-game-assets",
+      "cc": 2,
+      "coverage": 100.0,
+      "crap": 2.0
+    },
+    {
+      "name": "write_language",
+      "namespace": "tools.prepare-locales",
+      "cc": 2,
+      "coverage": 100.0,
+      "crap": 2.0
+    },
+    {
+      "name": "preparation_command",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 1,
+      "coverage": 100.0,
+      "crap": 1.0
+    },
+    {
+      "name": "write_marker",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 1,
+      "coverage": 100.0,
+      "crap": 1.0
+    },
+    {
+      "name": "write",
+      "namespace": "tools.prepare-locales",
+      "cc": 1,
+      "coverage": 100.0,
+      "crap": 1.0
+    }
+  ],
+  "runtime_python_crap_at_least_10": 0,
+  "coverage": {
+    "offline-bootstrap.py": {
+      "covered_lines": 110,
+      "num_statements": 111,
+      "percent_covered": 97.9020979020979,
+      "percent_covered_display": "98",
+      "missing_lines": 1,
+      "excluded_lines": 0,
+      "percent_statements_covered": 99.09909909909909,
+      "percent_statements_covered_display": "99",
+      "num_branches": 32,
+      "num_partial_branches": 2,
+      "covered_branches": 30,
+      "missing_branches": 2,
+      "percent_branches_covered": 93.75,
+      "percent_branches_covered_display": "94"
+    },
+    "prepare-game-assets.py": {
+      "covered_lines": 47,
+      "num_statements": 47,
+      "percent_covered": 96.72131147540983,
+      "percent_covered_display": "97",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100",
+      "num_branches": 14,
+      "num_partial_branches": 2,
+      "covered_branches": 12,
+      "missing_branches": 2,
+      "percent_branches_covered": 85.71428571428571,
+      "percent_branches_covered_display": "86"
+    },
+    "prepare-locales.py": {
+      "covered_lines": 59,
+      "num_statements": 59,
+      "percent_covered": 97.59036144578313,
+      "percent_covered_display": "98",
+      "missing_lines": 0,
+      "excluded_lines": 0,
+      "percent_statements_covered": 100.0,
+      "percent_statements_covered_display": "100",
+      "num_branches": 24,
+      "num_partial_branches": 2,
+      "covered_branches": 22,
+      "missing_branches": 2,
+      "percent_branches_covered": 91.66666666666667,
+      "percent_branches_covered_display": "92"
+    }
+  },
+  "mutation": {
+    "scope": "tools/offline-bootstrap.py",
+    "killed": 58,
+    "survived": 3,
+    "uncovered": 0,
+    "sites": 61,
+    "score_percent": 95.08196721311475,
+    "survivors": [
+      "write_marker ensure_ascii=False to True: same decoded paths",
+      "cache-current print flush=True to False: line-buffered log",
+      "preparation print flush=True to False: line-buffered log"
+    ]
+  },
+  "cpp_supported_by_ub_tools": false,
+  "cpp_complexity_gate": "No CRAP/coverage claim for C++; Lizard CCN is a separate structural measure",
+  "ctest_passed": 18
+}

@@ -1,0 +1,25 @@
+{:entries [
+  {:name "load", :namespace "tools.prepare-locales", :complexity 8, :coverage 100.0, :crap 8.0}
+  {:name "excluded_countries", :namespace "tools.prepare-game-assets", :complexity 7, :coverage 83.3333, :crap 7.2269}
+  {:name "fingerprint", :namespace "tools.offline-bootstrap", :complexity 7, :coverage 90.0, :crap 7.049}
+  {:name "active_records", :namespace "tools.offline-bootstrap", :complexity 7, :coverage 100.0, :crap 7.0}
+  {:name "mod_candidates", :namespace "tools.offline-bootstrap", :complexity 6, :coverage 100.0, :crap 6.0}
+  {:name "locale_values", :namespace "tools.prepare-locales", :complexity 6, :coverage 100.0, :crap 6.0}
+  {:name "active_mods", :namespace "tools.offline-bootstrap", :complexity 5, :coverage 100.0, :crap 5.0}
+  {:name "cache_current", :namespace "tools.offline-bootstrap", :complexity 5, :coverage 100.0, :crap 5.0}
+  {:name "clean_work", :namespace "tools.offline-bootstrap", :complexity 5, :coverage 100.0, :crap 5.0}
+  {:name "main", :namespace "tools.prepare-locales", :complexity 4, :coverage 75.0, :crap 4.25}
+  {:name "prepare", :namespace "tools.offline-bootstrap", :complexity 4, :coverage 100.0, :crap 4.0}
+  {:name "extract", :namespace "tools.prepare-game-assets", :complexity 4, :coverage 100.0, :crap 4.0}
+  {:name "main", :namespace "tools.offline-bootstrap", :complexity 3, :coverage 100.0, :crap 3.0}
+  {:name "mounted_devices", :namespace "tools.offline-bootstrap", :complexity 3, :coverage 100.0, :crap 3.0}
+  {:name "unquote", :namespace "tools.prepare-locales", :complexity 3, :coverage 100.0, :crap 3.0}
+  {:name "archive_mounts", :namespace "tools.prepare-game-assets", :complexity 2, :coverage 100.0, :crap 2.0}
+  {:name "extract_mod_locales", :namespace "tools.prepare-game-assets", :complexity 2, :coverage 100.0, :crap 2.0}
+  {:name "main", :namespace "tools.prepare-game-assets", :complexity 2, :coverage 100.0, :crap 2.0}
+  {:name "parse_args", :namespace "tools.prepare-game-assets", :complexity 2, :coverage 100.0, :crap 2.0}
+  {:name "write_language", :namespace "tools.prepare-locales", :complexity 2, :coverage 100.0, :crap 2.0}
+  {:name "preparation_command", :namespace "tools.offline-bootstrap", :complexity 1, :coverage 100.0, :crap 1.0}
+  {:name "write_marker", :namespace "tools.offline-bootstrap", :complexity 1, :coverage 100.0, :crap 1.0}
+  {:name "write", :namespace "tools.prepare-locales", :complexity 1, :coverage 100.0, :crap 1.0}
+]}

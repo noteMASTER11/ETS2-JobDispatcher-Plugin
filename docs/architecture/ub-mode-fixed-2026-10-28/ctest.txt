@@ -1,0 +1,41 @@
+Test project D:/ChatGPT/Projects/2026-10-27/tr/work/public-build
+      Start  1: offer-publication-transaction
+ 1/18 Test  #1: offer-publication-transaction .......   Passed    0.01 sec
+      Start  2: job-request-and-parking-policy
+ 2/18 Test  #2: job-request-and-parking-policy ......   Passed    0.00 sec
+      Start  3: native-memory-boundary
+ 3/18 Test  #3: native-memory-boundary ..............   Passed    0.01 sec
+      Start  4: native-preview-frame-and-lifetime
+ 4/18 Test  #4: native-preview-frame-and-lifetime ...   Passed    0.64 sec
+      Start  5: offline-process-lifecycle
+ 5/18 Test  #5: offline-process-lifecycle ...........   Passed    0.37 sec
+      Start  6: custom-game-home
+ 6/18 Test  #6: custom-game-home ....................   Passed    0.01 sec
+      Start  7: installer-preserves-settings
+ 7/18 Test  #7: installer-preserves-settings ........   Passed    0.23 sec
+      Start  8: job-navigation-transitions
+ 8/18 Test  #8: job-navigation-transitions ..........   Passed    0.01 sec
+      Start  9: loaded-trailer-preview
+ 9/18 Test  #9: loaded-trailer-preview ..............   Passed    0.11 sec
+      Start 10: lazy-preview-selection
+10/18 Test #10: lazy-preview-selection ..............   Passed    0.07 sec
+      Start 11: offline-active-profile
+11/18 Test #11: offline-active-profile ..............   Passed    0.04 sec
+      Start 12: metadata-preparation-and-cache
+12/18 Test #12: metadata-preparation-and-cache ......   Passed    0.13 sec
+      Start 13: preview-catalogue
+13/18 Test #13: preview-catalogue ...................   Passed    0.05 sec
+      Start 14: display-units-and-messages
+14/18 Test #14: display-units-and-messages ..........   Passed    0.01 sec
+      Start 15: overlay-input-capture
+15/18 Test #15: overlay-input-capture ...............   Passed    0.10 sec
+      Start 16: ui-locales
+16/18 Test #16: ui-locales ..........................   Passed    0.01 sec
+      Start 17: overlay-catalogue-state
+17/18 Test #17: overlay-catalogue-state .............   Passed    0.01 sec
+      Start 18: loader-version-guard
+18/18 Test #18: loader-version-guard ................   Passed    0.01 sec
+
+100% tests passed out of 18
+
+Total Test time (real) =   1.81 sec

@@ -1,0 +1,1855 @@
+{
+  "tool": "lizard 1.24.3",
+  "scope": "authored src/*.cpp, src/*.hpp; tests and vendor excluded",
+  "functions": [
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::LoadExcludedCountries",
+      "line": 64,
+      "end_line": 70,
+      "ccn": 7,
+      "nloc": 7,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Readable",
+      "line": 77,
+      "end_line": 83,
+      "ccn": 7,
+      "nloc": 7,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Read",
+      "line": 84,
+      "end_line": 89,
+      "ccn": 2,
+      "nloc": 6,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Setting",
+      "line": 90,
+      "end_line": 103,
+      "ccn": 7,
+      "nloc": 14,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::SameRoute",
+      "line": 104,
+      "end_line": 104,
+      "ccn": 2,
+      "nloc": 1,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::SameSelection",
+      "line": 105,
+      "end_line": 107,
+      "ccn": 3,
+      "nloc": 3,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::String",
+      "line": 108,
+      "end_line": 113,
+      "ccn": 3,
+      "nloc": 6,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::PointerLabel",
+      "line": 114,
+      "end_line": 118,
+      "ccn": 1,
+      "nloc": 5,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::DecodeToken",
+      "line": 119,
+      "end_line": 130,
+      "ccn": 4,
+      "nloc": 12,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::UnitPath",
+      "line": 131,
+      "end_line": 147,
+      "ccn": 8,
+      "nloc": 17,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::ExactExecutable",
+      "line": 148,
+      "end_line": 171,
+      "ccn": 11,
+      "nloc": 24,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::CargoLabel",
+      "line": 172,
+      "end_line": 175,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Code",
+      "line": 176,
+      "end_line": 178,
+      "ccn": 2,
+      "nloc": 3,
+      "parameters": 3
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Write",
+      "line": 179,
+      "end_line": 185,
+      "ccn": 4,
+      "nloc": 7,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::HasCargoBody",
+      "line": 186,
+      "end_line": 193,
+      "ccn": 7,
+      "nloc": 8,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::TrailerDelivery",
+      "line": 195,
+      "end_line": 201,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::CargoCapacity",
+      "line": 203,
+      "end_line": 218,
+      "ccn": 10,
+      "nloc": 15,
+      "parameters": 3
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Quote",
+      "line": 219,
+      "end_line": 235,
+      "ccn": 9,
+      "nloc": 15,
+      "parameters": 4
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::FindLivePrototype",
+      "line": 236,
+      "end_line": 260,
+      "ccn": 22,
+      "nloc": 25,
+      "parameters": 3
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Retain",
+      "line": 261,
+      "end_line": 261,
+      "ccn": 2,
+      "nloc": 1,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Release",
+      "line": 262,
+      "end_line": 266,
+      "ccn": 3,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::DisposeOwned",
+      "line": 267,
+      "end_line": 272,
+      "ccn": 2,
+      "nloc": 6,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::ValidateRequest",
+      "line": 273,
+      "end_line": 292,
+      "ccn": 24,
+      "nloc": 20,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Generate",
+      "line": 293,
+      "end_line": 404,
+      "ccn": 50,
+      "nloc": 105,
+      "parameters": 3
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Publish",
+      "line": 405,
+      "end_line": 405,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Catalogue",
+      "line": 407,
+      "end_line": 542,
+      "ccn": 72,
+      "nloc": 135,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Initialize",
+      "line": 545,
+      "end_line": 563,
+      "ccn": 6,
+      "nloc": 19,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Frame",
+      "line": 564,
+      "end_line": 796,
+      "ccn": 122,
+      "nloc": 233,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::ReadSnapshot",
+      "line": 797,
+      "end_line": 797,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::UpdateSnapshot",
+      "line": 798,
+      "end_line": 812,
+      "ccn": 3,
+      "nloc": 15,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Submit",
+      "line": 813,
+      "end_line": 817,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Select",
+      "line": 818,
+      "end_line": 821,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Surprise",
+      "line": 822,
+      "end_line": 826,
+      "ccn": 3,
+      "nloc": 5,
+      "parameters": 2
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::RequestAudit",
+      "line": 827,
+      "end_line": 827,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::RequestRefresh",
+      "line": 828,
+      "end_line": 828,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::BuildPreviewVehicle",
+      "line": 829,
+      "end_line": 864,
+      "ccn": 25,
+      "nloc": 36,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::DisposePreviewVehicle",
+      "line": 865,
+      "end_line": 865,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::MarkWorldLoaded",
+      "line": 866,
+      "end_line": 873,
+      "ccn": 5,
+      "nloc": 8,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::AssetsReady",
+      "line": 874,
+      "end_line": 874,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::WorldLoaded",
+      "line": 875,
+      "end_line": 875,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::AssetsWorldRevision",
+      "line": 876,
+      "end_line": 876,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::AssetsPrepared",
+      "line": 877,
+      "end_line": 881,
+      "ccn": 1,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\dispatch.cpp",
+      "name": "jd::Shutdown",
+      "line": 882,
+      "end_line": 882,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\display_units.hpp",
+      "name": "jd::units::Distance",
+      "line": 7,
+      "end_line": 7,
+      "ccn": 2,
+      "nloc": 1,
+      "parameters": 2
+    },
+    {
+      "file": "src\\display_units.hpp",
+      "name": "jd::units::Mass",
+      "line": 8,
+      "end_line": 14,
+      "ccn": 8,
+      "nloc": 7,
+      "parameters": 2
+    },
+    {
+      "file": "src\\display_units.hpp",
+      "name": "jd::units::Number",
+      "line": 15,
+      "end_line": 18,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 3
+    },
+    {
+      "file": "src\\display_units.hpp",
+      "name": "jd::units::DecimalComma",
+      "line": 19,
+      "end_line": 22,
+      "ccn": 5,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\display_units.hpp",
+      "name": "jd::units::RealMinutes",
+      "line": 23,
+      "end_line": 26,
+      "ccn": 6,
+      "nloc": 4,
+      "parameters": 2
+    },
+    {
+      "file": "src\\engine_route.cpp",
+      "name": "jd::Native",
+      "line": 20,
+      "end_line": 22,
+      "ccn": 1,
+      "nloc": 3,
+      "parameters": 1
+    },
+    {
+      "file": "src\\engine_route.cpp",
+      "name": "jd::Object",
+      "line": 23,
+      "end_line": 23,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\engine_route.cpp",
+      "name": "jd::CancelRoute",
+      "line": 26,
+      "end_line": 34,
+      "ccn": 2,
+      "nloc": 8,
+      "parameters": 0
+    },
+    {
+      "file": "src\\engine_route.cpp",
+      "name": "jd::BeginRoute",
+      "line": 36,
+      "end_line": 67,
+      "ccn": 8,
+      "nloc": 29,
+      "parameters": 4
+    },
+    {
+      "file": "src\\engine_route.cpp",
+      "name": "jd::PollRoute",
+      "line": 69,
+      "end_line": 118,
+      "ccn": 13,
+      "nloc": 48,
+      "parameters": 2
+    },
+    {
+      "file": "src\\engine_route.cpp",
+      "name": "jd::NavigateToPickup",
+      "line": 119,
+      "end_line": 141,
+      "ccn": 5,
+      "nloc": 18,
+      "parameters": 3
+    },
+    {
+      "file": "src\\engine_route.cpp",
+      "name": "jd::NavigateAcceptedDelivery",
+      "line": 142,
+      "end_line": 149,
+      "ccn": 1,
+      "nloc": 5,
+      "parameters": 2
+    },
+    {
+      "file": "src\\game_messages.hpp",
+      "name": "jd::GameMessage",
+      "line": 4,
+      "end_line": 16,
+      "ccn": 19,
+      "nloc": 13,
+      "parameters": 1
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "Escape",
+      "line": 41,
+      "end_line": 51,
+      "ccn": 8,
+      "nloc": 11,
+      "parameters": 1
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "SnapshotJson",
+      "line": 53,
+      "end_line": 107,
+      "ccn": 23,
+      "nloc": 55,
+      "parameters": 0
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "ReadTestCommand",
+      "line": 111,
+      "end_line": 139,
+      "ccn": 14,
+      "nloc": 29,
+      "parameters": 0
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "FlushLogs",
+      "line": 141,
+      "end_line": 150,
+      "ccn": 4,
+      "nloc": 10,
+      "parameters": 0
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OverlayWorker",
+      "line": 152,
+      "end_line": 203,
+      "ccn": 24,
+      "nloc": 52,
+      "parameters": 0
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnFrame",
+      "line": 205,
+      "end_line": 222,
+      "ccn": 7,
+      "nloc": 18,
+      "parameters": 2
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnState",
+      "line": 224,
+      "end_line": 234,
+      "ccn": 5,
+      "nloc": 9,
+      "parameters": 2
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnPosition",
+      "line": 236,
+      "end_line": 247,
+      "ccn": 6,
+      "nloc": 12,
+      "parameters": 4
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnSpeed",
+      "line": 249,
+      "end_line": 253,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 4
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnNavigationDistance",
+      "line": 255,
+      "end_line": 266,
+      "ccn": 6,
+      "nloc": 12,
+      "parameters": 4
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnTrailerConnected",
+      "line": 268,
+      "end_line": 279,
+      "ccn": 6,
+      "nloc": 12,
+      "parameters": 4
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnTrailerPosition",
+      "line": 281,
+      "end_line": 292,
+      "ccn": 6,
+      "nloc": 12,
+      "parameters": 4
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "LogAttributes",
+      "line": 294,
+      "end_line": 312,
+      "ccn": 10,
+      "nloc": 19,
+      "parameters": 1
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnConfiguration",
+      "line": 314,
+      "end_line": 324,
+      "ccn": 6,
+      "nloc": 11,
+      "parameters": 3
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "OnGameplay",
+      "line": 326,
+      "end_line": 331,
+      "ccn": 3,
+      "nloc": 6,
+      "parameters": 3
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "jd::ReadTelemetry",
+      "line": 335,
+      "end_line": 338,
+      "ccn": 1,
+      "nloc": 4,
+      "parameters": 0
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "jd::DataDirectory",
+      "line": 339,
+      "end_line": 379,
+      "ccn": 17,
+      "nloc": 41,
+      "parameters": 0
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "jd::Log",
+      "line": 381,
+      "end_line": 401,
+      "ccn": 4,
+      "nloc": 21,
+      "parameters": 1
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "scs_telemetry_init",
+      "line": 404,
+      "end_line": 451,
+      "ccn": 14,
+      "nloc": 48,
+      "parameters": 2
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "scs_telemetry_shutdown",
+      "line": 453,
+      "end_line": 472,
+      "ccn": 5,
+      "nloc": 18,
+      "parameters": 0
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "jd_snapshot_json",
+      "line": 475,
+      "end_line": 479,
+      "ccn": 1,
+      "nloc": 5,
+      "parameters": 0
+    },
+    {
+      "file": "src\\host.cpp",
+      "name": "DllMain",
+      "line": 481,
+      "end_line": 484,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 3
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::Call::Call",
+      "line": 42,
+      "end_line": 42,
+      "ccn": 2,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::Call::~Call",
+      "line": 43,
+      "end_line": 43,
+      "ccn": 2,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::GameForeground",
+      "line": 45,
+      "end_line": 45,
+      "ccn": 2,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::Capture",
+      "line": 46,
+      "end_line": 46,
+      "ccn": 3,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::Suppressed",
+      "line": 47,
+      "end_line": 53,
+      "ccn": 8,
+      "nloc": 7,
+      "parameters": 1
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::DrainOnce",
+      "line": 54,
+      "end_line": 63,
+      "ccn": 4,
+      "nloc": 10,
+      "parameters": 2
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::HookAsync",
+      "line": 64,
+      "end_line": 68,
+      "ccn": 3,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::HookKey",
+      "line": 69,
+      "end_line": 73,
+      "ccn": 3,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::HookKeyboard",
+      "line": 74,
+      "end_line": 82,
+      "ccn": 8,
+      "nloc": 9,
+      "parameters": 1
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::HookPosition",
+      "line": 83,
+      "end_line": 90,
+      "ccn": 4,
+      "nloc": 8,
+      "parameters": 1
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::Kind",
+      "line": 91,
+      "end_line": 102,
+      "ccn": 6,
+      "nloc": 10,
+      "parameters": 1
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::ScanKey",
+      "line": 103,
+      "end_line": 106,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::HookState",
+      "line": 107,
+      "end_line": 130,
+      "ccn": 21,
+      "nloc": 24,
+      "parameters": 3
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::HookData",
+      "line": 131,
+      "end_line": 164,
+      "ccn": 29,
+      "nloc": 33,
+      "parameters": 5
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::AddDevice",
+      "line": 167,
+      "end_line": 189,
+      "ccn": 10,
+      "nloc": 23,
+      "parameters": 2
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::UiScope::UiScope",
+      "line": 191,
+      "end_line": 191,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::UiScope::~UiScope",
+      "line": 192,
+      "end_line": 192,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::SetEnabled",
+      "line": 193,
+      "end_line": 213,
+      "ccn": 5,
+      "nloc": 21,
+      "parameters": 1
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::ConsumeMessage",
+      "line": 214,
+      "end_line": 224,
+      "ccn": 8,
+      "nloc": 11,
+      "parameters": 2
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::Prepare",
+      "line": 225,
+      "end_line": 262,
+      "ccn": 18,
+      "nloc": 37,
+      "parameters": 2
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "name": "jd::overlay::input::Reset",
+      "line": 263,
+      "end_line": 271,
+      "ccn": 2,
+      "nloc": 9,
+      "parameters": 0
+    },
+    {
+      "file": "src\\job_navigation.hpp",
+      "name": "jd::JobNavigation::Reset",
+      "line": 10,
+      "end_line": 10,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\job_navigation.hpp",
+      "name": "jd::JobNavigation::WaitingForPickup",
+      "line": 11,
+      "end_line": 13,
+      "ccn": 1,
+      "nloc": 3,
+      "parameters": 1
+    },
+    {
+      "file": "src\\job_navigation.hpp",
+      "name": "jd::JobNavigation::Observe",
+      "line": 14,
+      "end_line": 19,
+      "ccn": 7,
+      "nloc": 6,
+      "parameters": 2
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::ReadFile",
+      "line": 17,
+      "end_line": 29,
+      "ccn": 8,
+      "nloc": 13,
+      "parameters": 2
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Get",
+      "line": 30,
+      "end_line": 33,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 2
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::ResolveWith",
+      "line": 34,
+      "end_line": 57,
+      "ccn": 10,
+      "nloc": 24,
+      "parameters": 2
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Split",
+      "line": 58,
+      "end_line": 68,
+      "ccn": 4,
+      "nloc": 11,
+      "parameters": 1
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::CityWith",
+      "line": 69,
+      "end_line": 75,
+      "ccn": 4,
+      "nloc": 7,
+      "parameters": 2
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Technical",
+      "line": 76,
+      "end_line": 79,
+      "ccn": 4,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::BodyKey",
+      "line": 80,
+      "end_line": 100,
+      "ccn": 2,
+      "nloc": 19,
+      "parameters": 1
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Load",
+      "line": 103,
+      "end_line": 114,
+      "ccn": 5,
+      "nloc": 12,
+      "parameters": 2
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::RequestLanguage",
+      "line": 115,
+      "end_line": 118,
+      "ccn": 4,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::PumpLanguage",
+      "line": 119,
+      "end_line": 123,
+      "ccn": 2,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Language",
+      "line": 124,
+      "end_line": 124,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Ui",
+      "line": 125,
+      "end_line": 125,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 1
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Count",
+      "line": 126,
+      "end_line": 126,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Resolve",
+      "line": 127,
+      "end_line": 130,
+      "ccn": 1,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::City",
+      "line": 131,
+      "end_line": 134,
+      "ccn": 1,
+      "nloc": 4,
+      "parameters": 1
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Company",
+      "line": 135,
+      "end_line": 142,
+      "ccn": 3,
+      "nloc": 8,
+      "parameters": 2
+    },
+    {
+      "file": "src\\labels.cpp",
+      "name": "jd::labels::Trailer",
+      "line": 143,
+      "end_line": 185,
+      "ccn": 35,
+      "nloc": 42,
+      "parameters": 3
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Release",
+      "line": 38,
+      "end_line": 38,
+      "ccn": 2,
+      "nloc": 1,
+      "parameters": 1
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Readable",
+      "line": 39,
+      "end_line": 45,
+      "ccn": 6,
+      "nloc": 7,
+      "parameters": 2
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Read",
+      "line": 46,
+      "end_line": 48,
+      "ccn": 2,
+      "nloc": 3,
+      "parameters": 1
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Write",
+      "line": 49,
+      "end_line": 49,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 2
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Base",
+      "line": 52,
+      "end_line": 52,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Base",
+      "line": 54,
+      "end_line": 54,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::AbiMatches",
+      "line": 56,
+      "end_line": 67,
+      "ccn": 5,
+      "nloc": 9,
+      "parameters": 1
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::NativeContext",
+      "line": 68,
+      "end_line": 72,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::ClearPublished",
+      "line": 73,
+      "end_line": 73,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::DisposeUnit",
+      "line": 74,
+      "end_line": 80,
+      "ccn": 3,
+      "nloc": 7,
+      "parameters": 1
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::DestroyNative",
+      "line": 81,
+      "end_line": 91,
+      "ccn": 2,
+      "nloc": 9,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::AssignNativeString",
+      "line": 92,
+      "end_line": 105,
+      "ccn": 11,
+      "nloc": 12,
+      "parameters": 3
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::CreateNative",
+      "line": 106,
+      "end_line": 132,
+      "ccn": 10,
+      "nloc": 24,
+      "parameters": 2
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::CameraAspect",
+      "line": 133,
+      "end_line": 137,
+      "ccn": 2,
+      "nloc": 5,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Orbit",
+      "line": 138,
+      "end_line": 168,
+      "ccn": 8,
+      "nloc": 29,
+      "parameters": 4
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::TextureView",
+      "line": 169,
+      "end_line": 196,
+      "ccn": 19,
+      "nloc": 27,
+      "parameters": 4
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Fail",
+      "line": 197,
+      "end_line": 201,
+      "ccn": 3,
+      "nloc": 5,
+      "parameters": 2
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Suspend",
+      "line": 204,
+      "end_line": 204,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::ReleaseGpu",
+      "line": 205,
+      "end_line": 208,
+      "ccn": 1,
+      "nloc": 4,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Shutdown",
+      "line": 209,
+      "end_line": 209,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::Frame",
+      "line": 211,
+      "end_line": 284,
+      "ccn": 42,
+      "nloc": 68,
+      "parameters": 0
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "name": "jd::preview::DrawNative",
+      "line": 286,
+      "end_line": 316,
+      "ccn": 16,
+      "nloc": 29,
+      "parameters": 5
+    },
+    {
+      "file": "src\\native_preview_policy.hpp",
+      "name": "jd::preview::SameNativePreview",
+      "line": 4,
+      "end_line": 7,
+      "ccn": 3,
+      "nloc": 3,
+      "parameters": 2
+    },
+    {
+      "file": "src\\native_preview_policy.hpp",
+      "name": "jd::preview::NativePreviewPolicy::NeedsVehicle",
+      "line": 12,
+      "end_line": 14,
+      "ccn": 3,
+      "nloc": 3,
+      "parameters": 2
+    },
+    {
+      "file": "src\\native_preview_policy.hpp",
+      "name": "jd::preview::NativePreviewPolicy::Accept",
+      "line": 15,
+      "end_line": 15,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 2
+    },
+    {
+      "file": "src\\native_preview_policy.hpp",
+      "name": "jd::preview::NativePreviewPolicy::Reset",
+      "line": 16,
+      "end_line": 16,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\offline_assets.cpp",
+      "name": "jd::offline::PackageRoot",
+      "line": 11,
+      "end_line": 18,
+      "ccn": 1,
+      "nloc": 8,
+      "parameters": 0
+    },
+    {
+      "file": "src\\offline_assets.cpp",
+      "name": "jd::offline::Available",
+      "line": 19,
+      "end_line": 25,
+      "ccn": 3,
+      "nloc": 7,
+      "parameters": 0
+    },
+    {
+      "file": "src\\offline_assets.cpp",
+      "name": "jd::offline::GameDirectory",
+      "line": 26,
+      "end_line": 29,
+      "ccn": 1,
+      "nloc": 4,
+      "parameters": 0
+    },
+    {
+      "file": "src\\offline_assets.cpp",
+      "name": "jd::offline::GameHome",
+      "line": 30,
+      "end_line": 38,
+      "ccn": 6,
+      "nloc": 9,
+      "parameters": 0
+    },
+    {
+      "file": "src\\offline_assets.cpp",
+      "name": "jd::offline::Quote",
+      "line": 39,
+      "end_line": 47,
+      "ccn": 4,
+      "nloc": 9,
+      "parameters": 1
+    },
+    {
+      "file": "src\\offline_assets.cpp",
+      "name": "jd::offline::Run",
+      "line": 48,
+      "end_line": 79,
+      "ccn": 10,
+      "nloc": 32,
+      "parameters": 5
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::T",
+      "line": 75,
+      "end_line": 75,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::LocaleFonts",
+      "line": 76,
+      "end_line": 90,
+      "ccn": 10,
+      "nloc": 14,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::ActiveCall::ActiveCall",
+      "line": 93,
+      "end_line": 93,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::ActiveCall::~ActiveCall",
+      "line": 94,
+      "end_line": 94,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::Release",
+      "line": 96,
+      "end_line": 98,
+      "ccn": 2,
+      "nloc": 3,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::OwnsForeground",
+      "line": 99,
+      "end_line": 102,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::CanInteract",
+      "line": 103,
+      "end_line": 107,
+      "ccn": 3,
+      "nloc": 5,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::SetInteractive",
+      "line": 108,
+      "end_line": 134,
+      "ccn": 12,
+      "nloc": 26,
+      "parameters": 2
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::IsCapturedMessage",
+      "line": 135,
+      "end_line": 148,
+      "ccn": 26,
+      "nloc": 14,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::WindowProc",
+      "line": 149,
+      "end_line": 205,
+      "ccn": 28,
+      "nloc": 53,
+      "parameters": 6
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::HookClip",
+      "line": 206,
+      "end_line": 210,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::HookWarp",
+      "line": 211,
+      "end_line": 215,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 2
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::HookCursor",
+      "line": 216,
+      "end_line": 220,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::Utf8",
+      "line": 221,
+      "end_line": 229,
+      "ccn": 2,
+      "nloc": 9,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::ConfigureStyle",
+      "line": 230,
+      "end_line": 246,
+      "ccn": 1,
+      "nloc": 17,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::CreateTarget",
+      "line": 247,
+      "end_line": 254,
+      "ccn": 2,
+      "nloc": 8,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::PinSelfForResidualSubclass",
+      "line": 255,
+      "end_line": 260,
+      "ccn": 1,
+      "nloc": 6,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::RemoveSubclass",
+      "line": 261,
+      "end_line": 273,
+      "ccn": 9,
+      "nloc": 12,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::DestroyUi",
+      "line": 274,
+      "end_line": 294,
+      "ccn": 4,
+      "nloc": 21,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::AttachUi",
+      "line": 295,
+      "end_line": 348,
+      "ccn": 16,
+      "nloc": 54,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::SelectedLabel",
+      "line": 349,
+      "end_line": 353,
+      "ccn": 5,
+      "nloc": 5,
+      "parameters": 3
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::ChoiceCombo",
+      "line": 354,
+      "end_line": 385,
+      "ccn": 9,
+      "nloc": 32,
+      "parameters": 7
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::DrawPanel",
+      "line": 386,
+      "end_line": 470,
+      "ccn": 45,
+      "nloc": 85,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::DrawIcon",
+      "line": 471,
+      "end_line": 502,
+      "ccn": 6,
+      "nloc": 32,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::Render",
+      "line": 503,
+      "end_line": 536,
+      "ccn": 13,
+      "nloc": 33,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::HookPresent",
+      "line": 537,
+      "end_line": 569,
+      "ccn": 19,
+      "nloc": 33,
+      "parameters": 3
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::HookResize",
+      "line": 570,
+      "end_line": 584,
+      "ccn": 7,
+      "nloc": 15,
+      "parameters": 6
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::AddHook",
+      "line": 585,
+      "end_line": 590,
+      "ccn": 2,
+      "nloc": 6,
+      "parameters": 3
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::RemoveHooks",
+      "line": 591,
+      "end_line": 594,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::Start",
+      "line": 597,
+      "end_line": 667,
+      "ccn": 17,
+      "nloc": 71,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::Stop",
+      "line": 668,
+      "end_line": 689,
+      "ccn": 4,
+      "nloc": 20,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::Inspect",
+      "line": 690,
+      "end_line": 695,
+      "ccn": 4,
+      "nloc": 6,
+      "parameters": 0
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "name": "jd::overlay::QueueTestPanel",
+      "line": 696,
+      "end_line": 696,
+      "ccn": 2,
+      "nloc": 1,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay_model.hpp",
+      "name": "jd::overlay::model::PreviewToken",
+      "line": 8,
+      "end_line": 20,
+      "ccn": 10,
+      "nloc": 13,
+      "parameters": 2
+    },
+    {
+      "file": "src\\overlay_model.hpp",
+      "name": "jd::overlay::model::Contains",
+      "line": 21,
+      "end_line": 24,
+      "ccn": 2,
+      "nloc": 4,
+      "parameters": 2
+    },
+    {
+      "file": "src\\overlay_model.hpp",
+      "name": "jd::overlay::model::FirstExcept",
+      "line": 25,
+      "end_line": 29,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 2
+    },
+    {
+      "file": "src\\overlay_model.hpp",
+      "name": "jd::overlay::model::Normalize",
+      "line": 30,
+      "end_line": 46,
+      "ccn": 9,
+      "nloc": 14,
+      "parameters": 2
+    },
+    {
+      "file": "src\\overlay_model.hpp",
+      "name": "jd::overlay::model::CanSubmit",
+      "line": 47,
+      "end_line": 54,
+      "ccn": 11,
+      "nloc": 8,
+      "parameters": 2
+    },
+    {
+      "file": "src\\overlay_model.hpp",
+      "name": "jd::overlay::model::FoldSearch",
+      "line": 55,
+      "end_line": 77,
+      "ccn": 16,
+      "nloc": 21,
+      "parameters": 1
+    },
+    {
+      "file": "src\\overlay_model.hpp",
+      "name": "jd::overlay::model::Matches",
+      "line": 78,
+      "end_line": 82,
+      "ccn": 2,
+      "nloc": 5,
+      "parameters": 2
+    },
+    {
+      "file": "src\\performance.hpp",
+      "name": "jd::perf::Counter::Add",
+      "line": 8,
+      "end_line": 12,
+      "ccn": 3,
+      "nloc": 5,
+      "parameters": 1
+    },
+    {
+      "file": "src\\performance.hpp",
+      "name": "jd::perf::Scope::Scope",
+      "line": 18,
+      "end_line": 18,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 1
+    },
+    {
+      "file": "src\\performance.hpp",
+      "name": "jd::perf::Scope::~Scope",
+      "line": 19,
+      "end_line": 19,
+      "ccn": 1,
+      "nloc": 1,
+      "parameters": 0
+    },
+    {
+      "file": "src\\preview_cache.hpp",
+      "name": "jd::preview::CacheGeometryKey",
+      "line": 5,
+      "end_line": 9,
+      "ccn": 4,
+      "nloc": 5,
+      "parameters": 2
+    }
+  ],
+  "modules": [
+    {
+      "file": "src\\dispatch.cpp",
+      "lines": 883
+    },
+    {
+      "file": "src\\dispatch.hpp",
+      "lines": 89
+    },
+    {
+      "file": "src\\display_units.hpp",
+      "lines": 27
+    },
+    {
+      "file": "src\\engine_route.cpp",
+      "lines": 150
+    },
+    {
+      "file": "src\\engine_route.hpp",
+      "lines": 23
+    },
+    {
+      "file": "src\\game_messages.hpp",
+      "lines": 17
+    },
+    {
+      "file": "src\\host.cpp",
+      "lines": 484
+    },
+    {
+      "file": "src\\input_capture.cpp",
+      "lines": 272
+    },
+    {
+      "file": "src\\input_capture.hpp",
+      "lines": 17
+    },
+    {
+      "file": "src\\job_navigation.hpp",
+      "lines": 21
+    },
+    {
+      "file": "src\\labels.cpp",
+      "lines": 186
+    },
+    {
+      "file": "src\\labels.hpp",
+      "lines": 20
+    },
+    {
+      "file": "src\\native_preview.cpp",
+      "lines": 317
+    },
+    {
+      "file": "src\\native_preview_abi.hpp",
+      "lines": 21
+    },
+    {
+      "file": "src\\native_preview_policy.hpp",
+      "lines": 18
+    },
+    {
+      "file": "src\\offline_assets.cpp",
+      "lines": 80
+    },
+    {
+      "file": "src\\offline_assets.hpp",
+      "lines": 14
+    },
+    {
+      "file": "src\\overlay.cpp",
+      "lines": 697
+    },
+    {
+      "file": "src\\overlay.hpp",
+      "lines": 13
+    },
+    {
+      "file": "src\\overlay_model.hpp",
+      "lines": 83
+    },
+    {
+      "file": "src\\performance.hpp",
+      "lines": 21
+    },
+    {
+      "file": "src\\preview.hpp",
+      "lines": 11
+    },
+    {
+      "file": "src\\preview_cache.hpp",
+      "lines": 10
+    }
+  ]
+}

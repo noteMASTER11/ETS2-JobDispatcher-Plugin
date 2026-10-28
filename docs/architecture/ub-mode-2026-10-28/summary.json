@@ -1,0 +1,72 @@
+{
+  "python_functions": 45,
+  "python_crap_at_least_10": 24,
+  "runtime_python_functions": [
+    {
+      "name": "prepare",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 16,
+      "coverage": 0.0,
+      "crap": 272.0
+    },
+    {
+      "name": "main",
+      "namespace": "tools.prepare-game-assets",
+      "cc": 14,
+      "coverage": 0.0,
+      "crap": 210.0
+    },
+    {
+      "name": "load",
+      "namespace": "tools.prepare-locales",
+      "cc": 8,
+      "coverage": 0.0,
+      "crap": 72.0
+    },
+    {
+      "name": "active_mods",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 19,
+      "coverage": 83.3333,
+      "crap": 20.6713
+    },
+    {
+      "name": "unquote",
+      "namespace": "tools.prepare-locales",
+      "cc": 3,
+      "coverage": 0.0,
+      "crap": 12.0
+    },
+    {
+      "name": "main",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 3,
+      "coverage": 4.0,
+      "crap": 10.9626
+    },
+    {
+      "name": "fingerprint",
+      "namespace": "tools.offline-bootstrap",
+      "cc": 7,
+      "coverage": 90.0,
+      "crap": 7.049
+    },
+    {
+      "name": "write",
+      "namespace": "tools.prepare-locales",
+      "cc": 1,
+      "coverage": 0.0,
+      "crap": 2.0
+    }
+  ],
+  "mutation": {
+    "scope": "tools/offline-bootstrap.py only",
+    "killed": 5,
+    "survived": 16,
+    "uncovered": 47,
+    "sites": 68,
+    "executed": 21,
+    "score_percent": 23.80952380952381
+  },
+  "cpp_supported_by_ub_tools": false
+}

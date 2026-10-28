@@ -1,0 +1,332 @@
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test"
+    ],
+    "files" : 
+    [
+      "D:/ChatGPT/Projects/ETS2-JobDispatcher-Plugin/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 43,
+        "parent" : 0
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 50,
+        "parent" : 2
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 57,
+        "parent" : 4
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 60,
+        "parent" : 6
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 63,
+        "parent" : 8
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 66,
+        "parent" : 10
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 69,
+        "parent" : 12
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 79,
+        "parent" : 14
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 86,
+        "parent" : 16
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 102,
+        "parent" : 18
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 109,
+        "parent" : 20
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 116,
+        "parent" : 22
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 1,
+      "command" : 
+      [
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/jd-native-preview-test.exe"
+      ],
+      "name" : "native-preview-frame-and-lifetime",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 3,
+      "command" : 
+      [
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/jd-offline-assets-test.exe",
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/offline-process-fixture"
+      ],
+      "name" : "offline-process-lifecycle",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 5,
+      "command" : 
+      [
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/jd-job-navigation-test.exe"
+      ],
+      "name" : "job-navigation-transitions",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 7,
+      "command" : 
+      [
+        "C:/Users/User/AppData/Local/Programs/Python/Python313/python.exe",
+        "D:/ChatGPT/Projects/ETS2-JobDispatcher-Plugin/tests/preview_scene_test.py",
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/preview-scene-fixture"
+      ],
+      "name" : "loaded-trailer-preview",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 9,
+      "command" : 
+      [
+        "C:/Users/User/AppData/Local/Programs/Python/Python313/python.exe",
+        "D:/ChatGPT/Projects/ETS2-JobDispatcher-Plugin/tests/lazy_preview_test.py",
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/lazy-preview-fixture"
+      ],
+      "name" : "lazy-preview-selection",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 11,
+      "command" : 
+      [
+        "C:/Users/User/AppData/Local/Programs/Python/Python313/python.exe",
+        "D:/ChatGPT/Projects/ETS2-JobDispatcher-Plugin/tests/offline_bootstrap_test.py",
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/offline-profile-fixture"
+      ],
+      "name" : "offline-active-profile",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 13,
+      "command" : 
+      [
+        "C:/Users/User/AppData/Local/Programs/Python/Python313/python.exe",
+        "D:/ChatGPT/Projects/ETS2-JobDispatcher-Plugin/tests/preview_catalogue_test.py",
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/preview-test-fixture"
+      ],
+      "name" : "preview-catalogue",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 15,
+      "command" : 
+      [
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/jd-display-units-test.exe"
+      ],
+      "name" : "display-units-and-messages",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 17,
+      "command" : 
+      [
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/jd-input-capture-test.exe"
+      ],
+      "name" : "overlay-input-capture",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 19,
+      "command" : 
+      [
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/jd-ui-locales-test.exe",
+        "D:/ChatGPT/Projects/ETS2-JobDispatcher-Plugin/assets"
+      ],
+      "name" : "ui-locales",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 21,
+      "command" : 
+      [
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/jd-overlay-model-test.exe"
+      ],
+      "name" : "overlay-catalogue-state",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    },
+    {
+      "backtrace" : 23,
+      "command" : 
+      [
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/jd-loader-test.exe",
+        "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/JobDispatcherSP.dll"
+      ],
+      "name" : "loader-version-guard",
+      "properties" : 
+      [
+        {
+          "name" : "ENVIRONMENT",
+          "value" : 
+          [
+            "JD_SP_NO_OVERLAY=1",
+            "JD_SP_DATA=D:/ChatGPT/Projects/2026-10-27/tr/work/public-build/loader-test-runtime"
+          ]
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/ChatGPT/Projects/2026-10-27/tr/work/public-build"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}
